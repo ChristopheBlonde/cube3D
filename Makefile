@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/04 10:13:40 by cblonde          ###   ########.fr        #
+#    Updated: 2024/09/11 09:39:14 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,17 @@ CC = cc
 
 CFLAGS = -Werror -Wextra -Wall -g
 
-INCLUDE = -Iinclude
+INCLUDE = -Iinclude -Ilib -Imlx
 
 DSRC = src/
+
+DLIB = lib/
+
+LIB = $(DLIB)libft.a
+
+DMLX = mlx/
+
+MLX = $(DMLX)libmlx.a
 
 SRC = $(DSRC)main.c
 
@@ -29,14 +37,23 @@ OBJ = $(SRC:.c=.o)
 %.o : %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME) : $(OBJ)
+$(NAME) : $(LIB) $(MLX) $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) -o $(NAME)
 
+$(LIB) :
+	make -C $(DLIB) --no-print-directory #--silent
+
+$(MLX) :
+	make -C $(DMLX) --no-print-directory #--silent
+
 clean :
+	make clean -C $(DLIB) --no-print-directory #--silent
+	make clean -C $(DMLX) --no-print-directory #--silent
 	rm -rf $(OBJ)
 
 fclean : clean
 	rm -rf $(NAME)
+	rm -rf $(LIB)
 
 re : fclean $(NAME)
 
