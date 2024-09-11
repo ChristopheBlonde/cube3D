@@ -6,13 +6,14 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:22:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/04 09:23:24 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/11 09:59:43 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# include <unistd.h>
+# include "libft.h"
+# include "mlx.h"
 
 #endif

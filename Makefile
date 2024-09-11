@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/11 09:39:14 by cblonde          ###   ########.fr        #
+#    Updated: 2024/09/11 10:02:43 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ CC = cc
 CFLAGS = -Werror -Wextra -Wall -g
 
 INCLUDE = -Iinclude -Ilib -Imlx
+
+LIBRARIES = -Llib -lft -Lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
 DSRC = src/
 
@@ -38,17 +40,17 @@ OBJ = $(SRC:.c=.o)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(LIB) $(MLX) $(OBJ)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
 
 $(LIB) :
-	make -C $(DLIB) --no-print-directory #--silent
+	make -C $(DLIB) --no-print-directory --silent
 
 $(MLX) :
-	make -C $(DMLX) --no-print-directory #--silent
+	make -C $(DMLX) --no-print-directory --silent
 
 clean :
-	make clean -C $(DLIB) --no-print-directory #--silent
-	make clean -C $(DMLX) --no-print-directory #--silent
+	make clean -C $(DLIB) --no-print-directory --silent
+	make clean -C $(DMLX) --no-print-directory --silent
 	rm -rf $(OBJ)
 
 fclean : clean
