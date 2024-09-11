@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/11 10:02:43 by cblonde          ###   ########.fr        #
+#    Updated: 2024/09/11 16:26:37 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,10 @@ LIBRARIES = -Llib -lft -Lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
 DSRC = src/
 
+DMAP = src/map/
+
+DPARSE = src/parse/
+
 DLIB = lib/
 
 LIB = $(DLIB)libft.a
@@ -28,7 +32,7 @@ DMLX = mlx/
 
 MLX = $(DMLX)libmlx.a
 
-SRC = $(DSRC)main.c
+SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c
 
 NAME = cube
 
