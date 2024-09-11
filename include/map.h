@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/11 13:55:42 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/11 12:02:46 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#ifndef MAP_H
+# define MAP_H
 
-void	open_window_mlx(void)
+typedef struct	s_map
 {
-	void	*mlx;
-	void	*mlx_window;
+	int	height;
+	int	width;
+	int	floor[3];
+	int	ceiling[3];
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+} t_map;
 
-	mlx = mlx_init();
-	mlx_window = mlx_new_window(mlx, 800, 600, "Test MLX");
-	mlx_loop(mlx);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		return (1);
-	ft_strstrim(argv[1]);
-	ft_putendl_fd(argv[1], 1);
-	return (0);
-}
+#endif
