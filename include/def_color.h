@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:44:06 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/11 11:57:16 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/12 09:32:24 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define RED "\e[0;31m"
 # define GREEN "\e[0;32m"
 # define YELLOW "\e[0;33m"
-# define BLEU "\e[0;34m"
+# define BLUE "\e[0;34m"
 # define MAGENTA "\e[0;35m"
 # define CYAN "\e[0;36m"
 # define WHITE "\e[0;37m"
@@ -25,7 +25,7 @@
 # define LRED "\e[1;31m"
 # define LGREEN "\e[1;32m"
 # define LYELLOW "\e[1;33m"
-# define LBLEU "\e[1;34m"
+# define LBLUE "\e[1;34m"
 # define LMAGENTA "\e[1;35m"
 # define LCYAN "\e[1;36m"
 # define LWHITE "\e[1;37m"
@@ -33,7 +33,7 @@
 # define DRED "\e[2;31m"
 # define DGREEN "\e[2;32m"
 # define DYELLOW "\e[2;33m"
-# define DBLEU "\e[2;34m"
+# define DBLUE "\e[2;34m"
 # define DMAGENTA "\e[2;35m"
 # define DCYAN "\e[2;36m"
 # define DWHITE "\e[2;37m"

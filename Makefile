@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/11 16:26:37 by cblonde          ###   ########.fr        #
+#    Updated: 2024/09/12 10:22:56 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,28 +38,31 @@ NAME = cube
 
 all : $(NAME)
 
-OBJ = $(SRC:.c=.o)
+DBUILD = build/
 
-%.o : %.c
+OBJ = $(addprefix $(DBUILD),$(SRC:%.c=%.o))
+
+$(DBUILD)%.o : %.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(LIB) $(MLX) $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
 
 $(LIB) :
-	make -C $(DLIB) --no-print-directory --silent
+	@make -C $(DLIB) --no-print-directory --silent
 
 $(MLX) :
-	make -C $(DMLX) --no-print-directory --silent
+	@make -C $(DMLX) --no-print-directory --silent
 
 clean :
-	make clean -C $(DLIB) --no-print-directory --silent
-	make clean -C $(DMLX) --no-print-directory --silent
-	rm -rf $(OBJ)
+	@make clean -C $(DLIB) --no-print-directory --silent
+	@make clean -C $(DMLX) --no-print-directory --silent
+	@rm -rf $(DBUILD)
 
 fclean : clean
-	rm -rf $(NAME)
-	rm -rf $(LIB)
+	@rm -rf $(NAME)
+	@rm -rf $(LIB)
 
 re : fclean $(NAME)
 
