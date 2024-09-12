@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/12 11:49:20 by cblonde          ###   ########.fr       */
+/*   Created: 2024/03/27 08:42:37 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/12 16:10:31 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "error.h"
-# include "def_color.h"
-# include "libft.h"
+size_t	ft_arrlen(void **env)
+{
+	size_t	i;
 
-typedef struct	s_map t_map;
-
-char	*ft_readfile(char *file);
-bool	initialize_map(t_map *map, char *path);
-
-#endif
+	i = 0;
+	if (!env)
+		return (0);
+	while (env[i])
+		i++;
+	return (i);
+}

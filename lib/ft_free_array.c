@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/12 11:49:20 by cblonde          ###   ########.fr       */
+/*   Created: 2024/03/26 13:35:06 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/12 16:10:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "error.h"
-# include "def_color.h"
-# include "libft.h"
+void	*ft_free_array(void **arr)
+{
+	size_t	i;
 
-typedef struct	s_map t_map;
-
-char	*ft_readfile(char *file);
-bool	initialize_map(t_map *map, char *path);
-
-#endif
+	if (!arr)
+		return (NULL);
+	i = 0;
+	while (arr[i])
+	{
+		if (arr[i])
+		{
+			free(arr[i]);
+			arr[i] = NULL;
+		}
+		i++;
+	}
+	free(arr);
+	return (NULL);
+}

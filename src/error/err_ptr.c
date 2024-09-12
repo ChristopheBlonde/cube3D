@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   err_ptr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/12 11:49:20 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/12 13:42:29 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/12 15:56:33 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "error.h"
 
-# include <fcntl.h>
-# include "error.h"
-# include "def_color.h"
-# include "libft.h"
-
-typedef struct	s_map t_map;
-
-char	*ft_readfile(char *file);
-bool	initialize_map(t_map *map, char *path);
-
-#endif
+void	*err_alloc(void)
+{
+	ft_putstr_fd(RED, 2);
+	ft_putstr_fd(ERR, 2);
+	ft_putstr_fd(DRED, 2);
+	ft_putstr_fd(FAILALLOC, 2);	
+	ft_putstr_fd(RESET, 2);
+	return (NULL);
+}

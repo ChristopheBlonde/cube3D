@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:42:30 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/12 09:35:38 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/12 14:18:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ static void	*ft_err_readfile(int n, int fd, char *str, char *tmp)
 	if (tmp)
 		free(tmp);
 	if (n == 0)
-	{
-		ft_putstr_fd(DRED, 2);
-		ft_putstr_fd(FAILALLOC, 2);
-	}
+		err_alloc();
 	if (n == 1)
 	{
 		ft_putstr_fd(YELLOW, 2);

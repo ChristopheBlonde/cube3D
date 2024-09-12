@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/12 10:22:56 by cblonde          ###   ########.fr        #
+#    Updated: 2024/09/12 13:44:39 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,16 @@ DPARSE = src/parse/
 
 DLIB = lib/
 
+DERR = src/error/
+
 LIB = $(DLIB)libft.a
 
 DMLX = mlx/
 
 MLX = $(DMLX)libmlx.a
 
-SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c
+SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
+	  $(DPARSE)initialize_map.c $(DERR)err_ptr.c
 
 NAME = cube
 
