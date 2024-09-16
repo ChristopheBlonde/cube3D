@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:29:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/16 12:50:54 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/16 16:25:23 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	check_file_ext(char *path)
 {
-	char *tmp;
+	char	*tmp;
 
 	if (!path)
 		return (false);
@@ -26,7 +26,7 @@ static bool	check_file_ext(char *path)
 		ft_putstr_fd(ERR, 2);
 		ft_putstr_fd(DYELLOW, 2);
 		ft_putstr_fd(path, 2);
-		ft_putstr_fd(ERREXTENTION, 2);	
+		ft_putstr_fd(ERREXTENTION, 2);
 		ft_putstr_fd(RESET, 2);
 		return (false);
 	}
@@ -62,7 +62,7 @@ static char	**get_map(char **arr, size_t start, size_t size)
 	return (map);
 }
 
-static char **implement_t_map(t_map *map, char *file)
+static char	**implement_t_map(t_map *map, char *file)
 {
 	char	**arr;
 	size_t	i;

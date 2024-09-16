@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/16 12:35:12 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/16 15:48:20 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,13 @@
 # define ERRDSO "Duplicate file for south texture\n"
 # define ERRDWE "Duplicate file for west texture\n"
 # define ERRDEA "Duplicate file for east texture\n"
+# define ERRNCOLOR "Bad number arguments for rgb color\n"
+# define ERRRACOLOR "rgb color must range [0-255]\n"
 
 void	*err_alloc(void);
 size_t	err_arg(void);
 size_t	err_open(char *s);
 size_t	err_duplicate(size_t n);
+size_t	err_color(size_t n);
 
 #endif
