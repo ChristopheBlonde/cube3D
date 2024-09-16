@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:29:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/12 16:47:23 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/16 12:50:54 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,30 @@ static char	**get_map(char **arr, size_t start, size_t size)
 	map_len = size - start;
 	map = (char **)ft_calloc(map_len + 1, sizeof(char *));
 	if (!map)
-	{
 		ft_free_array((void **)arr);
-		return (NULL);
-	}
+	if (!map)
+		return (err_alloc());
 	while (i < map_len)
 	{
 		map[i] = ft_strdup(arr[start]);
+		if (!map[i])
+		{
+			ft_free_array((void **)arr);
+			ft_free_array((void **)map);
+			return (err_alloc());
+		}
 		start++;
 		i++;
 	}
 	return (map);
 }
 
-static char **get_array(char *file)
+static char **implement_t_map(t_map *map, char *file)
 {
 	char	**arr;
 	size_t	i;
 	size_t	arr_len;
 	char	*tmp;
-	char	**map;
 
 	i = 0;
 	arr = ft_split(file, '\n');
@@ -77,13 +81,13 @@ static char **get_array(char *file)
 			tmp++;
 		if (*tmp == '1' || *tmp == '0')
 			break ;
+		if (!get_infos(map, arr, i))
+			return (NULL);
 		i++;
 	}
-	map = get_map(arr, i, arr_len);
-	ft_putstr_fd(CYAN, 1);
-	for (size_t j = 0; map[j]; j++)
-		ft_putendl_fd(map[j], 1);
-	ft_putstr_fd(RESET, 1);
+	map->map = get_map(arr, i, arr_len);
+	if (!map->map)
+		return (NULL);
 	return (arr);
 }
 
@@ -92,13 +96,17 @@ bool	initialize_map(t_map *map, char *path)
 	char	*file;
 	char	**arr;
 
-	(void)map;
 	if (!check_file_ext(path))
 		return (false);
 	file = ft_readfile(path);
 	if (!file)
 		return (false);
-	arr = get_array(file);
+	arr = implement_t_map(map, file);
+	if (!arr)
+	{
+		free(file);
+		return (false);
+	}
 	free(file);
 	free(arr);
 	return (true);

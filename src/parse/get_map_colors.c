@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   get_map_colors.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/16 12:59:18 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/16 12:51:50 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/16 13:00:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "parse.h"
 
-# include <fcntl.h>
-# include "error.h"
-# include "def_color.h"
-# include "libft.h"
-# include "map.h"
+bool	get_map_colors(t_map *map, char *str)
+{
+	(void)map;
+	ft_putstr_fd(CYAN, 1);
+	ft_putendl_fd(str, 1);
+	ft_putstr_fd(RESET, 1);
+	return (true);
+}
 
-char	*ft_readfile(char *file);
-bool	initialize_map(t_map *map, char *path);
-bool	get_infos(t_map *map, char **arr, size_t i);
-bool	get_map_colors(t_map *map, char *str);
-
-#endif
