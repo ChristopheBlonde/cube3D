@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:45:31 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/16 09:23:36 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:27:28 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	init_map(t_map *map)
 	int	i;
 
 	i = -1;
-	map->height = -1;
-	map->width = -1;
+	map->height = 0;
+	map->width = 0;
 	map->no = NULL;
 	map->so = NULL;
 	map->we = NULL;
@@ -26,8 +26,8 @@ void	init_map(t_map *map)
 	map->map = NULL;
 	while (++i < 3)
 	{
-		map->floor[i] = -1;
-		map->ceiling[i] = -1;
+		map->floor[i] = 0;
+		map->ceiling[i] = 0;
 	}
 }
 

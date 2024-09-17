@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:29:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/16 16:25:23 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/17 13:30:04 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,11 @@ bool	initialize_map(t_map *map, char *path)
 		return (false);
 	}
 	free(file);
-	free(arr);
+	ft_free_array((void **)arr);
+	if (!handle_map_err(map))
+	{
+		free_map(map);
+		return (false);
+	}
 	return (true);
 }

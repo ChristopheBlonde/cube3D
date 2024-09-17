@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/17 12:30:51 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/17 12:40:26 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/17 12:41:53 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef POINT_H
+# define POINT_H
 
-# include <stdlib.h>
-# include "libft.h"
-# include "player.h"
-
-typedef struct	s_map
+typedef struct	s_point
 {
-	char		**map;
-	size_t		height;
-	size_t		width;
-	size_t		floor[3];
-	size_t		ceiling[3];
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
-	t_player	player;
-} t_map;
+	size_t	x;
+	size_t	y;
+} t_point;
 
-void	init_map(t_map *map);
-void	free_map(t_map *map);
 #endif
