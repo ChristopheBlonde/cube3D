@@ -6,13 +6,13 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:05:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/17 17:38:59 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 12:23:55 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-static bool	get_map_attribute(t_map *map, size_t player)
+static void	get_map_attribute(t_map *map, size_t *player, size_t *unknow)
 {
 	int		i;
 	int		j;
@@ -23,9 +23,13 @@ static bool	get_map_attribute(t_map *map, size_t player)
 		j = -1;
 		while (map->map[i][++j])
 		{
-			if (get_direction(map->map[i][j]) != NONE)
+			if (map->map[i][j] != ' ' && map->map[i][j] != '1'
+				&& map->map[i][j] != 'S' && map->map[i][j] != 'N'
+				&& map->map[i][j] != 'W' && map->map[i][j] != 'E'
+				&& map->map[i][j] != '0')
+				(*unknow)++;
+			if (get_direction(map->map[i][j]) != NONE && (*player)++)
 			{
-				player++;
 				map->player.dir = get_direction(map->map[i][j]);
 				map->player.pos.x = (size_t)j;
 				map->player.pos.y = (size_t)i;
@@ -35,9 +39,6 @@ static bool	get_map_attribute(t_map *map, size_t player)
 			map->width = (size_t)j;
 	}
 	map->height = (size_t)i;
-	if (player > 1)
-		return (false);
-	return (true);
 }
 
 static char	**duplicate_array(t_map *map)
@@ -114,8 +115,18 @@ static bool	is_closed(t_map *map)
 
 bool	handle_map_err(t_map *map)
 {
-	if (!get_map_attribute(map, 0))
+	size_t	player;
+	size_t	unknow;
+
+	player = 0;
+	unknow = 0;
+	get_map_attribute(map, &player, &unknow);
+	if (player > 1)
 		return (err_map_invalid(0));
+	if (unknow != 0)
+		return (err_map_invalid(2));
+	if (!missing_att(map))
+		return (false);
 	if (!is_closed(map))
 		return (err_map_invalid(1));
 	return (true);

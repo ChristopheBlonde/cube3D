@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 10:28:53 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/17 13:48:04 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 12:26:36 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ size_t	err_color(size_t n)
 		ft_putstr_fd(ERRNCOLOR, 2);
 	if (n == 1)
 		ft_putstr_fd(ERRRACOLOR, 2);
+	if (n == 2)
+		ft_putstr_fd(ERRFDCOLOR, 2);
+	if (n == 3)
+		ft_putstr_fd(ERRCDCOLOR, 2);
 	ft_putstr_fd(RESET, 2);
 	return (0);
 }
@@ -71,6 +75,8 @@ size_t	err_map_invalid(size_t n)
 		ft_putstr_fd(ERRDPLAYER, 2);
 	if (n == 1)
 		ft_putstr_fd(ERRMCLOSED, 2);
+	if (n == 2)
+		ft_putstr_fd(ERRUNKNOW, 2);
 	ft_putstr_fd(RESET, 2);
 	return (false);
 }

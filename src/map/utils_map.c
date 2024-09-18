@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:45:31 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/17 14:27:28 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 11:47:36 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	init_map(t_map *map)
 		map->floor[i] = 0;
 		map->ceiling[i] = 0;
 	}
+	map->player.pos.x = 0;
+	map->player.pos.y = 0;
+	map->player.dir = NONE;
 }
 
 void	free_map(t_map *map)

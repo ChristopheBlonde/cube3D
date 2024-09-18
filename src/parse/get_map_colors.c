@@ -6,14 +6,17 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:51:50 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/16 16:20:16 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:25:31 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-static bool	get_floor_color(t_map *map, char **arr, char *str, int i)
+static bool	get_floor_color(t_map *map, char *str, int i)
 {
+	char **arr;
+
+	arr = NULL;
 	arr = ft_split(str, ',');
 	if (!arr)
 		err_alloc();
@@ -38,8 +41,11 @@ static bool	get_floor_color(t_map *map, char **arr, char *str, int i)
 	return (1);
 }
 
-static bool	get_ceiling_color(t_map *map, char **arr, char *str, int i)
+static bool	get_ceiling_color(t_map *map, char *str, int i)
 {
+	char **arr;
+
+	arr = NULL;
 	arr = ft_split(str, ',');
 	if (!arr)
 		err_alloc();
@@ -64,28 +70,48 @@ static bool	get_ceiling_color(t_map *map, char **arr, char *str, int i)
 	return (1);
 }
 
+static bool	duplicated_color(t_map *map, size_t n)
+{
+	if (n == 0)
+	{
+		if (map->floor[0] == 0
+			&& map->floor[1] == 0
+			&& map->floor[2] == 0)
+			return (true);
+	}
+	if (n == 1)
+	{
+		if (map->ceiling[0] == 0
+			&& map->ceiling[1] == 0
+			&& map->ceiling[2] == 0)
+			return (true);
+	}
+	return (false);
+}
+
 bool	get_map_colors(t_map *map, char *str)
 {
-	char	**arr;
-
-	arr = NULL;
 	if (!ft_strncmp(str, "F", 1))
 	{
+		if (!duplicated_color(map, 0))
+			return (err_color(2));
 		str++;
 		if (*str != ' ')
 			return (err_arg());
 		while (ft_isspace(*str))
 			str++;
-		return (get_floor_color(map, arr, str, -1));
+		return (get_floor_color(map, str, -1));
 	}
 	if (!ft_strncmp(str, "C", 1))
 	{
+		if (!duplicated_color(map, 1))
+			return (err_color(3));
 		str++;
 		if (*str != ' ')
 			return (err_arg());
 		while (ft_isspace(*str))
 			str++;
-		return (get_ceiling_color(map, arr, str, -1));
+		return (get_ceiling_color(map, str, -1));
 	}
 	return (true);
 }

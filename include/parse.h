@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/17 13:14:04 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:18:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ bool	initialize_map(t_map *map, char *path);
 bool	get_infos(t_map *map, char **arr, size_t i);
 bool	get_map_colors(t_map *map, char *str);
 bool	handle_map_err(t_map *map);
+bool	missing_att(t_map *map);
 
 #endif

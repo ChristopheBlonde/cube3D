@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/17 14:08:54 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 12:27:33 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,18 @@
 # define ERRDEA "Duplicate file for east texture\n"
 # define ERRNCOLOR "Bad number arguments for rgb color\n"
 # define ERRRACOLOR "rgb color must range [0-255]\n"
+# define ERRFDCOLOR "Duplicated floor color\n"
+# define ERRCDCOLOR "Duplicated ceiling color\n"
 # define ERRDPLAYER "Find more than one player\n"
 # define ERRMCLOSED "Player can escape game !\n"
+# define ERRHEIGHT "Map height can't be null\n"
+# define ERRWIDTH "Map width can't be null\n"
+# define ERRTEXTURE "Texture map is missing\n"
+# define ERRMAPSIZE "Map is too big map dimention must be under 500*500\n"
+# define ERRFCOLOR "Floor color is missing\n"
+# define ERRCCOLOR "Ceiling color is missing\n"
+# define ERRMPLAYER "Player is missing\n"
+# define ERRUNKNOW "Unknow character in map\n"
 
 void	*err_alloc(void);
 size_t	err_arg(void);
@@ -39,5 +49,6 @@ size_t	err_open(char *s);
 size_t	err_duplicate(size_t n);
 size_t	err_color(size_t n);
 size_t	err_map_invalid(size_t n);
+bool	err_attribute(size_t n);
 
 #endif
