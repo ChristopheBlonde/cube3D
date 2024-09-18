@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/18 09:46:43 by cblonde          ###   ########.fr        #
+#    Updated: 2024/09/18 13:33:39 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ MLX = $(DMLX)libmlx.a
 SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
 	  $(DPARSE)initialize_map.c $(DERR)err_ptr.c $(DPARSE)get_map_infos.c\
 	  $(DERR)err_file.c $(DPARSE)get_map_colors.c $(DPLAYER)util_player.c\
-	  $(DPARSE)handle_map_err.c $(DPARSE)util_map_err.c $(DERR)err_map.c
+	  $(DPARSE)handle_map_err.c $(DPARSE)util_map_err.c $(DERR)err_map.c\
+	  $(DERR)validated.c
 
 NAME = cube
 

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/18 12:27:33 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 13:32:25 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define ERRCCOLOR "Ceiling color is missing\n"
 # define ERRMPLAYER "Player is missing\n"
 # define ERRUNKNOW "Unknow character in map\n"
+# define INITMAP "Start initialization map\n"
+# define VALIDMAP "Initialization map completed\n"
 
 void	*err_alloc(void);
 size_t	err_arg(void);
@@ -50,5 +52,6 @@ size_t	err_duplicate(size_t n);
 size_t	err_color(size_t n);
 size_t	err_map_invalid(size_t n);
 bool	err_attribute(size_t n);
+void	map_validated(size_t n);
 
 #endif

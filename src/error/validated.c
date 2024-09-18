@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validated.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/18 13:50:06 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/18 13:25:22 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/18 13:29:52 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "error.h"
 
-int	main(int argc, char **argv)
+void	map_validated(size_t n)
 {
-	t_map	map;
-
-	init_map(&map);
-	if (argc != 2)
-		return (1);
-	if (!initialize_map(&map, argv[1]))
-		return (1);
-	free_map(&map);
-	return (0);
+	if (n == 0)
+	{
+		ft_putstr_fd(CYAN, 1);
+		ft_putstr_fd(INITMAP, 1);
+	}
+	if (n == 1)
+	{
+		ft_putstr_fd(GREEN, 1);
+		ft_putstr_fd(VALIDMAP, 1);
+	}
+	ft_putstr_fd(RESET, 1);
+	return ;
 }

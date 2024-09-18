@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:05:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/18 12:23:55 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 13:49:18 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	get_map_attribute(t_map *map, size_t *player, size_t *unknow)
 				&& map->map[i][j] != 'W' && map->map[i][j] != 'E'
 				&& map->map[i][j] != '0')
 				(*unknow)++;
-			if (get_direction(map->map[i][j]) != NONE && (*player)++)
+			if (get_direction(map->map[i][j]) != NONE && ++(*player))
 			{
 				map->player.dir = get_direction(map->map[i][j]);
 				map->player.pos.x = (size_t)j;
@@ -122,7 +122,7 @@ bool	handle_map_err(t_map *map)
 	unknow = 0;
 	get_map_attribute(map, &player, &unknow);
 	if (player > 1)
-		return (err_map_invalid(0));
+		return (err_attribute(6));
 	if (unknow != 0)
 		return (err_map_invalid(2));
 	if (!missing_att(map))

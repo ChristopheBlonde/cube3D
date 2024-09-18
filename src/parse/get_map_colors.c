@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:51:50 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/18 10:25:31 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/18 13:19:45 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	get_floor_color(t_map *map, char *str, int i)
 {
-	char **arr;
+	char	**arr;
 
 	arr = NULL;
 	arr = ft_split(str, ',');
@@ -43,7 +43,7 @@ static bool	get_floor_color(t_map *map, char *str, int i)
 
 static bool	get_ceiling_color(t_map *map, char *str, int i)
 {
-	char **arr;
+	char	**arr;
 
 	arr = NULL;
 	arr = ft_split(str, ',');
