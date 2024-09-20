@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile.bak                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/19 08:44:52 by cblonde          ###   ########.fr        #
+#    Updated: 2024/09/20 08:53:24 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,15 @@ CC = cc
 
 CFLAGS = -Werror -Wextra -Wall -g
 
-INCLUDE = -Iinclude -Ilib -Imlx -I/usr/include
+INCLUDE = -Iinclude -Ilib -Imlx
 
 LIBRARIES = -Llib -lft -Lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
-
-LIBMAC = -Llib -lft -Lmlx -L/usr/lib -L/usr/X11/lib -lXext -lX11\
-		 -lmlx -framework OpenGL -framework AppKit
 
 DSRC = src/
 
 DMAP = src/map/
 
 DPARSE = src/parse/
-
-DPLAYER = src/player/
 
 DLIB = lib/
 
@@ -60,7 +55,7 @@ $(DBUILD)%.o : %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(LIB) $(MLX) $(OBJ)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBMAC) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
 
 $(LIB) :
 	@make -C $(DLIB) --no-print-directory --silent

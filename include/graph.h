@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube.h                                             :+:      :+:    :+:   */
+/*   graph.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 09:22:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/19 08:52:18 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/19 08:53:01 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE_H
-# define CUBE_H
+#ifndef GRAPH_H
+# define GRAPH_H
 
-# include "libft.h"
 # include "mlx.h"
-# include "def_color.h"
-# include "map.h"
-# include "error.h"
-# include "parse.h"
-# include "graph.h"
+# include "libft.h"
+
+# define M_W 1900
+# define M_H 1090
+# define M_NAME "cub3D"
+
+typedef struct s_win
+{
+	void	*mlx;
+	void	*win;
+}	t_win;
+
+t_win	*ft_initmlx(void);
 
 #endif
