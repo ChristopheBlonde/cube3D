@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_initmlx.c                                       :+:      :+:    :+:   */
+/*   build_img.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 08:31:45 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/23 17:43:11 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/20 09:48:05 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/23 08:38:27 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graph.h"
 
-t_win	ft_initmlx(void)
+t_img	new_img(t_win win, int w, int h)
 {
-	t_win win;
+	t_img	img;
 
-	win.mlx_ptr = mlx_init();
-	win.win_ptr = mlx_new_window(win.mlx_ptr, M_W, M_H, M_NAME);
-	win.img = new_img(win, M_W, M_H);
-	return (win);
+	img.win = win;
+	img.img_ptr = mlx_new_image(win.mlx_ptr, w, h);
+	img.addr = mlx_get_data_addr(img.img_ptr, &img.bpp,
+		&img.l_len, &img.endian);
+	img.width = w;
+	img.height = h;
+	return (img);
 }

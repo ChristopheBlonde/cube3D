@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/19 08:44:52 by cblonde          ###   ########.fr        #
+#    Updated: 2024/09/23 09:22:37 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ DERR = src/error/
 
 DGRAPH = src/libgraph/
 
+DMMAP = src/minimap/
+
 LIB = $(DLIB)libft.a
 
 DMLX = mlx/
@@ -45,7 +47,8 @@ SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
 	  $(DPARSE)initialize_map.c $(DERR)err_ptr.c $(DPARSE)get_map_infos.c\
 	  $(DERR)err_file.c $(DPARSE)get_map_colors.c $(DPLAYER)util_player.c\
 	  $(DPARSE)handle_map_err.c $(DPARSE)util_map_err.c $(DERR)err_map.c\
-	  $(DERR)validated.c $(DGRAPH)ft_initmlx.c
+	  $(DERR)validated.c $(DGRAPH)ft_initmlx.c $(DGRAPH)render_pixel.c\
+	  $(DGRAPH)build_img.c $(DMMAP)init_mmap.c
 
 NAME = cube
 
@@ -60,7 +63,7 @@ $(DBUILD)%.o : %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(LIB) $(MLX) $(OBJ)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBMAC) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
 
 $(LIB) :
 	@make -C $(DLIB) --no-print-directory --silent
