@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.h                                          :+:      :+:    :+:   */
+/*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 08:27:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/24 11:44:37 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/24 10:49:07 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_H
-# define MINIMAP_H
+#ifndef DATA_H
+# define DATA_H
 
-# include "map.h"
-# include "graph.h"
-# include "data.h"
+#include "map.h"
+#include "minimap.h"
+#include "graph.h"
+#include "mlx.h"
 
-typedef struct s_data t_data;
+typedef struct	s_minimap t_minimap;
 
-typedef struct	s_minimap
+typedef struct	s_data
 {
-	t_point	mid;
-	int		radius;
-	int		width;
-	int		height;
-}	t_minimap;
+	t_win		win;
+	t_img		img;
+	t_map		map;
+	t_minimap	*mnmap;
+}	t_data;
 
-t_minimap	*init_mmap(void);
-void		draw_mnmap(t_data *data);
+int		init_data(t_data *data, char **argv);
+void	free_data(t_data *data);
 
 #endif
