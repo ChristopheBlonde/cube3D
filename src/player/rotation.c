@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.h                                          :+:      :+:    :+:   */
+/*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 08:27:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/25 12:23:26 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/24 15:00:59 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/24 17:29:41 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_H
-# define MINIMAP_H
+#include "player.h"
 
-# include "map.h"
-# include "graph.h"
-# include "data.h"
-
-typedef struct s_data t_data;
-
-typedef struct	s_minimap
+void	rotate_player(t_player *p, double size)
 {
-	t_point	mid;
-	t_point	mnm_mid;
-	double	size;
-	int		radius;
-	int		width;
-	int		height;
-}	t_minimap;
+	double	tmp;
 
-t_minimap	*init_mmap(void);
-void		draw_mnmap(t_data *data);
-void		init_render_player(t_data *data);
-
-#endif
+	p->dir_angle += size;
+	tmp = p->v_dir[0];
+	p->v_dir[0] = cos(size) * tmp - sin(size) * p->v_dir[1];
+	p->v_dir[1] = sin(size) * tmp + cos(size) * p->v_dir[1];
+	tmp = p->v_plane[0];
+	p->v_plane[0] = cos(size) * tmp - sin(size) * p->v_plane[1];
+	p->v_plane[1] = sin(size) * tmp + cos(size) * p->v_plane[1];
+}

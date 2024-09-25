@@ -6,11 +6,12 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:05:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/23 16:43:32 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/24 17:50:33 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+#include <stdio.h> //TODO
 
 static void	get_map_attribute(t_map *map, size_t *player, size_t *unknow)
 {
@@ -31,8 +32,8 @@ static void	get_map_attribute(t_map *map, size_t *player, size_t *unknow)
 			if (get_direction(map->map[i][j]) != NONE && ++(*player))
 			{
 				map->player.dir = get_direction(map->map[i][j]);
-				map->player.pos.x = (size_t)j;
-				map->player.pos.y = (size_t)i;
+				map->player.position[0] = (double)j;
+				map->player.position[1] = (double)i;
 			}
 		}
 		if ((size_t)j > map->width)
@@ -92,20 +93,20 @@ static bool	is_closed(t_map *map)
 	int		j;
 
 	i = -1;
-	j = -1;
 	res = true;
 	w_arr = duplicate_array(map);
 	if (!w_arr)
 		return (false);
-	implement_arr_test(map, w_arr, map->player.pos.x, map->player.pos.y);
+	implement_arr_test(map, w_arr,
+		(int)map->player.position[0], (int)map->player.position[1]);
 	while (++i < (int)map->height)
 	{
-		j = 0;
+		j = -1;
 		while (++j < (int)map->width)
 		{
-			if ((i == 0 || i == (int)map->height - 1) && w_arr[i][j] == '2')
+			if ((i == 0 || i == (int)map->height) && w_arr[i][j] == '2')
 				res = false;
-			if ((j == 0 || j == (int)map->width - 1) && w_arr[i][j] == '2')
+			if ((j == 0 || j == (int)map->width) && w_arr[i][j] == '2')
 				res = false;
 		}
 	}
@@ -129,5 +130,6 @@ bool	handle_map_err(t_map *map)
 		return (false);
 	if (!is_closed(map))
 		return (err_map_invalid(1));
+	map->map[(int)map->player.position[1]][(int)map->player.position[0]] = '0';
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:22:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/24 10:46:15 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/24 15:09:50 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 # include "parse.h"
 # include "graph.h"
 # include "minimap.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 #endif

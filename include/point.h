@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:40:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/17 12:41:53 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/25 09:39:59 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct	s_point
 {
-	size_t	x;
-	size_t	y;
+	double	x;
+	double	y;
 } t_point;
 
 #endif
