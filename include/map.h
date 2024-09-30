@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/17 12:30:51 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/30 08:40:26 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ typedef struct	s_map
 
 void	init_map(t_map *map);
 void	free_map(t_map *map);
+
 #endif

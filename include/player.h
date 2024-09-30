@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:31:15 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/24 14:59:53 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/30 15:16:43 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "math.h"
 # include <X11/keysym.h>
 
-# define PI 3.1415926535
+# define PI M_PI 
 
 typedef enum	e_direction
 {

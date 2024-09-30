@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   draw_line.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/30 09:49:30 by cblonde          ###   ########.fr       */
+/*   Created: 2024/09/30 09:46:25 by cblonde           #+#    #+#             */
+/*   Updated: 2024/09/30 11:59:07 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#ifndef DRAW_LINE_H
+# define DRAW_LINE_H
+
+# include "data.h"
+# include "graph.h"
 
 typedef struct s_data t_data;
 
-typedef struct s_ray
+typedef struct s_line
 {
-	double	ray_dir[2];
-	double	camera_x;
-	int		map[2];
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	int		step_x;
-	int		step_y;
-	int		side;
-}	t_ray;
+	double	perp_wall_dist;
+	double	line_height;
+	double	draw_start;
+	double	draw_end;
+	int		ceiling_color;
+	int		floor_color;
+}	t_line;
 
-int 	raycasting(t_data *data);
-void 	calculating_ray_size(t_data *data);
-void    calculating_initial_side_dist(t_data *data);
-void    init_ray(t_data *data, int x);
+void    draw_line(t_data *data, int x);
+void    pixel_line(t_data *data, int x);
+void    init_line(t_data *data);
+double  calculate_perp_wall_dist(t_data *data);
 
-#endif
+# endif

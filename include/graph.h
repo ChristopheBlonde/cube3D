@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/24 15:36:27 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/09/30 15:16:04 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define M_RED 84
 # define M_GREEN 122
 # define M_BLUE 165
-# define PI 3.1415926535
+# define PI M_PI
 
 typedef struct s_data t_data;
 
