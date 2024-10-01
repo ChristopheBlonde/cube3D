@@ -12,15 +12,15 @@
 
 #include "player.h"
 
-void	rotate_player(t_player *p, double size)
+void	rotate_player(t_player *p, double speed)
 {
 	double	tmp;
 
-	p->dir_angle += size;
+	p->dir_angle += speed;
 	tmp = p->v_dir[0];
-	p->v_dir[0] = cos(size) * tmp - sin(size) * p->v_dir[1];
-	p->v_dir[1] = sin(size) * tmp + cos(size) * p->v_dir[1];
+	p->v_dir[0] = cos(speed) * tmp - sin(speed) * p->v_dir[1];
+	p->v_dir[1] = sin(speed) * tmp + cos(speed) * p->v_dir[1];
 	tmp = p->v_plane[0];
-	p->v_plane[0] = cos(size) * tmp - sin(size) * p->v_plane[1];
-	p->v_plane[1] = sin(size) * tmp + cos(size) * p->v_plane[1];
+	p->v_plane[0] = cos(speed) * tmp - sin(speed) * p->v_plane[1];
+	p->v_plane[1] = sin(speed) * tmp + cos(speed) * p->v_plane[1];
 }

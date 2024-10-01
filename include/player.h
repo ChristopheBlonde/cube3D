@@ -20,6 +20,8 @@
 
 # define PI M_PI 
 
+typedef struct	s_map t_map;
+
 typedef enum	e_direction
 {
 	NONE,
@@ -41,7 +43,8 @@ typedef struct	s_player
 } t_player;
 
 t_dir	get_direction(char c);
-void	move_player(t_player *p, int keysym, double size);
-void	rotate_player(t_player *p, double size);
+int		inside_a_wall(int x, int y, t_map *m);
+void	move_player(t_player *p, t_map *m, int keysym, double speed);
+void	rotate_player(t_player *p, double speed);
 
 #endif

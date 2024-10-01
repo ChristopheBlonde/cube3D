@@ -55,6 +55,15 @@ void	calculating_initial_side_dist(t_data *data)
 	}
 }
 
+t_dir	define_side(t_data *data)
+{
+	if (data->ray->side_dist_x < data->ray->side_dist_y)
+	{
+		; // TO DO
+	}
+	return (NONE);
+}
+
 void	calculating_ray_size(t_data *data)
 {
 	while (1)
@@ -79,10 +88,8 @@ void	calculating_ray_size(t_data *data)
 int	raycasting(t_data *data)
 {
 	int	x;
-	int	size;
 
 	x = 0;
-	size = 0;
 	while (x < M_W)
 	{
 		init_ray(data, x);

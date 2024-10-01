@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
+#include "cube.h"
 
 t_dir	get_direction(char c)
 {
@@ -23,4 +23,11 @@ t_dir	get_direction(char c)
 	if (c == 'E')
 		return (EAST);
 	return (NONE);
+}
+
+int	inside_a_wall(int x, int y, t_map *m)
+{
+	if (m->map[y][x] == '1')
+		return (1);
+	return (0);
 }
