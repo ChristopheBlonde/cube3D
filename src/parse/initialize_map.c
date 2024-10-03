@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:29:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/18 13:32:52 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/03 14:23:07 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static bool	check_file_ext(char *path)
 {
-	char	*tmp;
+	size_t	len;
 
+	len = 0;
 	if (!path)
 		return (false);
-	tmp = path;
-	tmp += ft_strlen(path) - 4;
-	if (ft_strncmp(tmp, ".cub", -1))
+	len = ft_strlen(path);
+	if (len < 5 || ft_strncmp(&path[len - 4], ".cub", -1))
 	{
 		ft_putstr_fd(RED, 2);
 		ft_putstr_fd(ERR, 2);

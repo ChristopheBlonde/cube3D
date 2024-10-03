@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/30 16:06:32 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/03 14:41:46 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	init_data(t_data *data, char **argv)
 	if (!data->line)
 		return (0);
 	data->ray = (t_ray *)ft_calloc(1, sizeof(t_ray));
-	if (!data->line)
+	if (!data->ray)
 		return (0);
 	return (1);
 }

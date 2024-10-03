@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/30 15:51:25 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/03 15:13:18 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 		free_data(&data);
 		return (1);
 	}
+	new_sprite(data.map.no);
 	mlx_loop_hook(data.win->mlx_ptr, &functionTest, &data);
 	mlx_hook(data.win->win_ptr,
 		KeyPress, KeyPressMask, &handle_keypress, &data);

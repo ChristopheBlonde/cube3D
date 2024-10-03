@@ -6,17 +6,17 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:40:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/25 09:39:59 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/03 14:55:18 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef POINT_H
 # define POINT_H
 
-typedef struct	s_point
+typedef struct s_point
 {
 	double	x;
 	double	y;
-} t_point;
+}	t_point;
 
 #endif

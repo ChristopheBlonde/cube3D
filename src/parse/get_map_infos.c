@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 08:46:22 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/16 12:56:58 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/03 13:56:11 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static	size_t	get_no(t_map *map, char *str)
 		str += 2;
 		if (*str != ' ')
 			return (err_arg());
+		if (!is_valid_xpm(str))
+			return (0);
 		while (ft_isspace(*str))
 			str++;
 		fd = open(str, O_RDONLY);
@@ -48,6 +50,8 @@ static	size_t	get_so(t_map *map, char *str)
 		str += 2;
 		if (*str != ' ')
 			return (err_arg());
+		if (!is_valid_xpm(str))
+			return (0);
 		while (ft_isspace(*str))
 			str++;
 		fd = open(str, O_RDONLY);
@@ -75,6 +79,8 @@ static	size_t	get_we(t_map *map, char *str)
 		str += 2;
 		if (*str != ' ')
 			return (err_arg());
+		if (!is_valid_xpm(str))
+			return (0);
 		while (ft_isspace(*str))
 			str++;
 		fd = open(str, O_RDONLY);
@@ -102,6 +108,8 @@ static	size_t	get_ea(t_map *map, char *str)
 		str += 2;
 		if (*str != ' ')
 			return (err_arg());
+		if (!is_valid_xpm(str))
+			return (0);
 		while (ft_isspace(*str))
 			str++;
 		fd = open(str, O_RDONLY);

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/18 13:32:25 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/03 14:18:57 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define FAILOPEN "Cannot open file\n"
 # define FAILCLOSE "Fail close file\n"
 # define ERREXTENTION ": Bad exention file\n"
+# define ERREXXPM ": Exention file must be xmp\n"
 # define ERRARG "Unknow argument in file\n"
 # define ERRDNO "Duplicate file for north texture\n"
 # define ERRDSO "Duplicate file for south texture\n"

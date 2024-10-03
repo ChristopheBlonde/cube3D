@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/30 16:12:54 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/03 14:47:39 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ void	init_line(t_data *data)
 
 void	pixel_line(t_data *data, int x)
 {
-	int	i;
+	int		i;
+	double	dist;
 
 	i = 0;
 	while (i < data->line->draw_start)
 	{
-		my_mlx_pixel_put(data->img, x, i, data->line->ceiling_color);
+		dist = i / data->line->draw_start;
+		my_mlx_pixel_put(data->img, x, i, alpha(dist,
+				data->line->ceiling_color, 0xFF000000));
 		i++;
 	}
 	while (i < data->line->draw_end)

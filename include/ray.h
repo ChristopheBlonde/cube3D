@@ -6,12 +6,14 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/30 09:49:30 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/01 16:56:55 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_H
 # define RAY_H
+
+#include "draw_line.h" 
 
 typedef struct s_data t_data;
 

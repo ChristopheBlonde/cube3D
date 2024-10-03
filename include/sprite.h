@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   sprite.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 14:16:37 by cblonde          ###   ########.fr       */
+/*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
+/*   Updated: 2024/10/03 15:18:07 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef SPRITE_H
+# define SPRITE_H
 
-# include <fcntl.h>
-# include "error.h"
-# include "def_color.h"
 # include "libft.h"
-# include "map.h"
+# include "error.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
-char	*ft_readfile(char *file);
-bool	initialize_map(t_map *map, char *path);
-bool	get_infos(t_map *map, char **arr, size_t i);
-bool	get_map_colors(t_map *map, char *str);
-bool	handle_map_err(t_map *map);
-bool	missing_att(t_map *map);
-bool	is_valid_xpm(char *file);
+typedef struct	s_img t_img;
+
+typedef struct s_sprite
+{
+	t_img	*img;
+	int		width;
+	int		height;
+
+}	t_sprite;
+
+t_sprite	*new_sprite(char *file);
 
 #endif
