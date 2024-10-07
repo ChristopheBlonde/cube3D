@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 14:18:57 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/07 08:41:14 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ size_t	err_color(size_t n);
 size_t	err_map_invalid(size_t n);
 bool	err_attribute(size_t n);
 void	map_validated(size_t n);
+bool	err_sprite(size_t n, char *file);
 
 #endif

@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_validation.c                                :+:      :+:    :+:   */
+/*   err_sprite.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 13:45:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/07 08:40:03 by cblonde          ###   ########.fr       */
+/*   Created: 2024/10/07 08:27:32 by cblonde           #+#    #+#             */
+/*   Updated: 2024/10/07 09:00:52 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "error.h"
 
-bool	is_valid_xpm(char *file)
+static void	puterror(void)
 {
-	size_t	len;
+	ft_putstr_fd(RED, 2);
+	ft_putstr_fd(ERR, 2);
+	ft_putstr_fd(DYELLOW, 2);
+}
 
-	len = 0;
-	if (!file)
-		return (false);
-	len = ft_strlen(file);
-	if (len < 5 || ft_strncmp(&file[len - 4], ".xpm", -1))
-		return (err_sprite(0, file));
-	return (true);
+bool	err_sprite(size_t n, char *file)
+{
+	puterror();
+	if (n == 0)
+	{
+		ft_putstr_fd(file, 2);
+		ft_putstr_fd(ERREXXPM, 2);
+	}
+	if (n == 1)
+		ft_putstr_fd(FAILOPEN, 2);
+	ft_putstr_fd(RESET, 2);
+	return (false);
 }
