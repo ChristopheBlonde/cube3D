@@ -56,5 +56,6 @@ t_img	*new_img(t_win *win, int w, int h);
 void	free_img(t_img *img);
 void	draw_circle(t_img *img, t_point center, int r, int color);
 int		handle_keypress(int keysym, t_data *data);
+int		handle_keyrelease(int keysym, t_data *data);
 
 #endif

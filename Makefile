@@ -12,7 +12,7 @@
 
 CC = cc
 
-CFLAGS = -Werror -Wextra -Wall -g
+CFLAGS = -g # -Werror -Wextra -Wall -g
 
 INCLUDE = -Iinclude -Ilib -Imlx -I/usr/include
 
@@ -41,6 +41,8 @@ DDATA = src/data/
 
 DRAY = src/raycasting/
 
+DIN = src/input/
+
 LIB = $(DLIB)libft.a
 
 DMLX = mlx/
@@ -54,7 +56,8 @@ SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
 	  $(DERR)validated.c $(DGRAPH)ft_initmlx.c $(DGRAPH)render_pixel.c\
 	  $(DGRAPH)build_img.c $(DMMAP)init_mmap.c $(DDATA)util_data.c\
 	  $(DPLAYER)mouvement.c $(DPLAYER)rotation.c $(DGRAPH)handle_keys.c\
-	  $(DMMAP)render_mnmap.c $(DRAY)draw_line.c $(DRAY)raycasting.c
+	  $(DMMAP)render_mnmap.c $(DRAY)draw_line.c $(DRAY)raycasting.c \
+	  $(DIN)handle_input.c $(DDATA)textures.c
 
 NAME = cube
 

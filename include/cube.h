@@ -25,5 +25,6 @@
 # include <X11/keysym.h>
 # include "ray.h"
 # include "draw_line.h"
+# include "player.h"
 
 #endif

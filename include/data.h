@@ -40,5 +40,6 @@ typedef struct	s_data
 
 int		init_data(t_data *data, char **argv);
 void	free_data(t_data *data);
+void	init_textures(t_data *data);
 
 #endif

@@ -12,8 +12,11 @@
 
 #include "cube.h"
 
+
 static int	functionTest(t_data *data) //TODO
 {
+	if (handle_input(data))
+		return (0);
 	raycasting(data);
 	draw_mnmap(data);
 	mlx_put_image_to_window(data->win->mlx_ptr,
@@ -35,6 +38,8 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(data.win->mlx_ptr, &functionTest, &data);
 	mlx_hook(data.win->win_ptr,
 		KeyPress, KeyPressMask, &handle_keypress, &data);
+	mlx_hook(data.win->win_ptr,
+		KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
 	mlx_loop(data.win->mlx_ptr);
 	free_data(&data);
 	return (0);
