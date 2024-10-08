@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 15:18:07 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 09:33:17 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 # include "libft.h"
 # include "error.h"
+# include "mlx.h"
+# include "data.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 
 typedef struct	s_img t_img;
+typedef struct	s_data t_data;
 
 typedef struct s_sprite
 {
@@ -29,6 +32,7 @@ typedef struct s_sprite
 
 }	t_sprite;
 
-t_sprite	*new_sprite(char *file);
+t_sprite	*new_sprite(t_data *data, char *file);
+void		free_sprite(t_sprite *sprite);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 15:08:32 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 10:11:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "point.h"
 # include <X11/keysym.h>
 # include "data.h"
+# include "sprite.h"
 
 # define M_W 1800
 # define M_H 1000
@@ -29,6 +30,7 @@
 # define PI M_PI
 
 typedef struct s_data t_data;
+typedef struct s_sprite t_sprite;
 
 typedef struct s_win
 {
@@ -57,6 +59,6 @@ void			free_img(t_img *img);
 void			draw_circle(t_img *img, t_point center, int r, int color);
 int				handle_keypress(int keysym, t_data *data);
 int				alpha(double opacity, int cback, int cfront);
-unsigned int	ft_get_pixel_img(t_img img, int x, int y);
+void			copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y);
 
 #endif

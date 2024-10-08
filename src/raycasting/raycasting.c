@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/01 17:17:03 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/07 12:49:54 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,8 @@ void	calculating_ray_size(t_data *data)
 int	raycasting(t_data *data)
 {
 	int	x;
-	int	size;
 
 	x = 0;
-	size = 0;
 	while (x < M_W)
 	{
 		init_ray(data, x);
