@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:46:25 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 14:40:23 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 12:01:54 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "data.h"
 # include "graph.h"
 
-typedef struct s_data t_data;
+typedef struct s_data	t_data;
 
 typedef struct s_line
 {
@@ -28,9 +28,9 @@ typedef struct s_line
 	int		floor_color;
 }	t_line;
 
-void    draw_line(t_data *data, int x);
-void    pixel_line(t_data *data, int x);
-void    init_line(t_data *data);
-double  calculate_perp_wall_dist(t_data *data);
+void	draw_line(t_data *data, int x);
+void	pixel_line(t_data *data, int x);
+void	init_line(t_data *data);
+double	calculate_perp_wall_dist(t_data *data);
 
-# endif
+#endif

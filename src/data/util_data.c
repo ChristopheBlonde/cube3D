@@ -6,12 +6,11 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 14:41:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:49:32 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
-#include "parse.h"
 
 static void	init_dir_angle(t_data *data)
 {
@@ -49,7 +48,19 @@ static void	init_t_player(t_data *data)
 	init_dir_angle(data);
 	data->player.v_dir[0] = cos(data->player.dir_angle);
 	data->player.v_dir[1] = sin(data->player.dir_angle);
-	data->player.fov = 30;
+}
+
+int	init_data_allocations(t_data *data)
+{
+	data->line = (t_line *)ft_calloc(1, sizeof(t_line));
+	if (!data->line)
+		return (0);
+	data->ray = (t_ray *)ft_calloc(1, sizeof(t_ray));
+	if (!data->ray)
+		return (0);
+	if (!init_arr_sprites(data))
+		return (0);
+	return (1);
 }
 
 int	init_data(t_data *data, char **argv)
@@ -59,6 +70,7 @@ int	init_data(t_data *data, char **argv)
 	data->mnmap = NULL;
 	data->ray = NULL;
 	data->line = NULL;
+	data->arr_s = NULL;
 	init_map(&data->map);
 	if (!initialize_map(&data->map, argv[1]))
 		return (0);
@@ -72,11 +84,7 @@ int	init_data(t_data *data, char **argv)
 	data->mnmap = init_mmap();
 	if (!data->mnmap)
 		return (0);
-	data->line = (t_line *)ft_calloc(1, sizeof(t_line));
-	if (!data->line)
-		return (0);
-	data->ray = (t_ray *)ft_calloc(1, sizeof(t_ray));
-	if (!data->ray)
+	if (!init_data_allocations(data))
 		return (0);
 	return (1);
 }
@@ -100,4 +108,6 @@ void	free_data(t_data *data)
 		free(data->line);
 	if (data->ray)
 		free(data->ray);
+	if (data->arr_s)
+		free_arr_sprites(data->arr_s);
 }

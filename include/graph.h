@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 10:11:02 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:59:17 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 # include "data.h"
 # include "sprite.h"
 
-# define M_W 1800
-# define M_H 1000
+# define M_W 1920
+# define M_H 1080
 # define M_NAME "cub3D"
 # define M_RED 84
 # define M_GREEN 122
 # define M_BLUE 165
 # define PI M_PI
 
-typedef struct s_data t_data;
-typedef struct s_sprite t_sprite;
+typedef struct s_data	t_data;
+typedef struct s_sprite	t_sprite;
 
 typedef struct s_win
 {
@@ -38,7 +38,7 @@ typedef struct s_win
 	void			*win_ptr;
 }	t_win;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	t_win	*win;
 	void	*img_ptr;

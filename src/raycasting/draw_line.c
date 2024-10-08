@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 14:47:39 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:12:05 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	pixel_line(t_data *data, int x)
 void	draw_line(t_data *data, int x)
 {
 	init_line(data);
+	data->zdist[x] = data->line->perp_wall_dist;
 	pixel_line(data, x);
 }

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 08:27:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/25 12:23:26 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 12:02:26 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "graph.h"
 # include "data.h"
 
-typedef struct s_data t_data;
+typedef struct s_data	t_data;
 
-typedef struct	s_minimap
+typedef struct s_minimap
 {
 	t_point	mid;
 	t_point	mnm_mid;

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:31:15 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/30 15:16:43 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:58:32 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 
 # define PI M_PI 
 
-typedef enum	e_direction
+typedef enum e_direction
 {
 	NONE,
 	NORTH,
 	SOUTH,
 	EAST,
 	WEST,
-} t_dir;
+}	t_dir;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	t_dir	dir;
 	t_point	pos;
@@ -38,7 +38,7 @@ typedef struct	s_player
 	double	v_dir[2];
 	double	v_plane[2];
 	int		fov;
-} t_player;
+}	t_player;
 
 t_dir	get_direction(char c);
 void	move_player(t_player *p, int keysym, double size);

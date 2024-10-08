@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 09:44:07 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:49:03 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_sprite	*new_sprite(t_data *data, char *file)
 		return (NULL);
 	}
 	sprite->img->img_ptr = mlx_xpm_file_to_image(data->win->mlx_ptr, file,
-		&sprite->width, &sprite->height);
+			&sprite->width, &sprite->height);
 	sprite->img->win = data->win;
 	if (!sprite->img->img_ptr)
 	{
@@ -51,4 +51,25 @@ void	free_sprite(t_sprite *sprite)
 		free(sprite->img);
 	sprite->img = NULL;
 	free(sprite);
+}
+
+bool	init_arr_sprites(t_data *data)
+{
+	data->arr_s = (t_sprite **)ft_calloc(2, sizeof(t_sprite *));
+	if (!data->arr_s)
+		return (false);
+	return (true);
+}
+
+void	free_arr_sprites(t_sprite **arr)
+{
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free_sprite(arr[i]);
+		arr[i] = NULL;
+		i++;
+	}
 }

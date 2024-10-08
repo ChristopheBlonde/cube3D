@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 09:03:40 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 10:21:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:51:21 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static unsigned int	ft_get_pixel_img(t_img img, int x, int y)
 		+ (y * img.l_len) + (x * img.bpp / 8)));
 }
 
-static void put_pixel_win(t_data *data, int x, int y, int color)
+static void	put_pixel_win(t_data *data, int x, int y, int color)
 {
 	if (color == (int)0xFF000000)
 		return ;
-	my_mlx_pixel_put(data->img , x, y, color);
+	my_mlx_pixel_put(data->img, x, y, color);
 }
 
 void	copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y)
@@ -45,7 +45,7 @@ void	copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y)
 		while (w < sprite->width)
 		{
 			put_pixel_win(data, w + x, h + y,
-					ft_get_pixel_img(*sprite->img, w, h));
+				ft_get_pixel_img(*sprite->img, w, h));
 			w++;
 		}
 		h++;

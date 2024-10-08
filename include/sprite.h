@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 09:33:17 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:59:45 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,21 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct	s_img t_img;
-typedef struct	s_data t_data;
+typedef struct s_img	t_img;
+typedef struct s_data	t_data;
 
 typedef struct s_sprite
 {
 	t_img	*img;
 	int		width;
 	int		height;
-
+	int		pos_x;
+	int		pos_y;
 }	t_sprite;
 
 t_sprite	*new_sprite(t_data *data, char *file);
 void		free_sprite(t_sprite *sprite);
+bool		init_arr_sprites(t_data *data);
+void		free_arr_sprites(t_sprite **arr);
 
 #endif

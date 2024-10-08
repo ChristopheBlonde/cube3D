@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/30 08:40:26 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 11:54:50 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libft.h"
 # include "player.h"
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char		**map;
 	size_t		height;
@@ -29,7 +29,7 @@ typedef struct	s_map
 	char		*we;
 	char		*ea;
 	t_player	player;
-} t_map;
+}	t_map;
 
 void	init_map(t_map *map);
 void	free_map(t_map *map);
