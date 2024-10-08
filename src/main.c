@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 10:25:26 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 14:16:23 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 static int	functionTest(t_data *data) //TODO
 {
-	t_sprite	*sprite;
+//	t_sprite	*sprite;
 
 	raycasting(data);
 	draw_mnmap(data);
-	sprite = new_sprite(data, data->map.no);
-	copy_img_to_win(data, sprite, M_W / 2 - sprite->width / 2,
-			M_H / 2 - sprite->height / 2);
+	data->arr_s[0] = new_sprite(data, data->map.no);
+	data->arr_s[0]->pos_x = 9;
+	data->arr_s[0]->pos_y = 1;
+	render_sprite(data);
+//	sprite = new_sprite(data, data->map.no);
+//	copy_img_to_win(data, sprite, M_W / 2 - sprite->width / 2,
+//			M_H / 2 - sprite->height / 2);
 	mlx_put_image_to_window(data->win->mlx_ptr,
 		data->win->win_ptr, data->img->img_ptr, 0, 0);
 	return (0);
