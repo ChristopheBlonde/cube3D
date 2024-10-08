@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 11:59:17 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 15:57:52 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ void			draw_circle(t_img *img, t_point center, int r, int color);
 int				handle_keypress(int keysym, t_data *data);
 int				alpha(double opacity, int cback, int cfront);
 void			copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y);
+unsigned int	ft_get_pixel_img(t_img img, int x, int y);
+void			put_pixel_win(t_data *data, int x, int y, int color);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 14:12:19 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 15:58:45 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,23 @@ void	render_sprite(t_data *data)
 		int x = drawstart_x;
 		while (x < drawend_x)
 		{
-			int y = drawstart_y;
-			while (y < drawend_y)
+// int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * texWidth / spriteWidth) / 256;
+			int tex_x = (int)((256 * (x - (-s_w / 2 + s_sc_x))
+						* data->arr_s[i]->width / s_w) / 256);
+			if (trf_y > 0 && x > 0 && x < M_W && trf_y < data->zdist[x])
 			{
-// if(transformY > 0 && stripe > 0 && stripe < w && transformY < ZBuffer[stripe])
-				if (trf_y > 0 && x > 0 && x < M_W && trf_y < data->zdist[x])
-					my_mlx_pixel_put(data->img, x, y, 0xFFFF0000);
+				int y = drawstart_y;
+				while (y < drawend_y)
+				{
+//int d = (y) * 256 - h * 128 + spriteHeight * 128;
+//256 and 128 factors to avoid floats
+//int texY = ((d * texHeight) / spriteHeight) / 256;
+					int d = y * 256 - M_H * 128 + s_h * 128;
+					int tex_y = ((d * data->arr_s[i]->height) / s_h) / 256;
+					put_pixel_win(data, x, y,
+							ft_get_pixel_img(*data->arr_s[i]->img, tex_x, tex_y));
+					y++;
+				}
 			}
 			x++;
 		}

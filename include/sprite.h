@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 14:02:43 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/08 16:03:19 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "error.h"
 # include "mlx.h"
 # include "data.h"
+# include "graph.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -29,8 +30,8 @@ typedef struct s_sprite
 	t_img	*img;
 	int		width;
 	int		height;
-	int		pos_x;
-	int		pos_y;
+	double	pos_x;
+	double	pos_y;
 	double	cam_x;
 	double	cam_y;
 }	t_sprite;
