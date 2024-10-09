@@ -6,7 +6,7 @@
 /*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:11:31 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/12 16:07:31 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/09 11:00:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ char	*ft_strndup(char *s, size_t n);
 void	ft_strstrim(char *s);
 void	*ft_free_array(void **arr);
 size_t	ft_arrlen(void **env);
+double	ft_strtod(const char *s);
 
 #endif

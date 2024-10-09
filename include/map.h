@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 11:54:50 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/09 09:25:18 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_map
 	char		*so;
 	char		*we;
 	char		*ea;
+	size_t		sprite_nb;
+	char		**sprites;
 	t_player	player;
 }	t_map;
 

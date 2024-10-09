@@ -6,7 +6,7 @@
 #    By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 12:51:32 by cblonde           #+#    #+#              #
-#    Updated: 2024/09/12 16:08:49 by cblonde          ###   ########.fr        #
+#    Updated: 2024/10/09 10:59:09 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ DEPENDENCES = ft_strlen.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft
 			  $(DLST)ft_dlstclear.c $(DLST)ft_dlstdelone.c $(DLST)ft_dlstget.c\
 			  $(DLST)ft_dlstget_index.c $(DLST)ft_dlstiter.c $(DLST)ft_dlstlast.c\
 			  $(DLST)ft_dlstmap.c $(DLST)ft_dlstnew.c $(DLST)ft_dlstsize.c\
-			  ft_strstrim.c ft_arrlen.c ft_free_array.c
+			  ft_strstrim.c ft_arrlen.c ft_free_array.c ft_strtod.c
 
 OBJDIR = build
 
