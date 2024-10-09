@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 16:03:19 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/09 09:12:49 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,24 @@
 typedef struct s_img	t_img;
 typedef struct s_data	t_data;
 
+typedef struct s_render
+{
+	double	cam_x;
+	double	cam_y;
+	double	inv_det;
+	double	trf_x;
+	double	trf_y;
+	int		s_sc_x;
+	int		s_h;
+	int		s_w;
+	int		start_y;
+	int		end_y;
+	int		start_x;
+	int		end_x;
+	int		tex_x;
+	int		tex_y;
+}	t_rend;
+
 typedef struct s_sprite
 {
 	t_img	*img;
@@ -32,8 +50,7 @@ typedef struct s_sprite
 	int		height;
 	double	pos_x;
 	double	pos_y;
-	double	cam_x;
-	double	cam_y;
+	t_rend	render;
 }	t_sprite;
 
 t_sprite	*new_sprite(t_data *data, char *file);
