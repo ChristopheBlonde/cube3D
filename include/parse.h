@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 11:57:54 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/09 14:54:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "def_color.h"
 # include "libft.h"
 # include "map.h"
+# include "data.h"
+
+typedef struct s_data	t_data;
 
 char	*ft_readfile(char *file);
 bool	initialize_map(t_map *map, char *path);
@@ -26,5 +29,7 @@ bool	get_map_colors(t_map *map, char *str);
 bool	handle_map_err(t_map *map);
 bool	missing_att(t_map *map);
 bool	is_valid_xpm(char *file);
+bool	get_sprite(t_map *map, char *str);
+bool	init_arr_sprites(t_data *data);
 
 #endif

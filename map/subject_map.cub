@@ -6,6 +6,12 @@ EA ./test4.xpm
 F 220,100,0
 C 0, 55 ,255
 
+SPN     4;
+SPR	./assets/centipede.xpm, 26 8.6
+SPR	./assets/magic_circle.xpm, 25.3 6.5
+SPR	./assets/magic_circle2.xpm, 20.5 7.5
+SPR	./assets/white_crystal.xpm , 19.4 3.5
+
         1111111111111111111111111
         1000000000110000000000001
         1011000001110000000000001

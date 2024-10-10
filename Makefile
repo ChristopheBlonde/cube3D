@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/10/08 14:03:22 by cblonde          ###   ########.fr        #
+#    Updated: 2024/10/10 09:40:35 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
 	  $(DPLAYER)mouvement.c $(DPLAYER)rotation.c $(DGRAPH)handle_keys.c\
 	  $(DMMAP)render_mnmap.c $(DRAY)draw_line.c $(DRAY)raycasting.c\
 	  $(DGRAPH)util_color.c $(DPARSE)sprite_validation.c\
-	  $(DSPRITE)util_sprite.c $(DERR)err_sprite.c $(DSPRITE)render_sprite.c
+	  $(DSPRITE)util_sprite.c $(DERR)err_sprite.c $(DSPRITE)render_sprite.c\
+	  $(DPARSE)initialize_sprite.c $(DSPRITE)sort_sprites.c
 
 NAME = cube
 

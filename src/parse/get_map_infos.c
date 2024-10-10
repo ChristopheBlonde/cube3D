@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 08:46:22 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 13:56:11 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/09 13:20:46 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	size_t	get_no(t_map *map, char *str)
 	if (!ft_strncmp(str, "NO", 2))
 	{
 		str += 2;
-		if (*str != ' ')
+		if (!ft_isspace(*str))
 			return (err_arg());
 		if (!is_valid_xpm(str))
 			return (0);
@@ -48,7 +48,7 @@ static	size_t	get_so(t_map *map, char *str)
 	if (!ft_strncmp(str, "SO", 2))
 	{
 		str += 2;
-		if (*str != ' ')
+		if (!ft_isspace(*str))
 			return (err_arg());
 		if (!is_valid_xpm(str))
 			return (0);
@@ -77,7 +77,7 @@ static	size_t	get_we(t_map *map, char *str)
 	if (!ft_strncmp(str, "WE", 2))
 	{
 		str += 2;
-		if (*str != ' ')
+		if (!ft_isspace(*str))
 			return (err_arg());
 		if (!is_valid_xpm(str))
 			return (0);
@@ -106,7 +106,7 @@ static	size_t	get_ea(t_map *map, char *str)
 	if (!ft_strncmp(str, "EA", 2))
 	{
 		str += 2;
-		if (*str != ' ')
+		if (!ft_isspace(*str))
 			return (err_arg());
 		if (!is_valid_xpm(str))
 			return (0);
@@ -143,6 +143,8 @@ bool	get_infos(t_map *map, char **arr, size_t i)
 	if (!error && !get_ea(map, arr[i]))
 		error = 1;
 	if (!error && !get_map_colors(map, arr[i]))
+		error = 1;
+	if (!error && !get_sprite(map, arr[i]))
 		error = 1;
 	if (error)
 	{

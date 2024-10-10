@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 08:27:32 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/07 09:00:52 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/09 16:23:38 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ bool	err_sprite(size_t n, char *file)
 	}
 	if (n == 1)
 		ft_putstr_fd(FAILOPEN, 2);
+	if (n == 2)
+		ft_putstr_fd(NOSPRITENB, 2);
+	if (n == 3)
+		ft_putstr_fd(FAILALLOC, 2);
+	if (n == 4)
+		ft_putstr_fd(ERRNSPRITE, 2);
+	if (n == 5)
+		ft_putstr_fd(ERRSPRITEARG, 2);
+	if (n == 6)
+		ft_putstr_fd(ERRSPRITEPOS, 2);
+	if (n == 7)
+		ft_putstr_fd(ERRSPOS, 2);
+	if (n == 8)
+		ft_putstr_fd(ERRNSPOS, 2);
 	ft_putstr_fd(RESET, 2);
 	return (false);
 }

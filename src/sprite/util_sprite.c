@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 11:49:03 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 09:39:46 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,6 @@ void	free_sprite(t_sprite *sprite)
 		free(sprite->img);
 	sprite->img = NULL;
 	free(sprite);
-}
-
-bool	init_arr_sprites(t_data *data)
-{
-	data->arr_s = (t_sprite **)ft_calloc(2, sizeof(t_sprite *));
-	if (!data->arr_s)
-		return (false);
-	return (true);
 }
 
 void	free_arr_sprites(t_sprite **arr)

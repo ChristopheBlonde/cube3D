@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:51:50 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/18 13:19:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/09 13:41:21 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ bool	get_map_colors(t_map *map, char *str)
 		if (!duplicated_color(map, 0))
 			return (err_color(2));
 		str++;
-		if (*str != ' ')
+		if (!ft_isspace(*str))
 			return (err_arg());
 		while (ft_isspace(*str))
 			str++;
@@ -107,7 +107,7 @@ bool	get_map_colors(t_map *map, char *str)
 		if (!duplicated_color(map, 1))
 			return (err_color(3));
 		str++;
-		if (*str != ' ')
+		if (!ft_isspace(*str))
 			return (err_arg());
 		while (ft_isspace(*str))
 			str++;

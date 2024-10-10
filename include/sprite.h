@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 09:12:49 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 09:41:22 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ typedef struct s_render
 	int		end_x;
 	int		tex_x;
 	int		tex_y;
+	int		v_m_sc;
+	int		u_div;
+	int		v_div;
+	double	v_move;
 }	t_rend;
 
 typedef struct s_sprite
@@ -55,8 +59,8 @@ typedef struct s_sprite
 
 t_sprite	*new_sprite(t_data *data, char *file);
 void		free_sprite(t_sprite *sprite);
-bool		init_arr_sprites(t_data *data);
 void		free_arr_sprites(t_sprite **arr);
 void		render_sprite(t_data *data);
+size_t		**sort_sprites(t_data *data);
 
 #endif

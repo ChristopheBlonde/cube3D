@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 09:12:14 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 10:14:34 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	draw_sprite(t_data *data, t_rend *render, int i)
 			y = render->start_y - 1;
 			while (++y < render->end_y)
 			{
-				d = y * 256 - M_H * 128 + render->s_h * 128;
+				d = (y - render->v_m_sc) * 256 - M_H * 128 + render->s_h * 128;
 				render->tex_y = ((d * data->arr_s[i]->height) / render->s_h)
 					/ 256;
 				put_pixel_win(data, x, y,
@@ -42,13 +42,13 @@ static void	draw_sprite(t_data *data, t_rend *render, int i)
 
 static void	find_render_size(t_rend *render)
 {
-	render->start_y = -render->s_h / 2 + M_H / 2;
+	render->start_y = -render->s_h / 2 + M_H / 2 + render->v_m_sc;
 	if (render->start_y < 0)
 		render->start_y = 0;
-	render->end_y = render->s_h / 2 + M_H / 2;
+	render->end_y = render->s_h / 2 + M_H / 2 + render->v_m_sc;
 	if (render->end_y >= M_H)
 		render->end_y = M_H - 1;
-	render->s_w = abs(((int)(M_H / render->trf_y)));
+	render->s_w = abs(((int)(M_H / render->trf_y))) / render->u_div;
 	render->start_x = -render->s_w / 2 + render->s_sc_x;
 	if (render->start_x < 0)
 		render->start_x = 0;
@@ -63,6 +63,7 @@ void	render_sprite(t_data *data)
 	t_rend	render;
 
 	i = 0;
+	sort_sprites(data);
 	while (data->arr_s[i])
 	{
 		render = data->arr_s[i]->render;
@@ -75,7 +76,8 @@ void	render_sprite(t_data *data)
 		render.trf_y = render.inv_det * (-data->player.v_plane[1] * render.cam_x
 				+ data->player.v_plane[0] * render.cam_y);
 		render.s_sc_x = (int)((M_W / 2) * (1 + render.trf_x / render.trf_y));
-		render.s_h = abs(((int)(M_H / render.trf_y)));
+		render.v_m_sc = (int)(render.v_move / render.trf_y);
+		render.s_h = abs(((int)(M_H / render.trf_y))) / render.v_div;
 		find_render_size(&render);
 		draw_sprite(data, &render, i);
 		i++;

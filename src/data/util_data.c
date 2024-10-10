@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 11:49:32 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/09 13:26:55 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	free_data(t_data *data)
 		free_img(data->img);
 		free(data->img);
 	}
+	if (data->arr_s)
+		free_arr_sprites(data->arr_s);
 	if (data->win)
 	{
 		free_win(data->win);
@@ -108,6 +110,4 @@ void	free_data(t_data *data)
 		free(data->line);
 	if (data->ray)
 		free(data->ray);
-	if (data->arr_s)
-		free_arr_sprites(data->arr_s);
 }
