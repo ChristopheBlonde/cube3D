@@ -13,6 +13,8 @@
 #ifndef RAY_H
 # define RAY_H
 
+#include "player.h"
+
 typedef struct s_data t_data;
 
 typedef struct s_ray
@@ -26,7 +28,7 @@ typedef struct s_ray
 	double	side_dist_y;
 	int		step_x;
 	int		step_y;
-	int		side;
+	t_dir	side;
 }	t_ray;
 
 int 	raycasting(t_data *data);

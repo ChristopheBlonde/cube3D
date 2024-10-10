@@ -30,7 +30,7 @@ typedef struct s_line
 	double	draw_end;
 	int		ceiling_color;
 	int		floor_color;
-	int		texture[NB_OF_TEX][TEX_WIDTH * TEX_HEIGHT];
+	int		**texture;//[NB_OF_TEX][TEX_WIDTH * TEX_HEIGHT];
 	int		tex_num;
 	int		tex_x;
 	int		tex_y;

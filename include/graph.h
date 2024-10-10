@@ -20,8 +20,8 @@
 # include <X11/keysym.h>
 # include "data.h"
 
-# define M_W 1800
-# define M_H 1000
+# define M_W 800 //1800
+# define M_H 600 //1000
 # define M_NAME "cub3D"
 # define M_RED 84
 # define M_GREEN 122
