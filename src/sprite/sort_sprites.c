@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 09:38:55 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 10:57:29 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 11:12:50 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,12 @@ static void	order_sprite(t_sprite **sprites, size_t **index, double **dist)
 	size_t	j;
 
 	i = 0;
-	for (int k = 0; index[k]; k++)
-		printf("index befor:%zu\n", *(index[k]));
-	for (int k = 0; dist[k]; k++)
-		printf("dist befor:%f\n", *(dist[k]));
 	while (index[i])
 	{
 		j = i;
 		while (dist[j])
 		{
-			if (dist[j] > dist[i])
+			if (*(dist[j]) > *(dist[i]))
 			{
 				swap_sprite((void **)dist, i, j);
 				swap_sprite((void **)index, i, j);
@@ -46,10 +42,6 @@ static void	order_sprite(t_sprite **sprites, size_t **index, double **dist)
 		}
 		i++;
 	}
-	for (int k = 0; index[k]; k++)
-		printf("\tindex after:%zu\n", *(index[k]));
-	for (int k = 0; dist[k]; k++)
-		printf("\tdist after:%f\n", *(dist[k]));
 	ft_free_array((void **)index);
 	ft_free_array((void **)dist);
 }
