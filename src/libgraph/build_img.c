@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 09:48:05 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/24 17:31:56 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 12:35:01 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@ t_img	*new_img(t_win *win, int w, int h)
 	return (img);
 }
 
-void	free_img(t_img *img)
+void	free_img(void *ptr)
 {
+	t_img	*img;
+	t_win	*win;
+
+	img = ptr;
+	win = img->win;
 	if (img->img_ptr && img->win->mlx_ptr)
-		mlx_destroy_image(img->win->mlx_ptr, img->img_ptr);
+		mlx_destroy_image(win->mlx_ptr, img->img_ptr);
 }

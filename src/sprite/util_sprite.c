@@ -6,20 +6,28 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/11 07:25:08 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 12:46:35 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sprite.h"
 
+static void	init_new_sprite(t_data *data, t_sprite *sprite)
+{
+	sprite->img->win = data->win;
+	sprite->width = sprite->img->width;
+	sprite->height = sprite->img->height;
+	sprite->img->addr = mlx_get_data_addr(sprite->img->img_ptr,
+			&sprite->img->bpp, &sprite->img->l_len, &sprite->img->endian);
+}
+
 t_sprite	*new_sprite(t_data *data, char *file)
 {
 	t_sprite	*sprite;
 
-	sprite = NULL;
 	sprite = (t_sprite *)ft_calloc(1, sizeof(t_sprite));
 	if (!sprite)
-		return (sprite);
+		return (NULL);
 	sprite->anim = NULL;
 	sprite->img = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!sprite->img)
@@ -28,21 +36,21 @@ t_sprite	*new_sprite(t_data *data, char *file)
 		return (NULL);
 	}
 	sprite->img->img_ptr = mlx_xpm_file_to_image(data->win->mlx_ptr, file,
-			&sprite->width, &sprite->height);
-	sprite->img->win = data->win;
+			(int *)&sprite->img->width, (int *)&sprite->img->height);
 	if (!sprite->img->img_ptr)
 	{
 		free_sprite(sprite);
 		return (NULL);
 	}
-	else
-		sprite->img->addr = mlx_get_data_addr(sprite->img->img_ptr,
-				&sprite->img->bpp, &sprite->img->l_len, &sprite->img->endian);
+	init_new_sprite(data, sprite);
 	return (sprite);
 }
 
 void	free_sprite(t_sprite *sprite)
 {
+	t_list	*frames;
+	t_anim	*anim;
+
 	if (!sprite)
 		return ;
 	if (sprite->img && sprite->img->img_ptr)
@@ -51,6 +59,14 @@ void	free_sprite(t_sprite *sprite)
 	if (sprite->img)
 		free(sprite->img);
 	sprite->img = NULL;
+	if (sprite->anim)
+	{
+		anim = (t_anim *)(sprite->anim)->content;
+		frames = (t_list *)anim->frames;
+		ft_lstclear(&frames, free_img);
+		free(sprite->anim);
+		sprite->anim = NULL;
+	}
 	free(sprite);
 }
 

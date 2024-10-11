@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 15:57:52 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 12:27:51 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			free_win(t_win *win);
 void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int				get_color(double dist, int r, int g, int b);
 t_img			*new_img(t_win *win, int w, int h);
-void			free_img(t_img *img);
+void			free_img(void *ptr);
 void			draw_circle(t_img *img, t_point center, int r, int color);
 int				handle_keypress(int keysym, t_data *data);
 int				alpha(double opacity, int cback, int cfront);

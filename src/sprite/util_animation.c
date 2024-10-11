@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:40:28 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/11 08:41:33 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 12:47:49 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	init_sprite(t_sprite *sprite, double x, double y, bool animated)
 	s.height = 64;
 	sprite->pos_x = x;
 	sprite->pos_y = y;
-	sprite->render.u_div = 1;
-	sprite->render.v_div = 1;
-	sprite->render.v_move = sprite->height;
+	sprite->render.u_div = 3;
+	sprite->render.v_div = 3;
+	sprite->render.v_move = (sprite->height + 5) * sprite->render.v_div;
 	sprite->anim = NULL;
 	if (!animated)
 		sprite->animated = false;
@@ -92,6 +92,7 @@ void	init_sprite(t_sprite *sprite, double x, double y, bool animated)
 	{
 		sprite->animated = true;
 		ft_lstadd_back(&sprite->anim,
-				ft_lstnew(ft_slice_sprite(sprite, s, 4, 1)));
+			ft_lstnew(ft_slice_sprite(sprite, s, 4, 1)));
+		sprite->render.v_move *= 2;
 	}
 }

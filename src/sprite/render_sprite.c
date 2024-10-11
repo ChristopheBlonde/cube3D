@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/11 09:30:52 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 11:58:56 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,19 @@ static void	find_render_size(t_rend *render)
 
 static void	update_anim(t_sprite *sprite, t_img **img)
 {
+	t_list	*lst_anim;
+	t_list	*frames;
+	t_anim	*a;
 
 	if (!sprite->animated)
-	{
-		*img = sprite->img;
-		(*img)->img_ptr = sprite->img->img_ptr;
-		(*img)->width = sprite->width;
-		(*img)->height = sprite->height;
-	}
+		*img = (t_img *)sprite->img;
 	else
 	{
-		printf("current frame:%d\n", ((t_anim *)(sprite->anim))->current_frame_num);
-		*img = (t_img *)ft_lstget(((t_anim *)(sprite->anim))->frames, ((t_anim *)(sprite->anim))->current_frame_num)->content;
-		printf("img_ptr frame:%p\n", (*img)->img_ptr);
-//		(*img)->img_ptr = sprite->img->img_ptr;
-		(*img)->width = sprite->width / 5;
-		(*img)->height = sprite->height;
+		lst_anim = (t_list *)sprite->anim;
+		a = (t_anim *)lst_anim->content;
+		frames = (t_list *)a->frames;
+		*img = (t_img *)ft_lstget(frames, a->current_frame_num)->content;
 	}
-		printf("sprite:img_ptr:%p  width:%d height:%d\n", sprite->img->img_ptr, sprite->width, sprite->height);
 }
 
 void	render_sprite(t_data *data)
@@ -89,7 +84,6 @@ void	render_sprite(t_data *data)
 	while (data->arr_s[i])
 	{
 		update_anim(data->arr_s[i], &img);
-		printf("img ptr:%p, width:%zu, height:%zu\n", img->img_ptr, img->width, img->height);
 		render = data->arr_s[i]->render;
 		render.cam_x = data->arr_s[i]->pos_x - data->player.position[0];
 		render.cam_y = data->arr_s[i]->pos_y - data->player.position[1];
