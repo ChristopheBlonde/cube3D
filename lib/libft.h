@@ -6,7 +6,7 @@
 /*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:11:31 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 16:53:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 13:43:26 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ size_t	ft_arrlen(void **env);
 double	ft_strtod(const char *s);
 t_list	*ft_lstget(t_list *lst, int index);
 void	ft_lstiter_param(t_list *lst, void (*f)(void *, void *), void *ptr);
+void	ft_foreach(void **arr, void (*f)(void *ptr));
 
 #endif

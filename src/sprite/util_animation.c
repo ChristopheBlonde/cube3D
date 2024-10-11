@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:40:28 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/11 12:47:49 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 13:45:11 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,25 @@ void	init_sprite(t_sprite *sprite, double x, double y, bool animated)
 		ft_lstadd_back(&sprite->anim,
 			ft_lstnew(ft_slice_sprite(sprite, s, 4, 1)));
 		sprite->render.v_move *= 2;
+	}
+}
+
+void	update_animation(void *ptr)
+{
+	t_sprite	*s;
+	t_anim		*a;
+	t_list		*l;
+
+	s = (t_sprite *)ptr;
+	l = (t_list *)s->anim;
+	if (!l)
+		return ;
+	a = (t_anim *)s->anim->content;
+	l = (t_list *)a->frames;
+	if (a->_tmp_delay++ == a->delay)
+	{
+		a->_tmp_delay = 0;
+		a->current_frame_num++;
+		a->current_frame_num %= ft_lstsize(l);
 	}
 }

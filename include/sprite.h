@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 18:06:12 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 13:44:41 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void		add_frame(t_anim *animation,
 t_anim		*ft_slice_sprite(t_sprite *sprite, t_sprite_slice slice,
 				int frames, int delay);
 void		init_sprite(t_sprite *sprite, double x, double y, bool animated);
+void		update_animation(void *ptr);
 
 #endif

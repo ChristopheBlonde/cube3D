@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 13:20:18 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 13:34:35 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	functionTest(t_data *data) //TODO
 {
 	if (!update(data))
 		return (0);
+	ft_foreach((void **)data->arr_s, update_animation);
 	raycasting(data);
 	draw_mnmap(data);
 	render_sprite(data);
