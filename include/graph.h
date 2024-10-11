@@ -44,14 +44,15 @@ typedef struct	s_img
 	int		bpp;
 	int		l_len;
 	int		endian;
-	size_t	width;
-	size_t	height;
+	int	width;
+	int	height;
 }	t_img;
 
 t_win	*ft_initmlx(void);
 void	free_win(t_win *win);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		get_color(double dist, int r, int g, int b);
+unsigned int	ft_get_pixel_img(t_img img, int x, int y);
 t_img	*new_img(t_win *win, int w, int h);
 void	free_img(t_img *img);
 void	draw_circle(t_img *img, t_point center, int r, int color);

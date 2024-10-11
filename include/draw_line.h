@@ -21,6 +21,7 @@
 # define TEX_HEIGHT 64
 
 typedef struct s_data t_data;
+typedef struct s_img t_img;
 
 typedef struct s_line
 {
@@ -30,7 +31,8 @@ typedef struct s_line
 	double	draw_end;
 	int		ceiling_color;
 	int		floor_color;
-	int		**texture;//[NB_OF_TEX][TEX_WIDTH * TEX_HEIGHT];
+	//int		**texture;//[NB_OF_TEX][TEX_WIDTH * TEX_HEIGHT];
+	t_img	*texture;
 	int		tex_num;
 	int		tex_x;
 	int		tex_y;

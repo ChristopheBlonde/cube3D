@@ -68,7 +68,8 @@ void	draw_texture_color(t_data *data, int x, int i)
 	{
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
 		tex_pos += step;
-		color = data->line->texture[data->ray->side - 1][TEX_HEIGHT * tex_y + data->line->tex_x];
+		//color = data->line->texture[data->ray->side - 1][TEX_HEIGHT * tex_y + data->line->tex_x];
+		color = ft_get_pixel_img(data->line->texture[data->ray->side - 1], data->line->tex_x, tex_y);
 		my_mlx_pixel_put(data->img, x, i, color);
 		i++;
 	}
