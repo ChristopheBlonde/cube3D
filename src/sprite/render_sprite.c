@@ -6,13 +6,13 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 10:14:34 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 09:30:52 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sprite.h"
 
-static void	draw_sprite(t_data *data, t_rend *render, int i)
+static void	draw_sprite(t_data *data, t_rend *render, t_img *img)
 {
 	int	x;
 	int	y;
@@ -22,7 +22,7 @@ static void	draw_sprite(t_data *data, t_rend *render, int i)
 	while (++x < render->end_x)
 	{
 		render->tex_x = (int)((256 * (x - (-render->s_w / 2 + render->s_sc_x))
-					* data->arr_s[i]->width / render->s_w) / 256);
+					* img->width / render->s_w) / 256);
 		if (render->trf_y > 0 && x > 0 && x < M_W
 			&& render->trf_y < data->zdist[x])
 		{
@@ -30,11 +30,10 @@ static void	draw_sprite(t_data *data, t_rend *render, int i)
 			while (++y < render->end_y)
 			{
 				d = (y - render->v_m_sc) * 256 - M_H * 128 + render->s_h * 128;
-				render->tex_y = ((d * data->arr_s[i]->height) / render->s_h)
+				render->tex_y = ((d * img->height) / render->s_h)
 					/ 256;
 				put_pixel_win(data, x, y,
-					ft_get_pixel_img(*data->arr_s[i]->img,
-						render->tex_x, render->tex_y));
+					ft_get_pixel_img(*img, render->tex_x, render->tex_y));
 			}
 		}
 	}
@@ -57,15 +56,40 @@ static void	find_render_size(t_rend *render)
 		render->end_x = M_W - 1;
 }
 
+static void	update_anim(t_sprite *sprite, t_img **img)
+{
+
+	if (!sprite->animated)
+	{
+		*img = sprite->img;
+		(*img)->img_ptr = sprite->img->img_ptr;
+		(*img)->width = sprite->width;
+		(*img)->height = sprite->height;
+	}
+	else
+	{
+		printf("current frame:%d\n", ((t_anim *)(sprite->anim))->current_frame_num);
+		*img = (t_img *)ft_lstget(((t_anim *)(sprite->anim))->frames, ((t_anim *)(sprite->anim))->current_frame_num)->content;
+		printf("img_ptr frame:%p\n", (*img)->img_ptr);
+//		(*img)->img_ptr = sprite->img->img_ptr;
+		(*img)->width = sprite->width / 5;
+		(*img)->height = sprite->height;
+	}
+		printf("sprite:img_ptr:%p  width:%d height:%d\n", sprite->img->img_ptr, sprite->width, sprite->height);
+}
+
 void	render_sprite(t_data *data)
 {
 	int		i;
 	t_rend	render;
+	t_img	*img;
 
 	i = 0;
 	sort_sprites(data);
 	while (data->arr_s[i])
 	{
+		update_anim(data->arr_s[i], &img);
+		printf("img ptr:%p, width:%zu, height:%zu\n", img->img_ptr, img->width, img->height);
 		render = data->arr_s[i]->render;
 		render.cam_x = data->arr_s[i]->pos_x - data->player.position[0];
 		render.cam_y = data->arr_s[i]->pos_y - data->player.position[1];
@@ -79,7 +103,7 @@ void	render_sprite(t_data *data)
 		render.v_m_sc = (int)(render.v_move / render.trf_y);
 		render.s_h = abs(((int)(M_H / render.trf_y))) / render.v_div;
 		find_render_size(&render);
-		draw_sprite(data, &render, i);
+		draw_sprite(data, &render, img);
 		i++;
 	}
 }

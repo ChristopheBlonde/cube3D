@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 09:41:22 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 18:06:12 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,36 @@ typedef struct s_render
 	double	v_move;
 }	t_rend;
 
+typedef struct s_sprite_slice
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+}	t_sprite_slice;
+
+typedef struct s_animation
+{
+	t_list		*frames;
+	int			width;
+	int			height;
+	int			delay;
+	int			_tmp_delay;
+	int			current_frame_num;
+	long int	last_updated;
+	long int	frame_count;
+}	t_anim;
+
 typedef struct s_sprite
 {
+	t_list	*anim;
 	t_img	*img;
 	int		width;
 	int		height;
 	double	pos_x;
 	double	pos_y;
 	t_rend	render;
+	bool	animated;
 }	t_sprite;
 
 t_sprite	*new_sprite(t_data *data, char *file);
@@ -62,5 +84,10 @@ void		free_sprite(t_sprite *sprite);
 void		free_arr_sprites(t_sprite **arr);
 void		render_sprite(t_data *data);
 size_t		**sort_sprites(t_data *data);
+void		add_frame(t_anim *animation,
+				t_sprite *sprite, t_sprite_slice slice);
+t_anim		*ft_slice_sprite(t_sprite *sprite, t_sprite_slice slice,
+				int frames, int delay);
+void		init_sprite(t_sprite *sprite, double x, double y, bool animated);
 
 #endif

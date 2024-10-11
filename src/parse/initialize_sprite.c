@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:30:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 10:49:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 16:21:38 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,24 @@ static bool	create_sprites(t_data *data, char *path, char **pos, size_t *j)
 {
 	double	x;
 	double	y;
+	bool	animated;
 
+	animated = false;
 	x = ft_strtod(pos[0]);
 	y = ft_strtod(pos[1]);
 	if (x < 1 || y < 1 || x > data->map.width || y > data->map.height)
 		return (err_sprite(7, NULL));
 	if (*j == data->map.sprite_nb)
 		return (err_sprite(8, NULL));
+	if (path[0] == 'A')
+	{
+		path++;
+		animated = true;
+	}
 	data->arr_s[*j] = new_sprite(data, path);
 	if (!data->arr_s[*j])
 		return (err_sprite(3, NULL));
-	data->arr_s[*j]->pos_x = x;
-	data->arr_s[*j]->pos_y = y;
-	data->arr_s[*j]->render.u_div = 1;
-	data->arr_s[*j]->render.v_div = 1;
-	data->arr_s[*j]->render.v_move = data->arr_s[*j]->height;
+	init_sprite(data->arr_s[*j], x, y, animated);
 	(*j)++;
 	return (true);
 }

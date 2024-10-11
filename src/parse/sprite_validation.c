@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:45:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 17:17:03 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 16:05:09 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,18 @@ bool	is_valid_xpm(char *file)
 
 static bool	add_sprite(t_map *map, char *str)
 {
+	bool	animated;
+
+	animated = false;
+	if (str[-1] == 'A')
+		animated = true;
 	while (ft_isspace(*str))
 		str++;
+	if (animated)
+	{
+		str--;
+		*str = 'A';
+	}
 	map->sprites[map->curr_sprite] = ft_strdup(str);
 	if (!map->sprites[map->curr_sprite])
 		return (err_sprite(3, NULL));
@@ -55,7 +65,7 @@ bool	get_sprite(t_map *map, char *str)
 				return (err_sprite(3, NULL));
 		}
 	}
-	if (!ft_strncmp(str, "SPR", 3))
+	if (!ft_strncmp(str, "SPR", 3) || !ft_strncmp(str, "SPA", 3))
 	{
 		str += 3;
 		if (!ft_isspace(*str))

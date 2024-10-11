@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 11:57:09 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 13:16:38 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include "ray.h"
 # include "draw_line.h"
 # include "sprite.h"
+# include <sys/time.h>
+# include <stdint.h>
 
 # define M_W 1920
 
@@ -43,9 +45,15 @@ typedef struct s_data
 	t_line		*line;
 	double		zdist[M_W];
 	t_sprite	**arr_s;
+	uint64_t	start_time;
+	uint64_t	last_update;
+	int			fps;
 }	t_data;
 
-int		init_data(t_data *data, char **argv);
-void	free_data(t_data *data);
+int			init_data(t_data *data, char **argv);
+void		free_data(t_data *data);
+uint64_t	get_time(void);
+uint64_t	time_past(t_data *data);
+bool		update(t_data *data);
 
 #endif

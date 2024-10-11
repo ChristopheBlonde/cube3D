@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 13:26:55 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/10 13:24:33 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ int	init_data(t_data *data, char **argv)
 	data->ray = NULL;
 	data->line = NULL;
 	data->arr_s = NULL;
+	data->start_time = get_time();
+	data->last_update = 0;
+	data->fps = 120;
 	init_map(&data->map);
 	if (!initialize_map(&data->map, argv[1]))
 		return (0);

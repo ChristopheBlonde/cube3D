@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 09:39:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/11 07:25:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_sprite	*new_sprite(t_data *data, char *file)
 	sprite = (t_sprite *)ft_calloc(1, sizeof(t_sprite));
 	if (!sprite)
 		return (sprite);
+	sprite->anim = NULL;
 	sprite->img = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!sprite->img)
 	{
