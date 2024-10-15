@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 09:03:40 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 15:57:03 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/15 12:22:13 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,6 @@ void	copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y)
 		}
 		h++;
 	}
-}
-
-unsigned int	ft_get_pixel_img(t_img img, int x, int y)
-{
-	return (*(unsigned int *)(img.addr
-		+ (y * img.l_len) + (x * img.bpp / 8)));
 }
 
 void	draw_circle(t_img *img, t_point center, int r, int color)
