@@ -27,8 +27,8 @@ void	init_textures(t_data *data)
 	set_texture_img(data, &data->line->texture[SOUTH - 1], data->map.so);
 	set_texture_img(data, &data->line->texture[EAST - 1], data->map.ea);
 	set_texture_img(data, &data->line->texture[WEST - 1], data->map.we);
-	set_texture_img(data, &data->line->texture[4], "textures/wood.xpm");
-	set_texture_img(data, &data->line->texture[5], "textures/colorstone.xpm");
+	set_texture_img(data, &data->line->texture[4], "assets/textures/wood.xpm");
+	set_texture_img(data, &data->line->texture[5], "assets/textures/colorstone.xpm");
 
 	// while (i < NB_OF_TEX)
 	// {

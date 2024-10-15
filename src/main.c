@@ -17,10 +17,10 @@ static int	functionTest(t_data *data) //TODO
 {
 	if (!update(data) || handle_input(data))
 		return (0);
-	ft_foreach((void **)data->arr_s, update_animation);
+	//ft_foreach((void **)data->arr_s, update_animation);
 	raycasting(data);
 	draw_mnmap(data);
-	render_sprite(data);
+	//render_sprite(data);
 	mlx_put_image_to_window(data->win->mlx_ptr,
 		data->win->win_ptr, data->img->img_ptr, 0, 0);
 	return (1);
