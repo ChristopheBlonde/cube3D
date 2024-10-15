@@ -6,15 +6,16 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/11 13:34:35 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/15 12:03:37 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+
 static int	functionTest(t_data *data) //TODO
 {
-	if (!update(data))
+	if (!update(data) || handle_input(data))
 		return (0);
 	ft_foreach((void **)data->arr_s, update_animation);
 	raycasting(data);
@@ -39,6 +40,8 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(data.win->mlx_ptr, &functionTest, &data);
 	mlx_hook(data.win->win_ptr,
 		KeyPress, KeyPressMask, &handle_keypress, &data);
+	mlx_hook(data.win->win_ptr,
+		KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
 	mlx_loop(data.win->mlx_ptr);
 	free_data(&data);
 	return (0);

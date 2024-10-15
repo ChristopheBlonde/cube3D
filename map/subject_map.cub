@@ -1,10 +1,10 @@
-NO ./test.xpm
-SO ./test2.xpm
-WE ./test3.xpm
-EA ./test4.xpm
+NO ./assets/textures/bluestone.xpm 
+SO ./assets/textures/eagle.xpm
+WE ./assets/textures/mossy.xpm
+EA ./assets/textures/redbrick.xpm
 
-F 220,100,0
-C 0, 55 ,255
+F 234, 234, 234
+C 8, 217, 214
 
 SPN     5;
 SPR	./assets/centipede.xpm, 26 8.6

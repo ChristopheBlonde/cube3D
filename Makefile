@@ -6,13 +6,13 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/10/14 09:30:05 by cblonde          ###   ########.fr        #
+#    Updated: 2024/10/15 11:52:50 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -Werror -Wextra -Wall -g
+CFLAGS = -g # -Werror -Wextra -Wall -g
 
 INCLUDE = -Iinclude -Ilib -Imlx -I/usr/include -I/opt/X11/include
 
@@ -41,6 +41,8 @@ DDATA = src/data/
 
 DRAY = src/raycasting/
 
+DIN = src/input/
+
 DSPRITE = src/sprite/
 
 LIB = $(DLIB)libft.a
@@ -60,7 +62,8 @@ SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
 	  $(DGRAPH)util_color.c $(DPARSE)sprite_validation.c\
 	  $(DSPRITE)util_sprite.c $(DERR)err_sprite.c $(DSPRITE)render_sprite.c\
 	  $(DPARSE)initialize_sprite.c $(DSPRITE)sort_sprites.c\
-	  $(DDATA)util_time.c $(DSPRITE)util_animation.c
+	  $(DDATA)util_time.c $(DSPRITE)util_animation.c\
+	  $(DIN)handle_input.c $(DDATA)textures.c\
 
 NAME = cube
 

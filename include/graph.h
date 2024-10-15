@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/11 12:27:51 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:56:46 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct s_img
 	int		bpp;
 	int		l_len;
 	int		endian;
-	size_t	width;
-	size_t	height;
+	int	width;
+	int	height;
 }	t_img;
 
 t_win			*ft_initmlx(void);
@@ -62,5 +62,6 @@ int				alpha(double opacity, int cback, int cfront);
 void			copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y);
 unsigned int	ft_get_pixel_img(t_img img, int x, int y);
 void			put_pixel_win(t_data *data, int x, int y, int color);
+int				handle_keyrelease(int keysym, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:22:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/03 15:14:05 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:53:27 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 # include "ray.h"
 # include "draw_line.h"
 # include "sprite.h"
+# include "player.h"
 
 #endif

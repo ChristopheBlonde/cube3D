@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/14 12:27:42 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/15 12:08:04 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	init_dir_angle(t_data *data)
 
 static void	init_t_player(t_data *data)
 {
+	ft_bzero(&data->player.keyboard, KEY_NB * sizeof(int));
 	data->player.position[0] = data->map.player.position[0];
 	data->player.position[1] = data->map.player.position[1];
 	init_dir_angle(data);
@@ -60,6 +61,7 @@ int	init_data_allocations(t_data *data)
 		return (0);
 	if (!init_arr_sprites(data))
 		return (0);
+	init_textures(data);
 	return (1);
 }
 
@@ -88,7 +90,6 @@ int	init_data(t_data *data, char **argv)
 	if (!data->mnmap)
 		return (0);
 	if (!init_data_allocations(data))
-		return (0);
 	return (1);
 }
 

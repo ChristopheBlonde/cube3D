@@ -12,6 +12,23 @@
 
 #include "graph.h"
 
+int	handle_keyrelease(int keysym, t_data *data)
+{
+	if (keysym == XK_w)
+		data->player.keyboard[KEY_W] = 0;
+	if (keysym == XK_a)
+		data->player.keyboard[KEY_A] = 0;
+	if (keysym == XK_s)
+		data->player.keyboard[KEY_S] = 0;
+	if (keysym == XK_d)
+		data->player.keyboard[KEY_D] = 0;
+	if (keysym == XK_Right)
+		data->player.keyboard[KEY_RIGHT] = 0;
+	if (keysym == XK_Left)
+		data->player.keyboard[KEY_LEFT] = 0;
+	return (0);
+}
+
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
@@ -20,16 +37,16 @@ int	handle_keypress(int keysym, t_data *data)
 		exit(0);
 	}
 	if (keysym == XK_w)
-		move_player(&data->player, keysym, 0.083);
-	if (keysym == XK_s)
-		move_player(&data->player, keysym, 0.083);
+		data->player.keyboard[KEY_W] = 1;
 	if (keysym == XK_a)
-		move_player(&data->player, keysym, 0.083);
+		data->player.keyboard[KEY_A] = 1;
+	if (keysym == XK_s)
+		data->player.keyboard[KEY_S] = 1;
 	if (keysym == XK_d)
-		move_player(&data->player, keysym, 0.083);
+		data->player.keyboard[KEY_D] = 1;
 	if (keysym == XK_Right)
-		rotate_player(&data->player, 0.025 * PI);
+		data->player.keyboard[KEY_RIGHT] = 1;
 	if (keysym == XK_Left)
-		rotate_player(&data->player, -0.025 * PI);
+		data->player.keyboard[KEY_LEFT] = 1;
 	return (0);
 }

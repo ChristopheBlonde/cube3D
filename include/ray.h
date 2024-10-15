@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 12:00:56 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:59:05 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RAY_H
 
 # include "draw_line.h" 
+#include "player.h"
 
 typedef struct s_data	t_data;
 
@@ -28,7 +29,7 @@ typedef struct s_ray
 	double	side_dist_y;
 	int		step_x;
 	int		step_y;
-	int		side;
+	t_dir	side;
 }	t_ray;
 
 int		raycasting(t_data *data);

@@ -52,6 +52,12 @@ void	copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y)
 	}
 }
 
+unsigned int	ft_get_pixel_img(t_img img, int x, int y)
+{
+	return (*(unsigned int *)(img.addr
+		+ (y * img.l_len) + (x * img.bpp / 8)));
+}
+
 void	draw_circle(t_img *img, t_point center, int r, int color)
 {
 	size_t	i;
