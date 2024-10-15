@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 09:23:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/30 16:16:19 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/14 12:26:45 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,12 @@ static void	draw_elemmap(t_data *data, t_point p)
 	{
 		if (map.map[(int)y][(int)x] == '0')
 			my_mlx_pixel_put(data->img,
-				p.x, p.y, get_color(0.1, 80, 216, 215));
+				p.x, p.y, alpha(0.5, ft_get_pixel_img(*data->img, p.x, p.y),
+					get_color(1, 80, 216, 215)));
 		if (map.map[(int)y][(int)x] == '1')
 			my_mlx_pixel_put(data->img,
-				p.x, p.y, get_color(0.1, 41, 49, 50));
+				p.x, p.y, alpha(0.5, ft_get_pixel_img(*data->img, p.x, p.y),
+					get_color(1, 41, 49, 50)));
 	}
 }
 
