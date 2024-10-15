@@ -75,7 +75,7 @@ int	init_data(t_data *data, char **argv)
 	data->arr_s = NULL;
 	data->start_time = get_time();
 	data->last_update = 0;
-	data->fps = 120;
+	data->fps = 24;
 	init_map(&data->map);
 	if (!initialize_map(&data->map, argv[1]))
 		return (0);
