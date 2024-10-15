@@ -26,18 +26,18 @@ void	define_side_floor(t_data *data, int x)
 
 void	init_data_floor(t_data *data, int x)
 {
-	data->line->dist_wall = data->line->perp_wall_dist;
+	//data->line->dist_wall = data->line->perp_wall_dist;
 	data->line->dist_player  = 0.0;
 	if (data->line->draw_end < 0)
 		data->line->draw_end = M_H;
 }
 
-void	pixel_textured_floor(t_data *data,	int x, int y, double floor_tex[2])
+void	pixel_textured_floor(t_data *data,	int x, int y, double current_floor[2])
 {
 	int	color[2];
 
-	color[0] = ft_get_pixel_img(data->line->texture[4], floor_tex[0], floor_tex[1]);
-	color[1] = ft_get_pixel_img(data->line->texture[5], floor_tex[0], floor_tex[1]);
+	color[0] = ft_get_pixel_img(data->line->texture[4], (int)(current_floor[0] * data->line->texture[4].width) % data->line->texture[4].width, (int)(current_floor[1] * data->line->texture[4].height) % data->line->texture[4].height);
+	color[1] = ft_get_pixel_img(data->line->texture[5], (int)(current_floor[0] * data->line->texture[5].width) % data->line->texture[4].width, (int)(current_floor[1] * data->line->texture[5].height) % data->line->texture[5].height);
 	my_mlx_pixel_put(data->img, x, y, color[0]);
 	my_mlx_pixel_put(data->img, x, M_H - y, color[1]);
 }
@@ -53,12 +53,12 @@ void	draw_textures_floor_celling(t_data *data, int x)
 	while (y < M_H)
 	{
 		data->line->current_dist = M_H / (2.0 * y - M_H);
-		weight = (data->line->current_dist - data->line->dist_player) / (data->line->dist_wall - data->line->dist_player);
+		weight = (data->line->current_dist - data->line->dist_player) / (data->zdist[x] - data->line->dist_player);
 		current_floor[0] = weight * data->line->floor_x_wall + (1.0 - weight) * data->player.position[0];
 		current_floor[1] = weight * data->line->floor_y_wall + (1.0 - weight) * data->player.position[1];
-		floor_tex[0] = (int)(current_floor[0] * TEX_WIDTH) % TEX_WIDTH;
-		floor_tex[1] = (int)(current_floor[1] * TEX_HEIGHT) % TEX_HEIGHT;
-		pixel_textured_floor(data, x, y, floor_tex);
+		// floor_tex[0] = (int)(current_floor[0] * TEX_WIDTH) % TEX_WIDTH;
+		// floor_tex[1] = (int)(current_floor[1] * TEX_HEIGHT) % TEX_HEIGHT;
+		pixel_textured_floor(data, x, y, current_floor);
 		y++;
 	}
 }

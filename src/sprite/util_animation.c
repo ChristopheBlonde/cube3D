@@ -84,7 +84,7 @@ void	init_sprite(t_sprite *sprite, double x, double y, bool animated)
 	sprite->pos_y = y;
 	sprite->render.u_div = 3;
 	sprite->render.v_div = 3;
-	sprite->render.v_move = (sprite->height + 5) * sprite->render.v_div;
+	sprite->render.v_move = (sprite->height) * 2;//sprite->render.v_div;
 	sprite->anim = NULL;
 	if (!animated)
 		sprite->animated = false;
