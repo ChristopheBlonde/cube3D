@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 11:12:05 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/15 14:16:16 by ahuge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,13 @@ double	calculate_perp_wall_dist(t_data *data)
 
 void	init_tex_line(t_data *data)
 {
-	double	wall_x;
-
 	data->line->tex_num = data->ray->side;
 	if (data->ray->side == EAST || data->ray->side == WEST)
-		wall_x = data->player.position[1] + data->line->perp_wall_dist * data->ray->ray_dir[1];
+		data->line->wall_x = data->player.position[1] + data->line->perp_wall_dist * data->ray->ray_dir[1];
 	else
-		wall_x = data->player.position[0] + data->line->perp_wall_dist * data->ray->ray_dir[0];
-	wall_x -= floor(wall_x);
-	data->line->tex_x = (int)(wall_x * (double)(TEX_WIDTH));
+		data->line->wall_x = data->player.position[0] + data->line->perp_wall_dist * data->ray->ray_dir[0];
+	data->line->wall_x -= floor(data->line->wall_x);
+	data->line->tex_x = (int)(data->line->wall_x * (double)(TEX_WIDTH));
 	if ((data->ray->side == EAST || data->ray->side == WEST) && data->ray->ray_dir[0] > 0)
 		data->line->tex_x = TEX_WIDTH - data->line->tex_x - 1;
 	if ((data->ray->side == SOUTH || data->ray->side == NORTH) && data->ray->ray_dir[1] < 0)
@@ -77,24 +75,21 @@ void	draw_texture_color(t_data *data, int x, int i)
 
 void	pixel_line(t_data *data, int x)
 {
-	int		i;
-	double	dist;
+	// int	i;
 
-	i = 0;
-	while (i < data->line->draw_start)
-	{
-		dist = i / data->line->draw_start;
-		my_mlx_pixel_put(data->img, x, i, alpha(dist,
-				data->line->ceiling_color, 0xFF000000));
-		i++;
-	}
-	draw_texture_color(data, x, i);
-	i = data->line->draw_end;
-	while (i < M_H - 1)
-	{
-		my_mlx_pixel_put(data->img, x, i, data->line->floor_color);
-		i++;
-	}
+	// i = 0;
+	// while (i < data->line->draw_start)
+	// {
+	// 	my_mlx_pixel_put(data->img, x, i, data->line->ceiling_color);
+	// 	i++;
+	// }
+	draw_texture_color(data, x, data->line->draw_start);
+	// i = data->line->draw_end;
+	// while (i < M_H - 1)
+	// {
+	// 	my_mlx_pixel_put(data->img, x, i, data->line->floor_color);
+	// 	i++;
+	// }
 }
 
 void	draw_line(t_data *data, int x)
