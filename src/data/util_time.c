@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:50:31 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 13:16:04 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 17:38:21 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ uint64_t	time_past(t_data *data)
 
 bool	update(t_data *data)
 {
-	if (get_time() - data->last_update < (uint64_t)(1000 / data->fps))
+	if (time_past(data) - data->last_update < (uint64_t)(1000 / data->fps))
 		return (false);
 	data->last_update = get_time();
 	return (true);
