@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_input.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
+/*   Updated: 2024/10/16 11:37:28 by cblonde          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube.h"
 
 int	zero_input(int *keyboard, int size)
@@ -28,7 +40,7 @@ void	handle_movement_and_rotation(t_data *data)
 	if (keyboard[KEY_RIGHT])
 		rotate_player(&data->player, 0.01 * PI);
 	if (keyboard[KEY_LEFT])
-		rotate_player(&data->player, - 0.01 * PI);
+		rotate_player(&data->player, -0.01 * PI);
 }
 
 int	handle_input(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/15 11:56:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 12:27:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct s_img
 	int		bpp;
 	int		l_len;
 	int		endian;
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 }	t_img;
 
 t_win			*ft_initmlx(void);

@@ -6,15 +6,13 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 11:13:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 11:25:22 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
-#include "draw_line.h"
-#include "graph.h"
 
-void	init_ray(t_data *data, int x)
+static void	init_ray(t_data *data, int x)
 {
 	data->ray->camera_x = (2 * (x / (double)M_W)) - 1;
 	data->ray->ray_dir[0] = data->player.v_dir[0]
@@ -27,7 +25,7 @@ void	init_ray(t_data *data, int x)
 	data->ray->delta_dist_y = fabs(1 / data->ray->ray_dir[1]);
 }
 
-void	calculating_initial_side_dist(t_data *data)
+static void	calculating_initial_side_dist(t_data *data)
 {
 	if (data->ray->ray_dir[0] < 0)
 	{
@@ -55,7 +53,7 @@ void	calculating_initial_side_dist(t_data *data)
 	}
 }
 
-t_dir	define_side(t_data *data)
+static t_dir	define_side(t_data *data)
 {
 	if (data->ray->side_dist_x < data->ray->side_dist_y)
 	{
@@ -73,9 +71,8 @@ t_dir	define_side(t_data *data)
 	}
 	return (NONE);
 }
-#include <stdio.h>
 
-void	calculating_ray_size(t_data *data)
+static void	calculating_ray_size(t_data *data)
 {
 	while (1)
 	{
@@ -94,8 +91,6 @@ void	calculating_ray_size(t_data *data)
 		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1')
 			break ;
 	}
-	// if (data->ray->ray_dir[0] == data->player.v_dir[0] && data->ray->ray_dir[1] == data->player.v_dir[1])
-	// 	printf("side; %d  dir_x; %f  dir_y; %f\n", data->ray->side, data->ray->ray_dir[0], data->ray->ray_dir[1]);
 }
 
 int	raycasting(t_data *data)

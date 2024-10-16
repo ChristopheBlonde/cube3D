@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 09:03:40 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/15 12:22:13 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 12:20:27 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	draw_circle(t_img *img, t_point center, int r, int color)
 	double	dis;
 
 	i = 0;
-	while (i < img->height)
+	while (i < (size_t)img->height)
 	{
 		j = 0;
-		while (j < img->width)
+		while (j < (size_t)img->width)
 		{
 			p.x = j;
 			p.y = i;
