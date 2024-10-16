@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 11:37:28 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:59:26 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ void	handle_movement_and_rotation(t_data *data)
 		rotate_player(&data->player, -0.01 * PI);
 }
 
+void	handle_minimap_changed(t_data *data)
+{
+	int	*keyboard;
+
+	keyboard = data->player.keyboard;
+	if (keyboard[KEY_MAP])
+	{
+		if (data->mnmap->minimap)
+			data->mnmap->minimap = false;
+		else
+			data->mnmap->minimap = true;
+		keyboard[KEY_MAP] = 0;
+	}
+}
+
 int	handle_input(t_data *data)
 {
 	int	*keyboard;
@@ -51,5 +66,6 @@ int	handle_input(t_data *data)
 	if (zero_input(keyboard, KEY_NB))
 		return (1);
 	handle_movement_and_rotation(data);
+	handle_minimap_changed(data);
 	return (0);
 }

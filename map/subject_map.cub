@@ -11,7 +11,7 @@ SPR	./assets/centipede.xpm, 26 8.6 0 0 1 1 60
 SPR	./assets/magic_circle.xpm, 25.3 6.5 0 0 1 1 60
 SPR	./assets/magic_circle2.xpm, 20.5 7.5 0 0 2 2 60
 SPR	./assets/white_crystal.xpm , 19.4 3.5 0 0 3 3 50
-SPA	./assets/fire_camp.xpm , 27.5 11.5 64 64 1 1 200 4 5
+SPA	./assets/fire_camp.xpm , 27.5 11.5 64 64 1 1 200 4 1
 
         1111111111111111111111111
         1000000000110000000000001

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:58:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/25 09:01:09 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:55:51 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ int	handle_keypress(int keysym, t_data *data)
 		data->player.keyboard[KEY_RIGHT] = 1;
 	if (keysym == XK_Left)
 		data->player.keyboard[KEY_LEFT] = 1;
+	if (keysym == XK_m)
+		data->player.keyboard[KEY_MAP] = 1;
 	return (0);
 }

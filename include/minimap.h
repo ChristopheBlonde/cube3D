@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 08:27:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/08 12:02:26 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:31:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_data	t_data;
 
 typedef struct s_minimap
 {
+	bool	minimap;
 	t_point	mid;
 	t_point	mnm_mid;
 	double	size;

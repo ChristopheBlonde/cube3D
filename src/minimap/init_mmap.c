@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 09:23:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/14 12:26:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:31:48 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_minimap	*init_mmap(void)
 	map = (t_minimap *)ft_calloc(1, sizeof(t_minimap));
 	if (!map)
 		return (NULL);
+	map->minimap = false;
 	map->width = M_W / 5;
 	map->height = M_H / 4;
 	map->mid.x = map->width / 2;
