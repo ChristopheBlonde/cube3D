@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 16:22:00 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:48:48 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define NOSPRITENB "Sprite number must initialized\n"
 # define ERRNSPRITE "Number sprite declare does not match with path given\n"
 # define ERRSPRITEARG "Sprite arg must contain path and at least 1 position\n"
-# define ERRSPRITEPOS "Sprite pos must contain x and y example: 2.5 5.6\n"
+# define ERRSPRITEPOS "Sprite info must contain 7 arguments or 9 for animated\n"
 # define ERRNSPOS "Number sprite declare does not match number position given\n"
 # define ERRSPOS "sprite position impossible\n"
 

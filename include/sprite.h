@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/15 12:00:53 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:36:28 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # include "mlx.h"
 # include "data.h"
 # include "graph.h"
+# include "parse.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct s_img	t_img;
-typedef struct s_data	t_data;
+typedef struct s_img			t_img;
+typedef struct s_data			t_data;
+typedef struct s_init_sprite	t_s_init;
 
 typedef struct s_render
 {
@@ -88,7 +90,7 @@ void		add_frame(t_anim *animation,
 				t_sprite *sprite, t_sprite_slice slice);
 t_anim		*ft_slice_sprite(t_sprite *sprite, t_sprite_slice slice,
 				int frames, int delay);
-void		init_sprite(t_sprite *sprite, double x, double y, bool animated);
+void		init_sprite(t_sprite *sprite, t_s_init *info);
 void		update_animation(void *ptr);
 
 #endif

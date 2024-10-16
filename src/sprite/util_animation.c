@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:40:28 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/11 13:45:11 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:51:34 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,28 +72,28 @@ t_anim	*ft_slice_sprite(t_sprite *sprite, t_sprite_slice slice,
 	return (animation);
 }
 
-void	init_sprite(t_sprite *sprite, double x, double y, bool animated)
+void	init_sprite(t_sprite *sprite, t_s_init *info)
 {
 	t_sprite_slice	s;
 
 	s.x = 0;
 	s.y = 0;
-	s.width = 64;
-	s.height = 64;
-	sprite->pos_x = x;
-	sprite->pos_y = y;
-	sprite->render.u_div = 3;
-	sprite->render.v_div = 3;
-	sprite->render.v_move = (sprite->height + 5) * sprite->render.v_div;
+	s.width = info->w_frame;
+	s.height = info->h_frame;
+	sprite->pos_x = info->x;
+	sprite->pos_y = info->y;
+	sprite->render.u_div = info->x_div;
+	sprite->render.v_div = info->y_div;
+	sprite->render.v_move = info->offset;
 	sprite->anim = NULL;
-	if (!animated)
+	if (!info->animated)
 		sprite->animated = false;
 	else
 	{
 		sprite->animated = true;
 		ft_lstadd_back(&sprite->anim,
-			ft_lstnew(ft_slice_sprite(sprite, s, 4, 1)));
-		sprite->render.v_move *= 2;
+			ft_lstnew(ft_slice_sprite(sprite, s,
+					info->nb_frame, info->delay)));
 	}
 }
 

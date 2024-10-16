@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 09:14:44 by cblonde           #+#    #+#              #
-#    Updated: 2024/10/16 12:21:57 by cblonde          ###   ########.fr        #
+#    Updated: 2024/10/16 14:08:30 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
 	  $(DDATA)util_time.c $(DSPRITE)util_animation.c $(DIN)handle_input.c\
 	  $(DDATA)textures.c $(DRAY)util_drawline.c
 
-NAME = cube
+NAME = cub3D
 
 all : $(NAME)
 
@@ -78,7 +78,7 @@ $(DBUILD)%.o : %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(LIB) $(MLX) $(OBJ)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBMAC) -o $(NAME)
 
 $(LIB) :
 	@make -C $(DLIB) --no-print-directory --silent

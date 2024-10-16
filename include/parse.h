@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 14:54:08 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:50:13 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@
 # include "data.h"
 
 typedef struct s_data	t_data;
+
+typedef struct s_init_sprite
+{
+	bool	animated;
+	double	x;
+	double	y;
+	int		w_frame;
+	int		h_frame;
+	int		x_div;
+	int		y_div;
+	int		offset;
+	int		nb_frame;
+	int		delay;
+}	t_s_init;
 
 char	*ft_readfile(char *file);
 bool	initialize_map(t_map *map, char *path);

@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:30:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 16:21:38 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 14:04:35 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	is_valid_arr(char **arr)
 		tmp = ft_split(arr[i], ' ');
 		if (!tmp)
 			return (err_sprite(3, NULL));
-		if (i != 0 && ft_arrlen((void **)tmp) != 2)
+		if (i != 0 && ft_arrlen((void **)tmp) < 7)
 		{
 			ft_free_array((void **)tmp);
 			return (err_sprite(6, NULL));
@@ -40,28 +40,46 @@ static bool	is_valid_arr(char **arr)
 	return (true);
 }
 
+static bool	init_sprite_info(t_s_init *conf, char **pos)
+{
+	if (conf->animated && ft_arrlen((void **)pos) != 9)
+		return (err_sprite(6, NULL));
+	conf->w_frame = ft_atoi(pos[2]);
+	conf->h_frame = ft_atoi(pos[3]);
+	conf->x_div = ft_atoi(pos[4]);
+	conf->y_div = ft_atoi(pos[5]);
+	conf->offset = ft_atoi(pos[6]);
+	if (conf->animated)
+	{
+		conf->nb_frame = ft_atoi(pos[7]);
+		conf->delay = ft_atoi(pos[8]);
+	}
+	return (true);
+}
+
 static bool	create_sprites(t_data *data, char *path, char **pos, size_t *j)
 {
-	double	x;
-	double	y;
-	bool	animated;
+	t_s_init	conf;
 
-	animated = false;
-	x = ft_strtod(pos[0]);
-	y = ft_strtod(pos[1]);
-	if (x < 1 || y < 1 || x > data->map.width || y > data->map.height)
+	conf.animated = false;
+	conf.x = ft_strtod(pos[0]);
+	conf.y = ft_strtod(pos[1]);
+	if (conf.x < 1 || conf.y < 1 || conf.x > data->map.width
+		|| conf.y > data->map.height)
 		return (err_sprite(7, NULL));
 	if (*j == data->map.sprite_nb)
 		return (err_sprite(8, NULL));
 	if (path[0] == 'A')
 	{
 		path++;
-		animated = true;
+		conf.animated = true;
 	}
+	if (!init_sprite_info(&conf, pos))
+		return (false);
 	data->arr_s[*j] = new_sprite(data, path);
 	if (!data->arr_s[*j])
 		return (err_sprite(3, NULL));
-	init_sprite(data->arr_s[*j], x, y, animated);
+	init_sprite(data->arr_s[*j], &conf);
 	(*j)++;
 	return (true);
 }
