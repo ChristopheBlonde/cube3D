@@ -28,7 +28,7 @@ void	init_textures(t_data *data)
 	set_texture_img(data, &data->line->texture[EAST - 1], data->map.ea);
 	set_texture_img(data, &data->line->texture[WEST - 1], data->map.we);
 	set_texture_img(data, &data->line->texture[4], "assets/textures/wood.xpm");
-	set_texture_img(data, &data->line->texture[5], "assets/textures/starry_night.xpm");
+	set_texture_img(data, &data->line->texture[5], "assets/textures/etoiles.xpm");
 
 	// while (i < NB_OF_TEX)
 	// {

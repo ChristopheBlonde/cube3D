@@ -52,6 +52,7 @@ typedef struct	s_player
 	double	v_dir[2];
 	double	v_plane[2];
 	int		keyboard[KEY_NB];
+	double	offset_y;
 }	t_player;
 
 t_dir	get_direction(char c);

@@ -44,16 +44,16 @@ void	init_line(t_data *data)
 			data->map.floor[1], data->map.floor[2]);
 	data->line->perp_wall_dist = calculate_perp_wall_dist(data);
 	data->line->line_height = (M_H / data->line->perp_wall_dist);
-	data->line->draw_start = -data->line->line_height / 2 + M_H / 2;
+	data->line->draw_start = (-data->line->line_height / 2 + M_H / 2) + data->player.offset_y;
 	if (data->line->draw_start < 0)
 		data->line->draw_start = 0;
-	data->line->draw_end = data->line->line_height / 2 + M_H / 2;
+	data->line->draw_end = (data->line->line_height / 2 + M_H / 2)+ data->player.offset_y;
 	if (data->line->draw_end >= M_H)
 		data->line->draw_end = M_H - 1;
 	init_tex_line(data);
 }
 
-void	draw_texture_color(t_data *data, int x, int i)
+void	draw_texture_color(t_data *data, int x, int draw_start)
 {
 	double	step;
 	double	tex_pos;
@@ -62,34 +62,34 @@ void	draw_texture_color(t_data *data, int x, int i)
 
 	step = 1.0 * TEX_HEIGHT / data->line->line_height;
 	tex_pos = (data->line->draw_start - M_H / 2 + data->line->line_height / 2) * step;
-	while (i < data->line->draw_end)
+	while (draw_start < data->line->draw_end)
 	{
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
 		tex_pos += step;
 		//color = data->line->texture[data->ray->side - 1][TEX_HEIGHT * tex_y + data->line->tex_x];
 		color = ft_get_pixel_img(data->line->texture[data->ray->side - 1], data->line->tex_x, tex_y);
-		my_mlx_pixel_put(data->img, x, i, color);
-		i++;
+		my_mlx_pixel_put(data->img, x, draw_start, color);
+		draw_start++;
 	}
 }
 
 void	pixel_line(t_data *data, int x)
 {
-	// int	i;
+	int	i;
 
-	// i = 0;
-	// while (i < data->line->draw_start)
-	// {
-	// 	my_mlx_pixel_put(data->img, x, i, data->line->ceiling_color);
-	// 	i++;
-	// }
+	i = 0;
+	while (i < data->line->draw_start)
+	{
+		my_mlx_pixel_put(data->img, x, i, data->line->ceiling_color);
+		i++;
+	}
 	draw_texture_color(data, x, data->line->draw_start);
-	// i = data->line->draw_end;
-	// while (i < M_H - 1)
-	// {
-	// 	my_mlx_pixel_put(data->img, x, i, data->line->floor_color);
-	// 	i++;
-	// }
+	i = data->line->draw_end;
+	while (i < M_H - 1)
+	{
+		my_mlx_pixel_put(data->img, x, i, data->line->floor_color);
+		i++;
+	}
 }
 
 void	draw_line(t_data *data, int x)

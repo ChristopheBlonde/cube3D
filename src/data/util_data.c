@@ -49,6 +49,7 @@ static void	init_t_player(t_data *data)
 	init_dir_angle(data);
 	data->player.v_dir[0] = cos(data->player.dir_angle);
 	data->player.v_dir[1] = sin(data->player.dir_angle);
+	data->player.offset_y = 0.0;
 }
 
 int	init_data_allocations(t_data *data)

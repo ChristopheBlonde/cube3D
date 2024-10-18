@@ -73,7 +73,6 @@ t_dir	define_side(t_data *data)
 	}
 	return (NONE);
 }
-#include <stdio.h>
 
 void	calculating_ray_size(t_data *data)
 {
@@ -94,8 +93,6 @@ void	calculating_ray_size(t_data *data)
 		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1')
 			break ;
 	}
-	// if (data->ray->ray_dir[0] == data->player.v_dir[0] && data->ray->ray_dir[1] == data->player.v_dir[1])
-	// 	printf("side; %d  dir_x; %f  dir_y; %f\n", data->ray->side, data->ray->ray_dir[0], data->ray->ray_dir[1]);
 }
 
 int	raycasting(t_data *data)
@@ -109,7 +106,7 @@ int	raycasting(t_data *data)
 		calculating_initial_side_dist(data);
 		calculating_ray_size(data);
 		draw_line(data, x);
-		draw_floor_celling(data, x);
+		//draw_floor_celling(data, x);
 		x++;
 	}
 	return (0);
