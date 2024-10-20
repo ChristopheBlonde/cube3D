@@ -68,10 +68,11 @@ void	handle_mouse(t_data *data)
 
 	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);
 	//printf("x; %d  y; %d\n", x, y);
-	if (out_of_screen(x, y))
-		return ;
-	check_x_axis(data, x);
-	check_y_axis(data, y);
+	if (!out_of_screen(x, y))
+	{
+		check_x_axis(data, x);
+		check_y_axis(data, y);
+	}
 	mlx_mouse_move(data->win->mlx_ptr, data->win->win_ptr, M_W * 0.5, M_H * 0.5);
 }
 

@@ -61,7 +61,7 @@ void	draw_texture_color(t_data *data, int x, int draw_start)
 	int		color;
 
 	step = 1.0 * TEX_HEIGHT / data->line->line_height;
-	tex_pos = (data->line->draw_start - M_H / 2 + data->line->line_height / 2) * step;
+	tex_pos = (data->line->draw_start - data->player.offset_y - M_H / 2 + data->line->line_height / 2) * step;
 	while (draw_start < data->line->draw_end)
 	{
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
@@ -87,7 +87,7 @@ void	pixel_line(t_data *data, int x)
 	i = data->line->draw_end;
 	while (i < M_H - 1)
 	{
-		my_mlx_pixel_put(data->img, x, i, data->line->floor_color);
+		// my_mlx_pixel_put(data->img, x, i, data->line->floor_color);
 		i++;
 	}
 }

@@ -106,7 +106,7 @@ int	raycasting(t_data *data)
 		calculating_initial_side_dist(data);
 		calculating_ray_size(data);
 		draw_line(data, x);
-		//draw_floor_celling(data, x);
+		draw_floor_celling(data, x);
 		x++;
 	}
 	return (0);
