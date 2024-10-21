@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 11:25:22 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/21 14:53:35 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,14 @@ static void	init_ray(t_data *data, int x)
 		+ (data->player.v_plane[1] * data->ray->camera_x);
 	data->ray->map[0] = (int)data->player.position[0];
 	data->ray->map[1] = (int)data->player.position[1];
-	data->ray->delta_dist_x = fabs(1 / data->ray->ray_dir[0]);
-	data->ray->delta_dist_y = fabs(1 / data->ray->ray_dir[1]);
+	if (data->ray->ray_dir[0] == 0)
+		data->ray->delta_dist_x = 0;
+	else
+		data->ray->delta_dist_x = fabs(1 / data->ray->ray_dir[0]);
+	if (data->ray->ray_dir[1] == 0)
+		data->ray->delta_dist_y = 0;
+	else
+		data->ray->delta_dist_y = fabs(1 / data->ray->ray_dir[1]);
 }
 
 static void	calculating_initial_side_dist(t_data *data)
@@ -88,7 +94,8 @@ static void	calculating_ray_size(t_data *data)
 			data->ray->side_dist_y += data->ray->delta_dist_y;
 			data->ray->map[1] += data->ray->step_y;
 		}
-		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1')
+		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1'
+				|| data->map.map[data->ray->map[1]][data->ray->map[0]] == 'D')
 			break ;
 	}
 }

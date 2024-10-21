@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:34:19 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 13:50:13 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:53:17 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ bool	missing_att(t_map *map);
 bool	is_valid_xpm(char *file);
 bool	get_sprite(t_map *map, char *str);
 bool	init_arr_sprites(t_data *data);
+void	is_valid_character(t_map *map, int pos[2], size_t *unknow);
+bool	init_doors(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 11:56:34 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:48:11 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,21 @@
 # include <stdlib.h>
 # include "libft.h"
 # include "player.h"
+
+typedef enum e_door_status
+{
+	CLOSE,
+	CLOSING,
+	OPEN,
+	OPENING,
+}	t_dstatus;
+
+typedef struct s_door
+{
+	t_dstatus	status;
+	int			pos_x;
+	int			pos_y;
+}	t_door;
 
 typedef struct s_map
 {
@@ -32,6 +47,8 @@ typedef struct s_map
 	size_t		sprite_nb;
 	char		**sprites;
 	t_player	player;
+	size_t		nb_doors;
+	t_door		*doors;
 }	t_map;
 
 void	init_map(t_map *map);

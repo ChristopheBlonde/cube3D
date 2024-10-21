@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:31:15 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 15:12:55 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/17 07:09:32 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <X11/keysym.h>
 
 # define PI M_PI
-# define KEY_NB 7
+# define KEY_NB 9
 
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
@@ -42,6 +42,8 @@ typedef enum e_keyboard
 	KEY_LEFT,
 	KEY_RIGHT,
 	KEY_MAP,
+	KEY_UP_MAP,
+	KEY_DOWN_MAP,
 }	t_keyboard;
 
 typedef struct s_player

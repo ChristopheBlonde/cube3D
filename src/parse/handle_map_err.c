@@ -6,17 +6,17 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:05:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/09/24 17:50:33 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:56:12 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include <stdio.h> //TODO
 
 static void	get_map_attribute(t_map *map, size_t *player, size_t *unknow)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
+	int	pos[2];
 
 	i = -1;
 	while (map->map[++i])
@@ -24,11 +24,9 @@ static void	get_map_attribute(t_map *map, size_t *player, size_t *unknow)
 		j = -1;
 		while (map->map[i][++j])
 		{
-			if (map->map[i][j] != ' ' && map->map[i][j] != '1'
-				&& map->map[i][j] != 'S' && map->map[i][j] != 'N'
-				&& map->map[i][j] != 'W' && map->map[i][j] != 'E'
-				&& map->map[i][j] != '0')
-				(*unknow)++;
+			pos[0] = i;
+			pos[1] = j;
+			is_valid_character(map, pos, unknow);
 			if (get_direction(map->map[i][j]) != NONE && ++(*player))
 			{
 				map->player.dir = get_direction(map->map[i][j]);
@@ -131,5 +129,8 @@ bool	handle_map_err(t_map *map)
 	if (!is_closed(map))
 		return (err_map_invalid(1));
 	map->map[(int)map->player.position[1]][(int)map->player.position[0]] = '0';
+	if (map->nb_doors)
+		if (!init_doors(map))
+			return (false);
 	return (true);
 }

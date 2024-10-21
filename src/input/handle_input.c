@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 15:59:26 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/17 07:33:14 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@ void	handle_minimap_changed(t_data *data)
 		else
 			data->mnmap->minimap = true;
 		keyboard[KEY_MAP] = 0;
+	}
+	if (keyboard[KEY_UP_MAP])
+	{
+		if (data->mnmap->minimap && data->mnmap->size < 22)
+			data->mnmap->size += 2;
+		keyboard[KEY_UP_MAP] = 0;
+	}
+	if (keyboard[KEY_DOWN_MAP])
+	{
+		if (data->mnmap->minimap && data->mnmap->size > 4)
+			data->mnmap->size -= 2;
+		keyboard[KEY_DOWN_MAP] = 0;
 	}
 }
 

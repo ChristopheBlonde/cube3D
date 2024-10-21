@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:45:31 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 13:51:27 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:48:53 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	init_map(t_map *map)
 	map->ea = NULL;
 	map->map = NULL;
 	map->sprites = NULL;
+	map->nb_doors = 0;
+	map->doors = NULL;
 	map->sprite_nb = 0;
 	map->curr_sprite = 0;
 	while (++i < 3)
@@ -59,4 +61,7 @@ void	free_map(t_map *map)
 	if (map->sprites)
 		ft_free_array((void **)map->sprites);
 	map->sprites = NULL;
+	if (map->doors)
+		free(map->doors);
+	map->doors = NULL;
 }
