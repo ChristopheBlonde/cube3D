@@ -23,8 +23,16 @@ void	init_ray(t_data *data, int x)
 		+ (data->player.v_plane[1] * data->ray->camera_x);
 	data->ray->map[0] = (int)data->player.position[0];
 	data->ray->map[1] = (int)data->player.position[1];
-	data->ray->delta_dist_x = fabs(1 / data->ray->ray_dir[0]);
-	data->ray->delta_dist_y = fabs(1 / data->ray->ray_dir[1]);
+	// data->ray->delta_dist_x = fabs(1 / data->ray->ray_dir[0]);
+	// data->ray->delta_dist_y = fabs(1 / data->ray->ray_dir[1]);
+	 if (data->ray->ray_dir[0] == 0)
+        data->ray->delta_dist_x = 0;
+    else
+        data->ray->delta_dist_x = fabs(1 / data->ray->ray_dir[0]);
+    if (data->ray->ray_dir[1] == 0)
+        data->ray->delta_dist_y = 0;
+    else
+        data->ray->delta_dist_y = fabs(1 / data->ray->ray_dir[1]);
 }
 
 void	calculating_initial_side_dist(t_data *data)
@@ -100,13 +108,14 @@ int	raycasting(t_data *data)
 	int	x;
 
 	x = 0;
+	draw_floor_celling(data);
 	while (x < M_W)
 	{
 		init_ray(data, x);
 		calculating_initial_side_dist(data);
 		calculating_ray_size(data);
 		draw_line(data, x);
-		draw_floor_celling(data, x);
+		//draw_floor_celling(data, x);
 		x++;
 	}
 	return (0);

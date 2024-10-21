@@ -47,6 +47,6 @@ void	draw_line(t_data *data, int x);
 void	pixel_line(t_data *data, int x);
 void	init_line(t_data *data);
 double	calculate_perp_wall_dist(t_data *data);
-void	draw_floor_celling(t_data *data, int x);
+void	draw_floor_celling(t_data *data);
 
 #endif

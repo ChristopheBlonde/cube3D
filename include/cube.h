@@ -28,5 +28,6 @@
 # include "sprite.h"
 # include "player.h"
 # include "input.h"
+# include "floor_celling.h"
 
 #endif

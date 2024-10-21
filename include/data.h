@@ -33,6 +33,7 @@ typedef struct s_win		t_win;
 typedef struct s_ray		t_ray;
 typedef struct s_line		t_line;
 typedef struct s_sprite		t_sprite;
+typedef struct s_floor_celling		t_floor_celling;
 
 typedef struct s_data
 {
@@ -48,6 +49,7 @@ typedef struct s_data
 	uint64_t	start_time;
 	uint64_t	last_update;
 	int			fps;
+	t_floor_celling	*floor_c;
 }	t_data;
 
 int			init_data(t_data *data, char **argv);

@@ -12,7 +12,7 @@
 
 CC = cc
 
-CFLAGS = -g # -Werror -Wextra -Wall -g
+CFLAGS = -g #-fsanitize=address# -Werror -Wextra -Wall -g 
 
 INCLUDE = -Iinclude -Ilib -Imlx -I/usr/include -I/opt/X11/include
 

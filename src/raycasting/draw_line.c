@@ -80,7 +80,7 @@ void	pixel_line(t_data *data, int x)
 	i = 0;
 	while (i < data->line->draw_start)
 	{
-		my_mlx_pixel_put(data->img, x, i, data->line->ceiling_color);
+		// my_mlx_pixel_put(data->img, x, i, data->line->ceiling_color);
 		i++;
 	}
 	draw_texture_color(data, x, data->line->draw_start);

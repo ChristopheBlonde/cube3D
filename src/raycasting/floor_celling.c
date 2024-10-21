@@ -1,126 +1,68 @@
 #include "cube.h"
 
-void	define_side_floor_tmp(t_data *data, int x)
+void    init_struct_floor(t_data *data, int y)
 {
-	if ((data->ray->side == EAST || data->ray->side == WEST) && data->ray->ray_dir[0] > 0)
-	{
-		data->line->floor_x_wall = data->ray->map[0];
-		data->line->floor_y_wall = data->ray->map[1] + data->line->wall_x;
-	}
-	else if ((data->ray->side == EAST || data->ray->side == WEST) && data->ray->ray_dir[0] < 0)
-	{
-		data->line->floor_x_wall = data->ray->map[0] + 1.0;
-		data->line->floor_y_wall = data->ray->map[1] + data->line->wall_x;
-	}
-	else if ((data->ray->side == NORTH || data->ray->side == SOUTH) && data->ray->ray_dir[1] > 0)
-	{
-		data->line->floor_x_wall = data->ray->map[0] + data->line->wall_x;
-		data->line->floor_y_wall = data->ray->map[1];
-	}
-	else if ((data->ray->side == NORTH  || data->ray->side == SOUTH) && data->ray->ray_dir[1] < 0)
-	{
-		data->line->floor_x_wall = data->ray->map[0] + data->line->wall_x;
-		data->line->floor_y_wall = data->ray->map[1] + 1.0;
-	}
+	data->floor_c->ray_dir_x0 = data->player.v_dir[0] - data->player.v_plane[0];
+	data->floor_c->ray_dir_y0 = data->player.v_dir[1] - data->player.v_plane[1];
+	data->floor_c->ray_dir_x1 = data->player.v_dir[0] + data->player.v_plane[0];
+	data->floor_c->ray_dir_y1 = data->player.v_dir[1] + data->player.v_plane[1];
+
+	data->floor_c->row_dist_floor = (0.5 * M_H) / (y - M_H * 0.5 - data->player.offset_y);
+	data->floor_c->row_dist_celling = (0.5 * M_H) / (y - M_H * 0.5 + data->player.offset_y);
+	
+	data->floor_c->floor_step_x = data->floor_c->row_dist_floor * (data->floor_c->ray_dir_x1 - data->floor_c->ray_dir_x0) / M_W;
+	data->floor_c->floor_step_y = data->floor_c->row_dist_floor * (data->floor_c->ray_dir_y1 - data->floor_c->ray_dir_y0) / M_W;
+	data->floor_c->floor_x = data->player.position[0] + data->floor_c->row_dist_floor * data->floor_c->ray_dir_x0;
+	data->floor_c->floor_y = data->player.position[1] + data->floor_c->row_dist_floor * data->floor_c->ray_dir_y0;
+
+	data->floor_c->celling_step_x = data->floor_c->row_dist_celling * (data->floor_c->ray_dir_x1 - data->floor_c->ray_dir_x0) / M_W;
+	data->floor_c->celling_step_y = data->floor_c->row_dist_celling * (data->floor_c->ray_dir_y1 - data->floor_c->ray_dir_y0) / M_W;
+	data->floor_c->celling_x = data->player.position[0] + data->floor_c->row_dist_celling * data->floor_c->ray_dir_x0;
+	data->floor_c->celling_y = data->player.position[1] + data->floor_c->row_dist_celling * data->floor_c->ray_dir_y0;
 }
 
-void	define_side_floor(t_data *data, int x)
+void	init_tex_point(t_data *data, t_point *tex_floor, t_point *tex_celling)
 {
-	if ((data->ray->side == EAST || data->ray->side == WEST) && data->ray->ray_dir[0] > 0)
-	{
-		data->line->floor_x_wall = data->ray->map[0];
-		data->line->floor_y_wall = data->ray->map[1] + data->line->wall_x;
-	}
-	else if ((data->ray->side == EAST || data->ray->side == WEST) && data->ray->ray_dir[0] < 0)
-	{
-		data->line->floor_x_wall = data->ray->map[0] + 1.0;
-		data->line->floor_y_wall = data->ray->map[1] + data->line->wall_x;
-	}
-	else if ((data->ray->side == NORTH || data->ray->side == SOUTH) && data->ray->ray_dir[1] > 0)
-	{
-		data->line->floor_x_wall = data->ray->map[0] + data->line->wall_x;
-		data->line->floor_y_wall = data->ray->map[1];
-	}
-	else if ((data->ray->side == NORTH  || data->ray->side == SOUTH) && data->ray->ray_dir[1] < 0)
-	{
-		data->line->floor_x_wall = data->ray->map[0] + data->line->wall_x;
-		data->line->floor_y_wall = data->ray->map[1] + 1.0;
-	}
+	tex_floor->x = (int)(data->line->texture[4].width * (data->floor_c->floor_x - (int)data->floor_c->floor_x)) & (data->line->texture[4].width - 1);
+	tex_floor->y = (int)(data->line->texture[4].height * (data->floor_c->floor_y - (int)data->floor_c->floor_y)) & (data->line->texture[4].height - 1);
+	tex_celling->x = (int)(data->line->texture[5].width * (data->floor_c->celling_x - (int)data->floor_c->celling_x)) & (data->line->texture[5].width - 1);
+	tex_celling->y = (int)(data->line->texture[5].height * (data->floor_c->celling_y - (int)data->floor_c->celling_y)) & (data->line->texture[5].height - 1);
 }
 
-void	init_data_floor(t_data *data, int x)
+void	draw_floor_celling_tmp(t_data *data, int x, int y)
 {
-	//data->line->dist_wall = data->line->perp_wall_dist;
-	data->line->dist_player  = 0.0;
-	// if (data->line->draw_end < 0)
-	// 	data->line->draw_end = M_H;
-}
+	t_point tex_floor;
+	t_point tex_celling;
+	int		color[2];
 
-void	pixel_textured_floor(t_data *data,	int x, int y, double current_floor[2])
-{
-	int	color[2];
-
-	color[0] = ft_get_pixel_img(data->line->texture[4], (int)(current_floor[0] * data->line->texture[4].width) % data->line->texture[4].width,
-		(int)(current_floor[1] * data->line->texture[4].height) % data->line->texture[4].height);
-	//color[1] = ft_get_pixel_img(data->line->texture[5], (int)(current_floor[0] * data->line->texture[5].width) % data->line->texture[4].width, (int)(current_floor[1] * data->line->texture[5].height) % data->line->texture[5].height);
+	init_tex_point(data, &tex_floor, &tex_celling);
+	data->floor_c->floor_x += data->floor_c->floor_step_x;
+	data->floor_c->floor_y += data->floor_c->floor_step_y;
+	data->floor_c->celling_x += data->floor_c->celling_step_x;
+	data->floor_c->celling_y += data->floor_c->celling_step_y;
+	color[0] = ft_get_pixel_img(data->line->texture[4], tex_floor.x, tex_floor.y);
+	color[1] = ft_get_pixel_img(data->line->texture[5], tex_celling.x, tex_celling.y);
 	my_mlx_pixel_put(data->img, x, y, color[0]);
-	//my_mlx_pixel_put(data->img, x, M_H - y, color[1]);
+	my_mlx_pixel_put(data->img, x, M_H - y - 1, color[1]);
 }
 
-void	pixel_textured_celling(t_data *data, int x, int y, double current_floor[2])
+void	draw_floor_celling(t_data *data)
 {
-	int	color[2];
+	t_floor_celling	floor_c;
+	int				y;
+	int				x;
 
-	// color[0] = ft_get_pixel_img(data->line->texture[4], (int)(current_floor[0] * data->line->texture[4].width) % data->line->texture[4].width, (int)(current_floor[1] * data->line->texture[4].height) % data->line->texture[4].height);
-	color[1] = ft_get_pixel_img(data->line->texture[5], (int)(current_floor[0] * data->line->texture[5].width) % data->line->texture[5].width,
-		(int)(current_floor[1] * data->line->texture[5].height) % data->line->texture[5].height);
-	// my_mlx_pixel_put(data->img, x, y, color[0]);
-	my_mlx_pixel_put(data->img, x, y, color[1]);
-}
-
-int	central_ray(t_data *data)
-{
-	return (data->ray->ray_dir[0] == data->player.v_dir[0]
-			&& data->ray->ray_dir[1] == data->player.v_dir[1]);
-}
-
-void	draw_textures_floor_celling(t_data *data, int x)
-{
-	int	y;
-	double	weight;
-	double	current_floor[2];
-	double	floor_tex[2];
-
-	y = data->line->draw_end + 1;
+	y = 0;
+	data->floor_c = &floor_c;
 	while (y < M_H)
 	{
-		data->line->current_dist = M_H / (2.0 * (y - data->player.offset_y) - M_H);
-		weight = (data->line->current_dist - data->line->dist_player) / (data->zdist[x] - data->line->dist_player);
-		current_floor[0] = weight * data->line->floor_x_wall + (1.0 - weight) * data->player.position[0];
-		current_floor[1] = weight * data->line->floor_y_wall + (1.0 - weight) * data->player.position[1];
-		pixel_textured_floor(data, x, y, current_floor);
+		init_struct_floor(data, y);
+		x = 0;
+		while (x < M_W)
+		{
+			draw_floor_celling_tmp(data, x, y);
+			x++;
+		}
 		y++;
 	}
-	y = 0;
-// 	while (y < data->line->draw_start - 1)
-// 	{
-// 		data->line->current_dist = M_H / (2.0 * (y - data->player.offset_y) - M_H);
-// 		weight = (data->line->current_dist - data->line->dist_player) / (data->zdist[x] - data->line->dist_player);
-// 		current_floor[0] = weight * data->line->floor_x_wall + (1.0 - weight) *  data->player.position[0];
-// 		current_floor[1] = weight * data->line->floor_y_wall + (1.0 - weight) * data->player.position[1];
-// 		if (central_ray(data))
-// 		{
-// 			//printf("cel_x; %f  cel_y; %f\n", current_floor[0], current_floor[1]);
-// 		}
-			
-// 		pixel_textured_celling(data, x, y, current_floor);
-// 		y++;
-// 	}
-}
-
-void	draw_floor_celling(t_data *data, int x)
-{
-	define_side_floor(data, x);
-	init_data_floor(data, x);
-	draw_textures_floor_celling(data, x);
 }
