@@ -45,6 +45,10 @@ void	check_y_axis(t_data *data, int y)
 	static double	offset_y = 0;
 
 	offset_y -= (y - M_H / 2);
+	if (offset_y > 450)
+		offset_y = 450;
+	if (offset_y < -450)
+		offset_y = -450;
 	data->player.offset_y = offset_y;
 	// printf("off_y; %f\n", data->player.offset_y);
 	// if (y < M_H * 0.5)
@@ -67,7 +71,6 @@ void	handle_mouse(t_data *data)
 	int	y;
 
 	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);
-	//printf("x; %d  y; %d\n", x, y);
 	if (!out_of_screen(x, y))
 	{
 		check_x_axis(data, x);
