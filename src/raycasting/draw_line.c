@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 11:32:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/22 19:50:14 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,16 @@ static void	init_tex_line(t_data *data)
 	double	wall_x;
 	int		tex_width;
 
-	tex_width = data->line->texture[data->ray->side - 1].width;
-	data->line->tex_num = data->ray->side;
+	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'D')
+	{
+		tex_width = data->line->texture[4].width;
+		data->line->tex_num = data->ray->side;
+	}
+	else
+	{
+		tex_width = data->line->texture[data->ray->side - 1].width;
+		data->line->tex_num = data->ray->side;
+	}
 	if (data->ray->side == EAST || data->ray->side == WEST)
 		wall_x = data->player.position[1]
 			+ data->line->perp_wall_dist * data->ray->ray_dir[1];
@@ -60,7 +68,10 @@ static void	draw_texture_color(t_data *data, int x, int i)
 	int		color;
 	t_img	texture;
 
-	texture = data->line->texture[data->ray->side - 1];
+	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'D')
+		texture = data->line->texture[4];
+	else
+		texture = data->line->texture[data->ray->side - 1];
 	step = 1.0 * texture.height / data->line->line_height;
 	tex_pos = (data->line->draw_start - M_H / 2
 			+ data->line->line_height / 2) * step;

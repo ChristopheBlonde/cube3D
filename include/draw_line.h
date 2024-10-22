@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:46:25 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 11:36:01 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/22 19:11:53 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "data.h"
 # include "graph.h"
-# define NB_OF_TEX 4
+# define NB_OF_TEX 5
 
 typedef struct s_data	t_data;
 typedef struct s_img	t_img;
