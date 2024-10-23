@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:19:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/21 13:55:41 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 16:40:06 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,21 @@ void	is_valid_character(t_map *map, int pos[2], size_t *unknow)
 		map->nb_doors++;
 }
 
+static void	init_door(t_map *map, t_door *door, int x, int y)
+{
+	door->pos_x = x;
+	door->pos_y = y;
+	door->status = CLOSE;
+	if ((y > 0 && map->map[y - 1][x] == '1')
+		|| (y < (int)map->height - 1 && map->map[y + 1][x] == '1'))
+		door->dir = EW;
+	else if ((x > 0 && map->map[y][x - 1] == '1')
+		|| (x < (int)map->width - 1 && map->map[y][x + 1] == '1'))
+		door->dir = NS;
+	else
+		door->dir = NODIR;
+}
+
 bool	init_doors(t_map *map)
 {
 	int		x;
@@ -47,9 +62,7 @@ bool	init_doors(t_map *map)
 		{
 			if (map->map[y][x] == 'D')
 			{
-				door.pos_x = x;
-				door.pos_y = y;
-				door.status = CLOSE;
+				init_door(map, &door, x, y);
 				map->doors[++curr] = door;
 			}
 		}

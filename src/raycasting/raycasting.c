@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/22 12:12:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 16:35:52 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,21 +96,8 @@ static void	calculating_ray_size(t_data *data)
 		}
 		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1')
 			break ;
-		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'D')
-		{
-			if (data->map.map[data->ray->map[1]][data->ray->map[0] + 1] == '1')
-			{
-				if (data->ray->side_dist_x > data->ray->side_dist_y - 0.5
-						* data->ray->delta_dist_y)
-					break ;
-			}
-			if (data->map.map[data->ray->map[1] + 1][data->ray->map[0]] == '1')
-			{
-				if (data->ray->side_dist_x - 0.5 * data->ray->delta_dist_x
-						< data->ray->side_dist_y)
-					break ;
-			}	
-		}
+		if (checkdoor(data))
+			break ;
 	}
 }
 

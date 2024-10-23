@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 11:23:06 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 16:10:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_ray
 	t_dir	side;
 }	t_ray;
 
-int	raycasting(t_data *data);
+int		raycasting(t_data *data);
+bool	checkdoor(t_data *data);
 
 #endif

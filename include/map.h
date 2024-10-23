@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/21 13:48:11 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:57:43 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,16 @@ typedef enum e_door_status
 	OPENING,
 }	t_dstatus;
 
+typedef enum e_door_derection
+{
+	NODIR,
+	NS,
+	EW,
+}	t_d_dir;
+
 typedef struct s_door
 {
+	t_d_dir		dir;
 	t_dstatus	status;
 	int			pos_x;
 	int			pos_y;
