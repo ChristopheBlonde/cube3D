@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 12:27:08 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 17:17:44 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "data.h"
 # include "sprite.h"
 
-# define M_W 800
-# define M_H 600
+# define M_W 1920
+# define M_H 1080
 # define M_NAME "cub3D"
 # define M_RED 84
 # define M_GREEN 122
