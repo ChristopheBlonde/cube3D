@@ -62,7 +62,7 @@ static void	draw_texture_color(t_data *data, int x, int i)
 
 	texture = data->line->texture[data->ray->side - 1];
 	step = 1.0 * texture.height / data->line->line_height;
-	tex_pos = (data->line->draw_start - M_H / 2
+	tex_pos = (data->line->draw_start - data->player.offset_y - M_H / 2
 			+ data->line->line_height / 2) * step;
 	while (i < data->line->draw_end)
 	{

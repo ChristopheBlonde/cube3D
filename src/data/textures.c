@@ -49,5 +49,9 @@ bool	init_textures(t_data *data)
 		return (false);
 	if (!set_texture_img(data, &data->line->texture[3], data->map.ea))
 		return (false);
+	if (!set_texture_img(data, &data->line->texture[4], "assets/textures/wood.xpm"))
+		return (false);
+	if (!set_texture_img(data, &data->line->texture[5], "assets/textures/colorstone.xpm"))
+		return (false);
 	return (true);
 }
