@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 16:35:52 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 17:10:01 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int	raycasting(t_data *data)
 	int	x;
 
 	x = 0;
+	draw_floor_celling(data);
 	while (x < M_W)
 	{
 		init_ray(data, x);

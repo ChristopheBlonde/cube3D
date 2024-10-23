@@ -6,23 +6,11 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/17 07:33:14 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 17:03:50 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-int	zero_input(int *keyboard, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size && !keyboard[i])
-		i++;
-	if (keyboard[i])
-		return (0);
-	return (1);
-}
 
 void	handle_movement_and_rotation(t_data *data)
 {
@@ -38,9 +26,43 @@ void	handle_movement_and_rotation(t_data *data)
 	if (keyboard[KEY_D])
 		move_player(&data->player, &data->map, KEY_D, 0.08);
 	if (keyboard[KEY_RIGHT])
-		rotate_player(&data->player, 0.01 * PI);
+		rotate_player(&data->player, MOUSE_SPEED);
 	if (keyboard[KEY_LEFT])
-		rotate_player(&data->player, -0.01 * PI);
+		rotate_player(&data->player, -MOUSE_SPEED);
+}
+
+void	check_y_axis(t_data *data, int y)
+{
+	static double	offset_y = 0;
+
+	offset_y -= (y - M_H / 2);
+	if (offset_y > 450)
+		offset_y = 450;
+	if (offset_y < -450)
+		offset_y = -450;
+	data->player.offset_y = offset_y;
+}
+
+int	out_of_screen(int x, int y)
+{
+	if (x < 0 || x > M_W ||
+		y < 0 || y > M_H)
+		return (1);
+	return (0);
+}
+
+void	handle_mouse(t_data *data)
+{
+	int	x;
+	int	y;
+
+	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);
+	if (!out_of_screen(x, y))
+	{
+		rotate_player(&data->player, MOUSE_SPEED * (x - M_W / 2) / 100);
+		check_y_axis(data, y);
+	}
+	mlx_mouse_move(data->win->mlx_ptr, data->win->win_ptr, M_W * 0.5, M_H * 0.5);
 }
 
 void	handle_minimap_changed(t_data *data)
@@ -75,8 +97,7 @@ int	handle_input(t_data *data)
 	int	*keyboard;
 
 	keyboard = data->player.keyboard;
-	if (zero_input(keyboard, KEY_NB))
-		return (1);
+	handle_mouse(data);
 	handle_movement_and_rotation(data);
 	handle_minimap_changed(data);
 	return (0);

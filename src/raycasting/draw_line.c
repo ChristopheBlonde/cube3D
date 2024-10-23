@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 11:10:05 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 17:08:33 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ static void	init_line(t_data *data, int image)
 			data->map.floor[1], data->map.floor[2]);
 	data->line->perp_wall_dist = calculate_perp_wall_dist(data);
 	data->line->line_height = (M_H / data->line->perp_wall_dist);
-	data->line->draw_start = -data->line->line_height / 2 + M_H / 2;
+	data->line->draw_start = (-data->line->line_height / 2 + M_H / 2)
+		+ data->player.offset_y;
 	if (data->line->draw_start < 0)
 		data->line->draw_start = 0;
-	data->line->draw_end = data->line->line_height / 2 + M_H / 2;
+	data->line->draw_end = (data->line->line_height / 2 + M_H / 2)
+		+ data->player.offset_y;
 	if (data->line->draw_end >= M_H)
 		data->line->draw_end = M_H - 1;
 	init_tex_line(data, image);
@@ -59,8 +61,8 @@ static void	draw_texture_color(t_data *data, int x, int i, int image)
 {
 	double	step;
 	double	tex_pos;
-	int		tex_y;
-	int		color;
+	int	tex_y;
+	int	color;
 	t_img	texture;
 
 	if (image)
@@ -68,7 +70,7 @@ static void	draw_texture_color(t_data *data, int x, int i, int image)
 	else
 		texture = data->line->texture[data->ray->side - 1];
 	step = 1.0 * texture.height / data->line->line_height;
-	tex_pos = (data->line->draw_start - M_H / 2
+	tex_pos = (data->line->draw_start - data->player.offset_y - M_H / 2
 			+ data->line->line_height / 2) * step;
 	while (i < data->line->draw_end)
 	{
@@ -87,24 +89,15 @@ static void	draw_texture_color(t_data *data, int x, int i, int image)
 
 static void	pixel_line(t_data *data, int x, int image)
 {
-	int		i;
-	double	dist;
+	int	i;
 
 	i = 0;
 	while (i < data->line->draw_start)
-	{
-		dist = i / data->line->draw_start;
-		my_mlx_pixel_put(data->img, x, i, alpha(dist,
-				data->line->ceiling_color, 0xFF000000));
 		i++;
-	}
 	draw_texture_color(data, x, i, image);
 	i = data->line->draw_end;
 	while (i < M_H - 1)
-	{
-		my_mlx_pixel_put(data->img, x, i, data->line->floor_color);
 		i++;
-	}
 }
 
 void	draw_line(t_data *data, int x)
@@ -114,7 +107,7 @@ void	draw_line(t_data *data, int x)
 	pixel_line(data, x, 0);
 	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'D')
 	{
-		init_line(data, 4);
-		pixel_line(data, x, 4);
+		init_line(data, 6);
+		pixel_line(data, x, 6);
 	}
 }

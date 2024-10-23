@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:56:58 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 16:40:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/23 17:00:59 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ bool	init_textures(t_data *data)
 	if (!set_texture_img(data, &data->line->texture[3], data->map.ea))
 		return (false);
 	if (!set_texture_img(data, &data->line->texture[4],
+			"assets/textures/wood.xpm"))
+		return (false);
+	if (!set_texture_img(data, &data->line->texture[5],
+			"assets/textures/colorstone.xpm"))
+		return (false);
+	if (!set_texture_img(data, &data->line->texture[6],
 			"./assets/textures/Door.xpm"))
 		return (false);
 	return (true);
