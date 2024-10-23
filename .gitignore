@@ -2,7 +2,7 @@
 *.o
 *.swp
 test*
-.DS_store/
+.DS_store
 .vscode
 tags
 cube3D_Chris/

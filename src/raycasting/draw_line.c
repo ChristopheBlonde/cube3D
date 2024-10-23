@@ -6,37 +6,36 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/15 14:16:16 by ahuge            ###   ########.fr       */
+/*   Updated: 2024/10/23 15:23:47 by ahuge            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw_line.h"
-#include "graph.h"
 
-double	calculate_perp_wall_dist(t_data *data)
+static void	init_tex_line(t_data *data)
 {
-	if (data->ray->side == EAST || data->ray->side == WEST)
-		return (data->ray->side_dist_x - data->ray->delta_dist_x);
-	else
-		return (data->ray->side_dist_y - data->ray->delta_dist_y);
-}
+	double	wall_x;
+	int		tex_width;
 
-void	init_tex_line(t_data *data)
-{
+	tex_width = data->line->texture[data->ray->side - 1].width;
 	data->line->tex_num = data->ray->side;
 	if (data->ray->side == EAST || data->ray->side == WEST)
-		data->line->wall_x = data->player.position[1] + data->line->perp_wall_dist * data->ray->ray_dir[1];
+		wall_x = data->player.position[1]
+			+ data->line->perp_wall_dist * data->ray->ray_dir[1];
 	else
-		data->line->wall_x = data->player.position[0] + data->line->perp_wall_dist * data->ray->ray_dir[0];
-	data->line->wall_x -= floor(data->line->wall_x);
-	data->line->tex_x = (int)(data->line->wall_x * (double)(TEX_WIDTH));
-	if ((data->ray->side == EAST || data->ray->side == WEST) && data->ray->ray_dir[0] > 0)
-		data->line->tex_x = TEX_WIDTH - data->line->tex_x - 1;
-	if ((data->ray->side == SOUTH || data->ray->side == NORTH) && data->ray->ray_dir[1] < 0)
-		data->line->tex_x = TEX_WIDTH - data->line->tex_x - 1;
+		wall_x = data->player.position[0]
+			+ data->line->perp_wall_dist * data->ray->ray_dir[0];
+	wall_x -= floor(wall_x);
+	data->line->tex_x = (int)(wall_x * (double)(tex_width));
+	if ((data->ray->side == EAST || data->ray->side == WEST)
+		&& data->ray->ray_dir[0] > 0)
+		data->line->tex_x = tex_width - data->line->tex_x - 1;
+	if ((data->ray->side == SOUTH || data->ray->side == NORTH)
+		&& data->ray->ray_dir[1] < 0)
+		data->line->tex_x = tex_width - data->line->tex_x - 1;
 }
 
-void	init_line(t_data *data)
+static void	init_line(t_data *data)
 {
 	data->line->ceiling_color = get_color(1, data->map.ceiling[0],
 			data->map.ceiling[1], data->map.ceiling[2]);
@@ -53,26 +52,29 @@ void	init_line(t_data *data)
 	init_tex_line(data);
 }
 
-void	draw_texture_color(t_data *data, int x, int draw_start)
+static void	draw_texture_color(t_data *data, int x, int i)
 {
 	double	step;
 	double	tex_pos;
-	int		tex_y;
-	int		color;
+	int	tex_y;
+	int	color;
+	t_img	texture;
 
-	step = 1.0 * TEX_HEIGHT / data->line->line_height;
-	tex_pos = (data->line->draw_start - data->player.offset_y - M_H / 2 + data->line->line_height / 2) * step;
-	while (draw_start < data->line->draw_end)
+	texture = data->line->texture[data->ray->side - 1];
+	step = 1.0 * texture.height / data->line->line_height;
+	tex_pos = (data->line->draw_start - M_H / 2
+			+ data->line->line_height / 2) * step;
+	while (i < data->line->draw_end)
 	{
-		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
+		tex_y = (int)tex_pos & (texture.height - 1);
 		tex_pos += step;
-		color = ft_get_pixel_img(data->line->texture[data->ray->side - 1], data->line->tex_x, tex_y);
-		my_mlx_pixel_put(data->img, x, draw_start, color);
-		draw_start++;
+		color = ft_get_pixel_img(texture, data->line->tex_x, tex_y);
+		my_mlx_pixel_put(data->img, x, i, color);
+		i++;
 	}
 }
 
-void	pixel_line(t_data *data, int x)
+static void	pixel_line(t_data *data, int x)
 {
 	int	i;
 

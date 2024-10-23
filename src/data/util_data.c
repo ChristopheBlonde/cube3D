@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/15 12:30:43 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 11:15:20 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ int	init_data_allocations(t_data *data)
 	data->line = (t_line *)ft_calloc(1, sizeof(t_line));
 	if (!data->line)
 		return (0);
+	data->line->texture = NULL;
 	data->ray = (t_ray *)ft_calloc(1, sizeof(t_ray));
 	if (!data->ray)
 		return (0);
 	if (!init_arr_sprites(data))
 		return (0);
-	init_textures(data);
+	if (!init_textures(data))
+		return (0);
 	return (1);
 }
 
@@ -113,7 +115,11 @@ void	free_data(t_data *data)
 	if (data->mnmap)
 		free(data->mnmap);
 	if (data->line)
+	{
+		if (data->line->texture)
+			free(data->line->texture);
 		free(data->line);
+	}
 	if (data->ray)
 		free(data->ray);
 }

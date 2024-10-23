@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:31:15 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/15 11:58:10 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/16 12:26:03 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define PI M_PI
 # define KEY_NB 6
 
-typedef struct	s_data	t_data;
-typedef struct	s_map	t_map;
+typedef struct s_data	t_data;
+typedef struct s_map	t_map;
 
 typedef enum e_direction
 {
@@ -33,7 +33,7 @@ typedef enum e_direction
 	WEST,
 }	t_dir;
 
-typedef enum	e_keyboard
+typedef enum e_keyboard
 {
 	KEY_W,
 	KEY_A,
@@ -41,9 +41,9 @@ typedef enum	e_keyboard
 	KEY_D,
 	KEY_LEFT,
 	KEY_RIGHT,
-} t_keyboard;
+}	t_keyboard;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	t_dir	dir;
 	t_point	pos;

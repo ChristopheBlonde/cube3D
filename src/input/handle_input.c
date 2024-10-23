@@ -1,16 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_input.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
+/*   Updated: 2024/10/23 15:17:58 by ahuge            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube.h"
-
-int	zero_input(int *keyboard, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size && !keyboard[i])
-		i++;
-	if (keyboard[i])
-		return (0);
-	return (1);
-}
 
 void	handle_movement_and_rotation(t_data *data)
 {
@@ -70,8 +70,6 @@ int	handle_input(t_data *data)
 	int	*keyboard;
 
 	keyboard = data->player.keyboard;
-	// if (zero_input(keyboard, KEY_NB))
-	// 	return (1);							//To change
 	handle_mouse(data);
 	handle_movement_and_rotation(data);
 	return (0);
