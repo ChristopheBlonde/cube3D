@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:30:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 14:04:35 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/24 13:39:31 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ static bool	data_add_sprite(t_data *data, char **tmp, size_t *j)
 			ft_free_array((void **)tmp);
 			return (false);
 		}
+		ft_free_array((void **)pos);
 		i++;
 	}
 	return (true);
@@ -114,17 +115,19 @@ static bool	data_add_sprite(t_data *data, char **tmp, size_t *j)
 
 bool	init_arr_sprites(t_data *data)
 {
-	size_t	i;
+	int		i;
 	size_t	j;
 	char	**tmp;
 
-	i = 0;
+	i = -1;
 	j = 0;
+	if (data->map.sprite_nb == 0)
+		return (true);
 	data->arr_s = (t_sprite **)ft_calloc(data->map.sprite_nb
 			+ 1, sizeof(t_sprite *));
 	if (!data->arr_s)
 		return (err_sprite(3, NULL));
-	while (data->map.sprites[i])
+	while (data->map.sprites[++i])
 	{
 		tmp = ft_split(data->map.sprites[i], ',');
 		if (!is_valid_arr(tmp))
@@ -135,7 +138,6 @@ bool	init_arr_sprites(t_data *data)
 		if (!data_add_sprite(data, tmp, &j))
 			return (false);
 		ft_free_array((void **)tmp);
-		i++;
 	}
 	return (true);
 }

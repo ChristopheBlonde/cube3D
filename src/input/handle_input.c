@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 17:03:50 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/24 14:08:16 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,19 @@ void	check_y_axis(t_data *data, int y)
 	data->player.offset_y = offset_y;
 }
 
-int	out_of_screen(int x, int y)
-{
-	if (x < 0 || x > M_W ||
-		y < 0 || y > M_H)
-		return (1);
-	return (0);
-}
-
 void	handle_mouse(t_data *data)
 {
 	int	x;
 	int	y;
 
 	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);
-	if (!out_of_screen(x, y))
+	if (!(x < 0 || x > M_W || y < 0 || y > M_H))
 	{
 		rotate_player(&data->player, MOUSE_SPEED * (x - M_W / 2) / 100);
 		check_y_axis(data, y);
 	}
-	mlx_mouse_move(data->win->mlx_ptr, data->win->win_ptr, M_W * 0.5, M_H * 0.5);
+	mlx_mouse_move(data->win->mlx_ptr,
+		data->win->win_ptr, M_W * 0.5, M_H * 0.5);
 }
 
 void	handle_minimap_changed(t_data *data)

@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 16:57:56 by cblonde           #+#    #+#              #
-#    Updated: 2024/10/23 17:41:12 by cblonde          ###   ########.fr        #
+#    Updated: 2024/10/24 14:46:43 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CFLAGS = -Werror -Wextra -Wall -g
 
 INCLUDE = -Iinclude -Ilib -Imlx -I/usr/include -I/opt/X11/include
 
-LIBRARIES = -Llib -lft -Lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+LIBRARIES = -Llib -lft -Lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -lXfixes
 
-LIBMAC = -Llib -lft -Lmlx -L/usr/lib -L/usr/X11/lib -lXext -lX11\
+LIBMAC = -Llib -lft -Lmlx -L/usr/lib -L/usr/X11/lib -lXext -lX11 -lXfixes\
 		 -lmlx -framework OpenGL -framework AppKit
 
 DSRC = src/

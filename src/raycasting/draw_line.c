@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 17:43:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/24 16:48:06 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ static void	draw_texture_color(t_data *data, int x, int i, int image)
 {
 	double	step;
 	double	tex_pos;
-	int	tex_y;
-	int	color;
+	int		tex_y;
+	int		color;
 	t_img	texture;
 
 	if (image)
@@ -74,9 +74,7 @@ static void	draw_texture_color(t_data *data, int x, int i, int image)
 			+ data->line->line_height / 2) * step;
 	while (i < data->line->draw_end)
 	{
-		tex_y = (int)tex_pos;
-		if (tex_y > texture.height - 1)
-			tex_y = texture.height - 1;
+		tex_y = (int)tex_pos & (texture.height - 1);
 		tex_pos += step;
 		color = ft_get_pixel_img(texture, data->line->tex_x, tex_y);
 		if (image && color != (int)0xFF000000)

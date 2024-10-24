@@ -1,4 +1,5 @@
 #include "mlx_int.h"
+#include <X11/extensions/Xfixes.h>
 
 int		mlx_mouse_move(t_xvar *xvar, t_win_list *win, int x, int y)
 {
@@ -8,6 +9,7 @@ int		mlx_mouse_move(t_xvar *xvar, t_win_list *win, int x, int y)
 
 int		mlx_mouse_hide(t_xvar *xvar, t_win_list *win)
 {
+	/*
 	static char data[1] = {0};
 	Cursor cursor;
 	Pixmap blank;
@@ -18,6 +20,8 @@ int		mlx_mouse_hide(t_xvar *xvar, t_win_list *win)
 	XDefineCursor(xvar->display, win->window, cursor);
 	XFreePixmap(xvar->display, blank);
 	XFreeCursor(xvar->display, cursor);
+	*/
+	XFixesHideCursor(xvar->display, win->window);
 }
 
 int		mlx_mouse_show(t_xvar *xvar, t_win_list *win)

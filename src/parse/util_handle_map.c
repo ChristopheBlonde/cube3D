@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:19:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 16:40:06 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/24 10:56:45 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ bool	init_doors(t_map *map)
 	if (!map->doors)
 		return (false);
 	y = -1;
-	while (++y < (int)map->height)
+	while (map->map[++y])
 	{
 		x = -1;
-		while (++x < (int)map->width)
+		while (map->map[y][++x])
 		{
-			if (map->map[y][x] == 'D')
+			if (map->map[y][x] && map->map[y][x] == 'D')
 			{
 				init_door(map, &door, x, y);
 				map->doors[++curr] = door;

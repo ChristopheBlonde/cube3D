@@ -1,6 +1,6 @@
-NO ./assets/textures/bluestone.xpm 
-SO ./assets/textures/eagle.xpm
-WE ./assets/textures/mossy.xpm
+NO ./assets/textures/wall.xpm 
+SO ./assets/textures/wall.xpm
+WE ./assets/textures/wall.xpm
 EA ./assets/textures/wall.xpm
      
 F 234, 234, 234

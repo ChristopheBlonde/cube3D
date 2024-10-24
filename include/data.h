@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 17:17:09 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/24 09:55:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ uint64_t	get_time(void);
 uint64_t	time_past(t_data *data);
 bool		update(t_data *data);
 bool		init_textures(t_data *data);
+void		free_textures(t_data *data);
 
 #endif

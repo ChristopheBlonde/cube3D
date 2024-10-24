@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/15 12:17:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/24 14:03:40 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_sprite	*new_sprite(t_data *data, char *file)
 	}
 	sprite->img->img_ptr = mlx_xpm_file_to_image(data->win->mlx_ptr, file,
 			(int *)&sprite->img->width, (int *)&sprite->img->height);
+	sprite->img->win = data->win;
 	if (!sprite->img->img_ptr)
 	{
 		free_sprite(sprite);
@@ -55,16 +56,13 @@ void	free_sprite(t_sprite *sprite)
 		return ;
 	if (sprite->img && sprite->img->img_ptr)
 		free_img(sprite->img);
-	sprite->img->img_ptr = NULL;
-	if (sprite->img)
-		free(sprite->img);
 	sprite->img = NULL;
 	if (sprite->anim)
 	{
 		anim = (t_anim *)(sprite->anim)->content;
 		frames = (t_list *)anim->frames;
 		ft_lstclear(&frames, free_img);
-		free(sprite->anim);
+		ft_lstclear(&sprite->anim, free);
 		sprite->anim = NULL;
 	}
 	free(sprite);
@@ -81,4 +79,5 @@ void	free_arr_sprites(t_sprite **arr)
 		arr[i] = NULL;
 		i++;
 	}
+	free(arr);
 }
