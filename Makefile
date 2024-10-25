@@ -12,7 +12,7 @@
 
 CC = cc
 
-CFLAGS = -Werror -Wextra -Wall -g
+CFLAGS = -g #-Werror -Wextra -Wall -g
 
 INCLUDE = -Iinclude -Ilib -Imlx -I/usr/include -I/opt/X11/include
 
