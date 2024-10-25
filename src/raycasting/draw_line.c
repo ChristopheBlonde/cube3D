@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 16:48:06 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/25 17:01:28 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void	draw_line(t_data *data, int x)
 	pixel_line(data, x, 0);
 	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'D')
 	{
+		data->line->texture[6] = *(get_current_img(data->door_s));
 		init_line(data, 6);
 		pixel_line(data, x, 6);
 	}

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 14:09:37 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/25 16:56:29 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,14 @@ int	init_data_allocations(t_data *data)
 		return (0);
 	if (!init_textures(data))
 		return (0);
+	if (!init_door_sprite(data))
+		return (0);
 	return (1);
 }
 
 int	init_data(t_data *data, char **argv)
 {
-	data->win = NULL;
-	data->img = NULL;
-	data->mnmap = NULL;
-	data->ray = NULL;
-	data->line = NULL;
-	data->arr_s = NULL;
-	data->start_time = 0;
-	data->last_update = 0;
-	data->fps = 60;
+	init_data_var(data);
 	init_map(&data->map);
 	if (!initialize_map(&data->map, argv[1]))
 		return (0);

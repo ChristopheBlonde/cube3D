@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:19:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 10:56:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/25 09:45:56 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ bool	init_doors(t_map *map)
 	t_door	door;
 
 	curr = -1;
+	if (!map->nb_doors)
+		return (true);
 	map->doors = (t_door *)ft_calloc(map->nb_doors + 1, sizeof(t_door));
 	if (!map->doors)
 		return (false);

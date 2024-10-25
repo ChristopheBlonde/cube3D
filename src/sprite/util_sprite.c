@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 14:03:40 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/25 12:16:26 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,18 @@ void	free_arr_sprites(t_sprite **arr)
 		i++;
 	}
 	free(arr);
+}
+
+t_img	*get_current_img(t_sprite *sprite)
+{
+	t_img	*img;
+	t_list	*lst_anim;
+	t_anim	*anim;
+	t_list	*frames;
+
+	lst_anim = (t_list *)sprite->anim;
+	anim = (t_anim *)lst_anim->content;
+	frames = (t_list *)anim->frames;
+	img = (t_img *)ft_lstget(frames, anim->current_frame_num)->content;
+	return (img);
 }

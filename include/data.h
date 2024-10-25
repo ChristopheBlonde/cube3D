@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 09:55:00 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/25 10:07:11 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_data
 	uint64_t	last_update;
 	int			fps;
 	t_floor_celling	*floor_c;
+	t_sprite	*door_s;
 }	t_data;
 
 int			init_data(t_data *data, char **argv);
@@ -59,5 +60,6 @@ uint64_t	time_past(t_data *data);
 bool		update(t_data *data);
 bool		init_textures(t_data *data);
 void		free_textures(t_data *data);
+void		init_data_var(t_data *data);
 
 #endif

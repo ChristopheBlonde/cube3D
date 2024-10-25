@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/15 12:14:02 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/25 11:50:07 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,12 @@ static void	find_render_size(t_rend *render)
 		render->end_x = M_W - 1;
 }
 
-static void	update_anim(t_sprite *sprite, t_img **img)
+static void	select_img(t_sprite *sprite, t_img **img)
 {
-	t_list	*lst_anim;
-	t_list	*frames;
-	t_anim	*a;
-
 	if (!sprite->animated)
 		*img = (t_img *)sprite->img;
 	else
-	{
-		lst_anim = (t_list *)sprite->anim;
-		a = (t_anim *)lst_anim->content;
-		frames = (t_list *)a->frames;
-		*img = (t_img *)ft_lstget(frames, a->current_frame_num)->content;
-	}
+		*img = get_current_img(sprite);
 }
 
 void	render_sprite(t_data *data)
@@ -83,7 +74,7 @@ void	render_sprite(t_data *data)
 	sort_sprites(data);
 	while (data->arr_s[i])
 	{
-		update_anim(data->arr_s[i], &img);
+		select_img(data->arr_s[i], &img);
 		render = data->arr_s[i]->render;
 		render.cam_x = data->arr_s[i]->pos_x - data->player.position[0];
 		render.cam_y = data->arr_s[i]->pos_y - data->player.position[1];

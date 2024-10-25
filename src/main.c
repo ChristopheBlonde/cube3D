@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 14:33:51 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/25 16:53:43 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	functionTest(t_data *data) //TODO
 		return (0);
 	ft_foreach((void **)data->arr_s, update_animation);
 	raycasting(data);
+	update_animation(data->door_s);
 	if (data->mnmap->minimap)
 		draw_mnmap(data);
 	if (data->map.sprite_nb != 0)

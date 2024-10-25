@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 13:36:28 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/25 11:46:34 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,7 @@ t_anim		*ft_slice_sprite(t_sprite *sprite, t_sprite_slice slice,
 				int frames, int delay);
 void		init_sprite(t_sprite *sprite, t_s_init *info);
 void		update_animation(void *ptr);
+bool		init_door_sprite(t_data *data);
+t_img		*get_current_img(t_sprite *sprite);
 
 #endif
