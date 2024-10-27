@@ -68,7 +68,7 @@ int	init_data_allocations(t_data *data)
 	return (1);
 }
 
-int	init_data(t_data *data, char **argv)
+void	set_data_to_zero(t_data *data)
 {
 	data->win = NULL;
 	data->img = NULL;
@@ -78,6 +78,12 @@ int	init_data(t_data *data, char **argv)
 	data->arr_s = NULL;
 	data->start_time = 0;
 	data->last_update = 0;
+	data->mouse = false;
+}
+
+int	init_data(t_data *data, char **argv)
+{
+	set_data_to_zero(data);
 	data->fps = 60;
 	init_map(&data->map);
 	if (!initialize_map(&data->map, argv[1]))

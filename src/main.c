@@ -28,13 +28,6 @@ static int	functionTest(t_data *data) //TODO
 	return (1);
 }
 
-void	init_mouse_pos_and_hide(t_data *data)
-{
-	mlx_mouse_hide(data->win->mlx_ptr, data->win->win_ptr);
-	mlx_mouse_move(data->win->mlx_ptr,
-		data->win->win_ptr, M_W * 0.5, M_H * 0.5);
-}
-
 int	main(int argc, char **argv)
 {
 	t_data		data;
@@ -46,7 +39,6 @@ int	main(int argc, char **argv)
 		free_data(&data);
 		return (1);
 	}
-	init_mouse_pos_and_hide(&data);
 	mlx_loop_hook(data.win->mlx_ptr, &functionTest, &data);
 	mlx_hook(data.win->win_ptr,
 		KeyPress, KeyPressMask, &handle_keypress, &data);

@@ -32,21 +32,21 @@ static void	draw_sprite(t_data *data, t_rend *render, t_img *img)
 				d = (y - render->v_m_sc) * 256 - M_H * 128 + render->s_h * 128;
 				render->tex_y = ((d * img->height) / render->s_h)
 					/ 256;
-				put_pixel_win(data, x, y,
+				put_pixel_win(data, x, y + data->player.offset_y,
 					ft_get_pixel_img(*img, render->tex_x, render->tex_y));
 			}
 		}
 	}
 }
 
-static void	find_render_size(t_rend *render)
+static void	find_render_size(t_data *data, t_rend *render)
 {
 	render->start_y = -render->s_h / 2 + M_H / 2 + render->v_m_sc;
-	if (render->start_y < 0)
-		render->start_y = 0;
+	if (render->start_y < 0 - data->player.offset_y)
+		render->start_y = 0 - data->player.offset_y;
 	render->end_y = render->s_h / 2 + M_H / 2 + render->v_m_sc;
-	if (render->end_y >= M_H)
-		render->end_y = M_H - 1;
+	if (render->end_y >= M_H - data->player.offset_y)
+		render->end_y = M_H - 1 - data->player.offset_y;
 	render->s_w = abs(((int)(M_H / render->trf_y))) / render->u_div;
 	render->start_x = -render->s_w / 2 + render->s_sc_x;
 	if (render->start_x < 0)
@@ -96,7 +96,7 @@ void	render_sprite(t_data *data)
 		render.s_sc_x = (int)((M_W / 2) * (1 + render.trf_x / render.trf_y));
 		render.v_m_sc = (int)(render.v_move / render.trf_y);
 		render.s_h = abs(((int)(M_H / render.trf_y))) / render.v_div;
-		find_render_size(&render);
+		find_render_size(data, &render);
 		draw_sprite(data, &render, img);
 		i++;
 	}

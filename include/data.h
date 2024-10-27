@@ -49,6 +49,7 @@ typedef struct s_data
 	uint64_t	start_time;
 	uint64_t	last_update;
 	int			fps;
+	bool		mouse;
 	t_floor_celling	*floor_c;
 }	t_data;
 

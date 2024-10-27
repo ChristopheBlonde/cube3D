@@ -19,7 +19,7 @@
 # include <X11/keysym.h>
 
 # define PI M_PI
-# define KEY_NB 9
+# define KEY_NB 10
 
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
@@ -44,6 +44,7 @@ typedef enum e_keyboard
 	KEY_MAP,
 	KEY_UP_MAP,
 	KEY_DOWN_MAP,
+	KEY_MOUSE,
 }	t_keyboard;
 
 typedef struct s_player
