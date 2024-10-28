@@ -14,6 +14,7 @@
 
 static void	init_ray(t_data *data, int x)
 {
+	data->ray->door = NULL;
 	data->ray->camera_x = (2 * (x / (double)M_W)) - 1;
 	data->ray->ray_dir[0] = data->player.v_dir[0]
 		+ (data->player.v_plane[0] * data->ray->camera_x);
@@ -96,8 +97,12 @@ static void	calculating_ray_size(t_data *data)
 		}
 		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1')
 			break ;
-		if (checkdoor(data))
-			break ;
+		if (!data->ray->door && checkdoor(data))
+		{
+			data->ray->door = get_door(data, data->ray->map[0], data->ray->map[1]);
+			data->ray->door->perp_door_dist = calculate_perp_door_dist(data);
+		}
+			
 	}
 }
 

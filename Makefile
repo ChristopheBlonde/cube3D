@@ -64,7 +64,7 @@ SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
 	  $(DPARSE)initialize_sprite.c $(DSPRITE)sort_sprites.c\
 	  $(DDATA)util_time.c $(DSPRITE)util_animation.c $(DIN)handle_input.c\
 	  $(DDATA)textures.c $(DRAY)util_drawline.c $(DPARSE)util_handle_map.c\
-	  $(DRAY)checkdoor.c $(DRAY)floor_celling.c
+	  $(DRAY)checkdoor.c $(DRAY)floor_celling.c $(DRAY)draw_doors.c
 
 NAME = cub3D
 

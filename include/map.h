@@ -38,6 +38,7 @@ typedef struct s_door
 	t_dstatus	status;
 	int			pos_x;
 	int			pos_y;
+	double		perp_door_dist;
 }	t_door;
 
 typedef struct s_map

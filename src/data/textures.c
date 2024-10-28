@@ -57,7 +57,7 @@ bool	init_textures(t_data *data)
 			"assets/textures/wood4.xpm"))
 		return (false);
 	if (!set_texture_img(data, &data->line->texture[6],
-			"./assets/textures/Door00.xpm"))
+			"./assets/textures/new_door.xpm"))
 		return (false);
 	return (true);
 }

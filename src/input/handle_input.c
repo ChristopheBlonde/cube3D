@@ -59,6 +59,8 @@ int	check_key_mouse(t_data *data)
 		{
 			data->mouse = false;
 			mlx_mouse_show(data->win->mlx_ptr, data->win->win_ptr);
+			mlx_mouse_move(data->win->mlx_ptr,
+				data->win->win_ptr, M_W * 0.5, M_H * 0.5);
 			data->player.offset_y = 0;
 		}
 		data->player.keyboard[KEY_MOUSE] = false;

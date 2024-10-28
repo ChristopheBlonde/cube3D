@@ -12,19 +12,17 @@
 
 #include "ray.h"
 
-static t_door	*get_door(t_data *data, int x, int y)
+t_door	*get_door(t_data *data, int x, int y)
 {
 	int		i;
-	t_door	*door;
 
-	door = NULL;
 	i = -1;
 	while (++i < (int)data->map.nb_doors)
 	{
 		if (data->map.doors[i].pos_x == x && data->map.doors[i].pos_y == y)
 			return (&data->map.doors[i]);
 	}
-	return (door);
+	return (NULL);
 }
 
 bool	checkdoor(t_data *data)

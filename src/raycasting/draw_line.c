@@ -57,7 +57,7 @@ static void	init_line(t_data *data, int image)
 	init_tex_line(data, image);
 }
 
-static void	draw_texture_color(t_data *data, int x, int i, int image)
+static void	 draw_texture_color(t_data *data, int x, int i, int image)
 {
 	double	step;
 	double	tex_pos;
@@ -90,7 +90,7 @@ static void	pixel_line(t_data *data, int x, int image)
 	int	i;
 
 	i = 0;
-	while (i < data->line->draw_start)
+	while (i < data->line->draw_start) //add mandatory part
 		i++;
 	draw_texture_color(data, x, i, image);
 	i = data->line->draw_end;
@@ -103,9 +103,6 @@ void	draw_line(t_data *data, int x)
 	init_line(data, 0);
 	data->zdist[x] = data->line->perp_wall_dist;
 	pixel_line(data, x, 0);
-	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'D')
-	{
-		init_line(data, 6);
-		pixel_line(data, x, 6);
-	}
+	if (data->ray->door)
+		draw_doors(data, x);
 }

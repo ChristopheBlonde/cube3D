@@ -31,9 +31,13 @@ typedef struct s_ray
 	int		step_x;
 	int		step_y;
 	t_dir	side;
+	t_door	*door;
 }	t_ray;
 
 int		raycasting(t_data *data);
 bool	checkdoor(t_data *data);
+t_door	*get_door(t_data *data, int x, int y);
+void	draw_doors(t_data *data, int x);
+double	calculate_perp_door_dist(t_data *data);
 
 #endif
