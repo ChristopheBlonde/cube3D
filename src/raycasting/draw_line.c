@@ -6,18 +6,20 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/25 17:01:28 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:30:24 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw_line.h"
 
-static void	init_tex_line(t_data *data, int image)
+static void	init_tex_line(t_data *data, int image, t_door *door)
 {
 	double	wall_x;
 	int		tex_width;
 
-	if (image)
+	if (door)
+		tex_width = get_current_img(data->door_s)->width;
+	else if (image)
 		tex_width = data->line->texture[image].width;
 	else
 		tex_width = data->line->texture[data->ray->side - 1].width;
@@ -38,7 +40,7 @@ static void	init_tex_line(t_data *data, int image)
 		data->line->tex_x = tex_width - data->line->tex_x - 1;
 }
 
-static void	init_line(t_data *data, int image)
+static void	init_line(t_data *data, int image, t_door *door)
 {
 	data->line->ceiling_color = get_color(1, data->map.ceiling[0],
 			data->map.ceiling[1], data->map.ceiling[2]);
@@ -54,10 +56,10 @@ static void	init_line(t_data *data, int image)
 		+ data->player.offset_y;
 	if (data->line->draw_end >= M_H)
 		data->line->draw_end = M_H - 1;
-	init_tex_line(data, image);
+	init_tex_line(data, image, door);
 }
 
-static void	draw_texture_color(t_data *data, int x, int i, int image)
+static void	draw_texture_color(t_data *data, int x, int i, t_img *image)
 {
 	double	step;
 	double	tex_pos;
@@ -65,10 +67,7 @@ static void	draw_texture_color(t_data *data, int x, int i, int image)
 	int		color;
 	t_img	texture;
 
-	if (image)
-		texture = data->line->texture[image];
-	else
-		texture = data->line->texture[data->ray->side - 1];
+	texture = *image;
 	step = 1.0 * texture.height / data->line->line_height;
 	tex_pos = (data->line->draw_start - data->player.offset_y - M_H / 2
 			+ data->line->line_height / 2) * step;
@@ -85,28 +84,38 @@ static void	draw_texture_color(t_data *data, int x, int i, int image)
 	}
 }
 
-static void	pixel_line(t_data *data, int x, int image)
+static void	pixel_line(t_data *data, int x, int image, t_door *door)
 {
-	int	i;
-
-	i = 0;
-	while (i < data->line->draw_start)
-		i++;
-	draw_texture_color(data, x, i, image);
-	i = data->line->draw_end;
-	while (i < M_H - 1)
-		i++;
+	if (door)
+		draw_texture_color(data, x, data->line->draw_start,
+			get_current_img(data->door_s));
+	else
+		draw_texture_color(data, x, data->line->draw_start,
+			&data->line->texture[image]);
 }
 
 void	draw_line(t_data *data, int x)
 {
-	init_line(data, 0);
-	data->zdist[x] = data->line->perp_wall_dist;
-	pixel_line(data, x, 0);
-	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'D')
+	t_door *door;
+
+	door = get_door(data, data->ray->map[0], data->ray->map[1]);
+	if (door)
 	{
-		data->line->texture[6] = *(get_current_img(data->door_s));
-		init_line(data, 6);
-		pixel_line(data, x, 6);
+		printf("in door\n");
+		init_line(data, 0, door);
+		pixel_line(data, x, 0, door);
 	}
+	else
+	{
+		printf("not in door\n");
+		init_line(data, 0, NULL);
+		data->zdist[x] = data->line->perp_wall_dist;
+		pixel_line(data, x, 0, NULL);
+	}
+//	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'Y')
+//	{
+//		data->line->texture[6] = *(get_current_img(data->door_s));
+//		init_line(data, 6, NULL);
+//		pixel_line(data, x, 6, NULL);
+//	}
 }

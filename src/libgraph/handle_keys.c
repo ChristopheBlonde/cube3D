@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:58:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/17 07:31:38 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:11:42 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	handle_keyrelease(int keysym, t_data *data)
 		data->player.keyboard[KEY_RIGHT] = 0;
 	if (keysym == XK_Left)
 		data->player.keyboard[KEY_LEFT] = 0;
+	if (keysym == XK_f)
+		data->player.keyboard[KEY_F] = 0;
 	return (0);
 }
 
@@ -58,6 +60,17 @@ int	handle_keypress(int keysym, t_data *data)
 		data->player.keyboard[KEY_RIGHT] = 1;
 	if (keysym == XK_Left)
 		data->player.keyboard[KEY_LEFT] = 1;
+	if (keysym == XK_f)
+		data->player.keyboard[KEY_F] = 1;
 	handle_key_map(keysym, data);
 	return (0);
+}
+
+void	handle_action(t_data *data)
+{
+	printf("key press f, player position: x:%f y%f v_dir: x:%f y:%f\n",
+			data->player.position[0],
+			data->player.position[1],
+			data->player.v_dir[0],
+			data->player.v_dir[1]);
 }

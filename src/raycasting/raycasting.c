@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 17:10:01 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 14:39:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static t_dir	define_side(t_data *data)
 	return (NONE);
 }
 
-static void	calculating_ray_size(t_data *data)
+static void	calculating_ray_size(t_data *data, bool *door)
 {
 	while (1)
 	{
@@ -97,23 +97,39 @@ static void	calculating_ray_size(t_data *data)
 		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1')
 			break ;
 		if (checkdoor(data))
-			break ;
+		{
+			*door = true;
+			data->ray->door[0] = data->ray->map[0];
+			data->ray->door[1] = data->ray->map[1];
+			printf("\tdoor x:%d y:%d\n",data->ray->door[0], data->ray->door[1]);
+		}
 	}
 }
 
 int	raycasting(t_data *data)
 {
-	int	x;
+	int		x;
+	bool	door;
 
 	x = 0;
+	door = false;
 	draw_floor_celling(data);
 	while (x < M_W)
 	{
 		init_ray(data, x);
 		calculating_initial_side_dist(data);
-		calculating_ray_size(data);
+		if (!door)
+			calculating_ray_size(data, &door);
+		else
+		{
+			printf("door x:%d y:%d\n",data->ray->door[0], data->ray->door[1]);
+			data->ray->map[0] = data->ray->door[0];
+			data->ray->map[1] = data->ray->door[1];
+			door = false;
+		}
 		draw_line(data, x);
-		x++;
+		if (!door)
+			x++;
 	}
 	return (0);
 }

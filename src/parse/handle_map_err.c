@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:05:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 16:38:50 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 12:17:34 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,10 @@ static void	implement_arr_test(t_map *map, char **arr, size_t x, size_t y)
 static bool	is_closed(t_map *map)
 {
 	char	**w_arr;
-	bool	res;	
 	int		i;
 	int		j;
 
 	i = -1;
-	res = true;
 	w_arr = duplicate_array(map);
 	if (!w_arr)
 		return (false);
@@ -102,14 +100,16 @@ static bool	is_closed(t_map *map)
 		j = -1;
 		while (++j < (int)map->width)
 		{
-			if ((i == 0 || i == (int)map->height) && w_arr[i][j] == '2')
-				res = false;
-			if ((j == 0 || j == (int)map->width) && w_arr[i][j] == '2')
-				res = false;
+			if ((i == 0 && w_arr[i][j] == '2')
+					|| (i == (int)map->height - 1 && w_arr[i][j] == '2'))
+				return (false);
+			if ((j == 0 && w_arr[i][j] == '2')
+						|| (j == (int)map->width - 1 && w_arr[i][j] == '2'))
+				return (false);
 		}
 	}
 	ft_free_array((void **)w_arr);
-	return (res);
+	return (true);
 }
 
 bool	handle_map_err(t_map *map)

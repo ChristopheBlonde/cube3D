@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:47:43 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/25 16:49:34 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 09:19:17 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ bool	init_door_sprite(t_data *data)
 		return (false);
 	data->door_s->animated = true;
 	ft_lstadd_back(&data->door_s->anim,
-			ft_lstnew(ft_slice_sprite(data->door_s, slice, 4, 60)));
+			ft_lstnew(ft_slice_sprite(data->door_s, slice, 4, 5)));
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 14:08:16 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 09:28:37 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	handle_movement_and_rotation(t_data *data)
 		rotate_player(&data->player, MOUSE_SPEED);
 	if (keyboard[KEY_LEFT])
 		rotate_player(&data->player, -MOUSE_SPEED);
+	if (keyboard[KEY_F])
+		handle_action(data);
 }
 
 void	check_y_axis(t_data *data, int y)

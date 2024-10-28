@@ -6,13 +6,13 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:45:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 16:41:10 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:11:54 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
 
-static t_door	*get_door(t_data *data, int x, int y)
+t_door	*get_door(t_data *data, int x, int y)
 {
 	int		i;
 	t_door	*door;

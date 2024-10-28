@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/16 13:48:48 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:50:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define ERRHEIGHT "Map height can't be null\n"
 # define ERRWIDTH "Map width can't be null\n"
 # define ERRTEXTURE "Texture map is missing\n"
-# define ERRMAPSIZE "Map is too big map dimention must be under 500*500\n"
+# define ERRMAPSIZE "Map is too big map dimention must be under 150 000 cubes\n"
 # define ERRFCOLOR "Floor color is missing\n"
 # define ERRCCOLOR "Ceiling color is missing\n"
 # define ERRMPLAYER "Player is missing\n"

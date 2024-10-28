@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 16:10:08 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 14:19:36 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_ray
 	double	ray_dir[2];
 	double	camera_x;
 	int		map[2];
+	int		door[2];
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	side_dist_x;
