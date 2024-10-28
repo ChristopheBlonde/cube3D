@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 15:30:24 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 17:52:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,12 @@ void	draw_line(t_data *data, int x)
 	door = get_door(data, data->ray->map[0], data->ray->map[1]);
 	if (door)
 	{
-		printf("in door\n");
 		init_line(data, 0, door);
+		data->zdist[x] = data->line->perp_wall_dist;
 		pixel_line(data, x, 0, door);
 	}
 	else
 	{
-		printf("not in door\n");
 		init_line(data, 0, NULL);
 		data->zdist[x] = data->line->perp_wall_dist;
 		pixel_line(data, x, 0, NULL);

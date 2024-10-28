@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:30:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 15:33:16 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 17:57:39 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ double	calculate_perp_wall_dist(t_data *data)
 	t_door *door;
 
 	door = get_door(data, data->ray->map[0], data->ray->map[1]);
-	printf("door:%s\n", door ? "\tporte" : "pas porte");
 	if (data->ray->side == EAST || data->ray->side == WEST)
 	{
 		if (door)

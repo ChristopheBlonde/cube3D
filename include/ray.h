@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 14:19:36 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 18:21:21 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ typedef struct s_ray
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	side_dist_x;
+	double	door_dist_x;
 	double	side_dist_y;
+	double	door_dist_y;
 	int		step_x;
 	int		step_y;
+	t_dir	door_side;
 	t_dir	side;
 }	t_ray;
 

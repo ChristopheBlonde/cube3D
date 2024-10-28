@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 09:28:37 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 17:10:01 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,6 @@ void	handle_minimap_changed(t_data *data)
 
 int	handle_input(t_data *data)
 {
-	int	*keyboard;
-
-	keyboard = data->player.keyboard;
 	handle_mouse(data);
 	handle_movement_and_rotation(data);
 	handle_minimap_changed(data);
