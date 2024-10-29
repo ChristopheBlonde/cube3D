@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 12:22:10 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:38:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ static void	draw_texture_color(t_data *data, int x, int i, t_img *image)
 	int		tex_y;
 	int		color;
 	t_img	texture;
+	double	dalpha;
 
+	dalpha = data->zdist[x] * 0.1;
+	if (dalpha > 1)
+		dalpha = 1;
 	texture = *image;
 	step = 1.0 * texture.height / data->line->line_height;
 	tex_pos = (data->line->draw_start - data->player.offset_y - M_H / 2
@@ -75,7 +79,7 @@ static void	draw_texture_color(t_data *data, int x, int i, t_img *image)
 	{
 		tex_y = (int)tex_pos & (texture.height - 1);
 		tex_pos += step;
-		color = ft_get_pixel_img(texture, data->line->tex_x, tex_y);
+		color = alpha(dalpha ,ft_get_pixel_img(texture, data->line->tex_x, tex_y), (int)0xFF000000);
 		if (image && color != (int)0xFF000000)
 			my_mlx_pixel_put(data->img, x, i, color);
 		if (!image)
