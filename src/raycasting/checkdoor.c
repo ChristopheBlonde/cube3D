@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:45:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 10:24:47 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 12:11:27 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,8 @@ t_door	*get_door(t_data *data, int x, int y)
 	door = NULL;
 	i = -1;
 	while (++i < (int)data->map.nb_doors)
-	{
-	//	printf("Door send x:%d door x:%d send y:%d door y:%d\n",
-	//			x, data->map.doors[i].pos_x, y, data->map.doors[i].pos_y);
 		if (data->map.doors[i].pos_x == x && data->map.doors[i].pos_y == y)
 			return (&data->map.doors[i]);
-	}
 	return (door);
 }
 

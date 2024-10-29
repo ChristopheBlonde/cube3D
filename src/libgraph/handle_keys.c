@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:58:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 10:58:08 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 12:10:32 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,12 @@ void	handle_action(t_data *data)
 	t_door	*door;
 	int		x;
 	int		y;
-	
+
 	x = (int)data->player.position[0] + (int)round(data->player.v_dir[0]);
 	y = (int)data->player.position[1] + (int)round(data->player.v_dir[1]);
-	printf("key press f, player position: x:%d y:%d v_dir: x:%f y:%f\n",
-			(int)data->player.position[0],
-			(int)data->player.position[1],
-			data->player.v_dir[0],
-			data->player.v_dir[1]);
 	door = get_door(data, x, y);
 	if (door)
 	{
-		printf("got a door\n");
 		if (door->status == OPEN)
 			door->status = CLOSING;
 		if (door->status == CLOSE)

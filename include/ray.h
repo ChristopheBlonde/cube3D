@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 20:55:35 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 12:17:46 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ typedef struct s_ray
 
 int		raycasting(t_data *data);
 bool	checkdoor(t_data *data);
-void	calculate_doors(t_data *data, bool *door);
+void	calculate_doors(t_data *data, bool *door, bool save);
 
 #endif
