@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 12:29:36 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 09:10:33 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ typedef struct s_door
 	t_dstatus	status;
 	int			pos_x;
 	int			pos_y;
-	double		perp_door_dist;
+	int			curr_frame;
+	int			nb_frames;
+	int			delay;
+	int			_tmp_delay;
 }	t_door;
 
 typedef struct s_map

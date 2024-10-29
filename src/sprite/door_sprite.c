@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:47:43 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 09:19:17 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 09:45:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,34 @@ bool	init_door_sprite(t_data *data)
 		return (false);
 	data->door_s->animated = true;
 	ft_lstadd_back(&data->door_s->anim,
-			ft_lstnew(ft_slice_sprite(data->door_s, slice, 4, 5)));
+		ft_lstnew(ft_slice_sprite(data->door_s, slice, 4, 5)));
 	return (true);
+}
+
+void	update_doors_anim(t_data *data)
+{
+	int		i;
+	t_door	*door;
+
+	i = -1;
+	if (!data->map.nb_doors)
+		return ;
+	while (++i < (int)data->map.nb_doors)
+	{
+		door = &((data->map.doors)[i]);
+		if (door->status == OPEN || door->status == CLOSE)
+			continue ;
+		if (door->_tmp_delay++ == door->delay)
+		{
+			door->_tmp_delay = 0;
+			if (door->status == OPENING)
+				door->curr_frame++;
+			else
+				door->curr_frame--;
+			if (door->curr_frame == door->nb_frames - 1)
+				door->status = OPEN;
+			if (door->curr_frame == 0)
+				door->status = CLOSE;
+		}
+	}
 }

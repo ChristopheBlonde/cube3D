@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 17:52:08 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 09:38:14 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,17 @@ static void	draw_texture_color(t_data *data, int x, int i, t_img *image)
 
 static void	pixel_line(t_data *data, int x, int image, t_door *door)
 {
+	t_list	*lst_anim;
+	t_anim	*anim;
+
 	if (door)
+	{
+		lst_anim = (t_list *)data->door_s->anim;
+		anim = (t_anim *)lst_anim->content;
+		anim->current_frame_num = door->curr_frame;
 		draw_texture_color(data, x, data->line->draw_start,
 			get_current_img(data->door_s));
+	}
 	else
 		draw_texture_color(data, x, data->line->draw_start,
 			&data->line->texture[image]);

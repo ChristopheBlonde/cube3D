@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:58:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 11:11:42 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 10:00:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,22 @@ int	handle_keypress(int keysym, t_data *data)
 
 void	handle_action(t_data *data)
 {
-	printf("key press f, player position: x:%f y%f v_dir: x:%f y:%f\n",
-			data->player.position[0],
-			data->player.position[1],
+	t_door	*door;
+
+
+	printf("key press f, player position: x:%d y:%d v_dir: x:%f y:%f\n",
+			(int)data->player.position[0],
+			(int)data->player.position[1],
 			data->player.v_dir[0],
 			data->player.v_dir[1]);
+	door = get_door(data, (int)data->player.position[0],
+		(int)data->player.position[0]);
+	if (door)
+	{
+		printf("got a door\n");
+		if (door->status == OPEN)
+			door->status = CLOSING;
+		if (door->status == CLOSE)
+			door->status = OPENING;
+	}
 }

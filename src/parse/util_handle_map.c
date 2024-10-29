@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:19:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 12:37:09 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/29 09:31:01 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ static void	init_door(t_map *map, t_door *door, int x, int y)
 	door->pos_x = x;
 	door->pos_y = y;
 	door->status = CLOSE;
-	door->perp_door_dist = 0;
+	door->curr_frame = 0;
+	door->nb_frames = 4;
+	door->delay = 6;
+	door->_tmp_delay = 0;
 	if ((y > 0 && map->map[y - 1][x] == '1')
 		|| (y < (int)map->height - 1 && map->map[y + 1][x] == '1'))
 		door->dir = EW;

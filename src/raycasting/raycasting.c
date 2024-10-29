@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 18:22:44 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/28 20:54:51 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,18 +121,9 @@ int	raycasting(t_data *data)
 		init_ray(data, x);
 		calculating_initial_side_dist(data);
 		if (!door)
-		{
 			calculating_ray_size(data, &door);
-		}
 		else
-		{
-			data->ray->side = data->ray->door_side;
-			data->ray->map[0] = data->ray->door[0];
-			data->ray->map[1] = data->ray->door[1];
-			data->ray->side_dist_x = data->ray->door_dist_x;
-			data->ray->side_dist_y = data->ray->door_dist_y;
-			door = false;
-		}
+			calculate_doors(data, &door);
 		draw_line(data, x);
 		if (!door)
 			x++;
