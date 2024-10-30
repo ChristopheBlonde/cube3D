@@ -74,12 +74,11 @@ static void	 draw_texture_color(t_data *data, int x, int i, int image)
 			+ data->line->line_height / 2) * step;
 	while (i < data->line->draw_end)
 	{
+
 		tex_y = (int)tex_pos & (texture.height - 1);
 		tex_pos += step;
 		color = ft_get_pixel_img(texture, data->line->tex_x, tex_y);
-		if (image && color != (int)0xFF000000)
-			my_mlx_pixel_put(data->img, x, i, color);
-		if (!image)
+		if (color != (int)0xFF000000)
 			my_mlx_pixel_put(data->img, x, i, color);
 		i++;
 	}
@@ -100,9 +99,11 @@ static void	pixel_line(t_data *data, int x, int image)
 
 void	draw_line(t_data *data, int x)
 {
+	if (data->ray->side_dist_x == -1)
+		return ;
 	init_line(data, 0);
 	data->zdist[x] = data->line->perp_wall_dist;
 	pixel_line(data, x, 0);
-	if (data->ray->door)
-		draw_doors(data, x);
+	// if (data->ray->door)
+	// 	draw_doors(data, x);
 }

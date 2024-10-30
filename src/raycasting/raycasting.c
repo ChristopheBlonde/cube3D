@@ -95,14 +95,18 @@ static void	calculating_ray_size(t_data *data)
 			data->ray->side_dist_y += data->ray->delta_dist_y;
 			data->ray->map[1] += data->ray->step_y;
 		}
+		if (data->ray->map[1] >= data->map.height || data->ray->map[0] >= data->map.width)
+		{
+			data->ray->side_dist_x = -1;
+			break;
+		}
 		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1')
 			break ;
 		if (!data->ray->door && checkdoor(data))
 		{
 			data->ray->door = get_door(data, data->ray->map[0], data->ray->map[1]);
 			data->ray->door->perp_door_dist = calculate_perp_door_dist(data);
-		}
-			
+		}	
 	}
 }
 

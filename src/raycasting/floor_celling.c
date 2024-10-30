@@ -38,12 +38,12 @@ void	draw_pixel_floor_celling(t_data *data, int x, int y)
 {
 	t_point	tex_floor;
 
-	tex_floor.x = (int)(data->line->texture[4].width
+	tex_floor.x = (int)(data->line->texture[5 - data->floor_c->is_floor].width
 			* (data->floor_c->floor_x - (int)data->floor_c->floor_x))
-		& (data->line->texture[4].width - 1);
-	tex_floor.y = (int)(data->line->texture[4].height
+		& (data->line->texture[5 - data->floor_c->is_floor].width - 1);
+	tex_floor.y = (int)(data->line->texture[5 - data->floor_c->is_floor].height
 			* (data->floor_c->floor_y - (int)data->floor_c->floor_y))
-		& (data->line->texture[4].height - 1);
+		& (data->line->texture[5 - data->floor_c->is_floor].height - 1);
 	data->floor_c->floor_x += data->floor_c->floor_step_x;
 	data->floor_c->floor_y += data->floor_c->floor_step_y;
 	if (data->floor_c->is_floor)

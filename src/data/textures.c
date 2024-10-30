@@ -51,13 +51,13 @@ bool	init_textures(t_data *data)
 	if (!set_texture_img(data, &data->line->texture[3], data->map.ea))
 		return (false);
 	if (!set_texture_img(data, &data->line->texture[4],
-			"assets/textures/wood1.xpm"))
+			"assets/textures/marbre.xpm"))
 		return (false);
 	if (!set_texture_img(data, &data->line->texture[5],
-			"assets/textures/wood4.xpm"))
+			"assets/textures/nuages_reveur.xpm"))
 		return (false);
 	if (!set_texture_img(data, &data->line->texture[6],
-			"./assets/textures/new_door.xpm"))
+			"./assets/textures/marbre.xpm"))
 		return (false);
 	return (true);
 }
