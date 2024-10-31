@@ -104,6 +104,7 @@ void	draw_line(t_data *data, int x)
 	init_line(data, 0);
 	data->zdist[x] = data->line->perp_wall_dist;
 	pixel_line(data, x, 0);
-	// if (data->ray->door)
-	// 	draw_doors(data, x);
+	//ft_bzero(data->ray, sizeof(t_ray));
+	if (data->ray->door)
+		draw_doors(data, x);
 }
