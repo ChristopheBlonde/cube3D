@@ -6,12 +6,11 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 09:31:52 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/30 18:45:57 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
 
 static int	functionTest(t_data *data) //TODO
 {
@@ -23,7 +22,9 @@ static int	functionTest(t_data *data) //TODO
 	if (data->mnmap->minimap)
 		draw_mnmap(data);
 	if (data->map.sprite_nb != 0)
-		render_sprite(data);
+		render_arr_sprites(data);
+	if (data->player.player_s)
+		render_sprite(data, data->player.player_s);
 	mlx_put_image_to_window(data->win->mlx_ptr,
 		data->win->win_ptr, data->img->img_ptr, 0, 0);
 	return (1);
@@ -40,6 +41,8 @@ int	main(int argc, char **argv)
 		free_data(&data);
 		return (1);
 	}
+	if (!init_player_sprite(&data))
+		return(printf("error sprite player\n"));
 	mlx_mouse_hide(data.win->mlx_ptr, data.win->win_ptr);
 	mlx_loop_hook(data.win->mlx_ptr, &functionTest, &data);
 	mlx_hook(data.win->win_ptr,

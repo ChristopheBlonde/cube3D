@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 16:57:56 by cblonde           #+#    #+#              #
-#    Updated: 2024/10/28 17:47:17 by cblonde          ###   ########.fr        #
+#    Updated: 2024/10/30 15:27:15 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ SRC = $(DSRC)main.c $(DMAP)utils_map.c $(DPARSE)ft_readfile.c\
 	  $(DDATA)util_time.c $(DSPRITE)util_animation.c $(DIN)handle_input.c\
 	  $(DDATA)textures.c $(DRAY)util_drawline.c $(DPARSE)util_handle_map.c\
 	  $(DRAY)checkdoor.c $(DRAY)floor_celling.c $(DDATA)util_init_data.c\
-	  $(DSPRITE)door_sprite.c
+	  $(DSPRITE)door_sprite.c $(DPLAYER)init_player.c
 
 NAME = cub3D
 

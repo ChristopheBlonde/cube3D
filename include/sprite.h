@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 09:32:35 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/31 10:27:46 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ typedef struct s_sprite
 t_sprite	*new_sprite(t_data *data, char *file);
 void		free_sprite(t_sprite *sprite);
 void		free_arr_sprites(t_sprite **arr);
-void		render_sprite(t_data *data);
+void		render_arr_sprites(t_data *data);
+void		render_sprite(t_data *data, t_sprite *sprite);
 size_t		**sort_sprites(t_data *data);
 void		add_frame(t_anim *animation,
 				t_sprite *sprite, t_sprite_slice slice);
@@ -95,5 +96,6 @@ void		update_animation(void *ptr);
 bool		init_door_sprite(t_data *data);
 t_img		*get_current_img(t_sprite *sprite);
 void		update_doors_anim(t_data *data);
+void		update_player_pos(t_data *data);
 
 #endif

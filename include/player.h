@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:31:15 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 09:34:30 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/30 18:25:52 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
+typedef struct s_sprite	t_sprite;
 
 typedef enum e_direction
 {
@@ -49,14 +50,15 @@ typedef enum e_keyboard
 
 typedef struct s_player
 {
-	t_dir	dir;
-	t_point	pos;
-	double	position[2];
-	double	dir_angle;
-	double	v_dir[2];
-	double	v_plane[2];
-	int		keyboard[KEY_NB];
-	double	offset_y;
+	t_dir		dir;
+	t_point		pos;
+	double		position[2];
+	double		dir_angle;
+	double		v_dir[2];
+	double		v_plane[2];
+	int			keyboard[KEY_NB];
+	double		offset_y;
+	t_sprite	*player_s;
 }	t_player;
 
 t_dir	get_direction(char c);
@@ -65,5 +67,6 @@ void	move_player(t_player *p, t_map *m, int keysym, double speed);
 void	rotate_player(t_player *p, double speed);
 int		handle_input(t_data *data);
 void	handle_action(t_data *data);
+bool	init_player_sprite(t_data *data);
 
 #endif

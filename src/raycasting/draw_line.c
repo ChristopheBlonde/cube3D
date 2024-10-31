@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 14:38:02 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/10/30 16:22:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ static void	draw_texture_color(t_data *data, int x, int i, t_img *image)
 	{
 		tex_y = (int)tex_pos & (texture.height - 1);
 		tex_pos += step;
-		color = alpha(dalpha ,ft_get_pixel_img(texture, data->line->tex_x, tex_y), (int)0xFF000000);
+		color = ft_get_pixel_img(texture, data->line->tex_x, tex_y);
 		if (image && color != (int)0xFF000000)
-			my_mlx_pixel_put(data->img, x, i, color);
+			my_mlx_pixel_put(data->img, x, i, alpha(dalpha, color, (int)0xFF000000));
 		if (!image)
-			my_mlx_pixel_put(data->img, x, i, color);
+			my_mlx_pixel_put(data->img, x, i, alpha(dalpha, color, (int)0xFF000000));
 		i++;
 	}
 }
