@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 09:03:40 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 15:50:06 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/02 08:54:27 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 unsigned int	ft_get_pixel_img(t_img img, int x, int y)
 {
+	if (x < 0 || y < 0)
+		return (0);
 	return (*(unsigned int *)(img.addr
 		+ (y * img.l_len) + (x * img.bpp / 8)));
 }

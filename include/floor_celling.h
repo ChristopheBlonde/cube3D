@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:48:25 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 12:48:29 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/01 09:11:56 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_floor_celling
 	double	floor_step_y;
 	double	floor_x;
 	double	floor_y;
+	double	floor_alpha;
+	double	ceil_alpha;
 }	t_floor_celling;
 
 #endif

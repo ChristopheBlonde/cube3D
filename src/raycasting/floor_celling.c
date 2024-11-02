@@ -6,13 +6,13 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:13:16 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 15:47:57 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/01 21:37:18 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void	init_struct_floor(t_data *data, int y)
+static void	init_struct_floor(t_data *data, int y)
 {
 	data->floor_c->is_floor = y > M_H * 0.5 + data->player.offset_y;
 	data->floor_c->ray_dir_x0 = data->player.v_dir[0] - data->player.v_plane[0];
@@ -34,26 +34,54 @@ void	init_struct_floor(t_data *data, int y)
 		+ data->floor_c->row_dist * data->floor_c->ray_dir_y0;
 }
 
-void	draw_pixel_floor_celling(t_data *data, int x, int y)
+static void	draw_pixel_floor_celling(t_data *data, int x, int y)
 {
 	t_point	tex_floor;
 
-	tex_floor.x = (int)(data->line->texture[4].width
+	tex_floor.x = (int)(data->line->texture[5 - data->floor_c->is_floor].width
 			* (data->floor_c->floor_x - (int)data->floor_c->floor_x))
-		& (data->line->texture[4].width - 1);
-	tex_floor.y = (int)(data->line->texture[4].height
+		& (data->line->texture[5 - data->floor_c->is_floor].width - 1);
+	tex_floor.y = (int)(data->line->texture[5 - data->floor_c->is_floor].height
 			* (data->floor_c->floor_y - (int)data->floor_c->floor_y))
-		& (data->line->texture[4].height - 1);
+		& (data->line->texture[5 - data->floor_c->is_floor].height - 1);
 	data->floor_c->floor_x += data->floor_c->floor_step_x;
 	data->floor_c->floor_y += data->floor_c->floor_step_y;
 	if (data->floor_c->is_floor)
 		my_mlx_pixel_put(data->img, x, y,
-			ft_get_pixel_img(data->line->texture[4],
-				tex_floor.x, tex_floor.y));
+			alpha(data->floor_c->floor_alpha, (int)0xFF000000,
+				ft_get_pixel_img(data->line->texture[4],
+				tex_floor.x, tex_floor.y)));
 	else
 		my_mlx_pixel_put(data->img, x, y,
-			ft_get_pixel_img(data->line->texture[5],
-				tex_floor.x, tex_floor.y));
+			alpha(1 - data->floor_c->ceil_alpha, (int)0xFF000000,
+				ft_get_pixel_img(data->line->texture[5],
+				tex_floor.x, tex_floor.y)));
+}
+
+static void	init_alpha(t_data *data, int y)
+{
+	int	half_height;
+	int	offset;
+
+	offset = M_H * 0.1;
+	half_height = (int)(M_H * 0.5) + data->player.offset_y;
+	if (y < half_height)
+	{
+		data->floor_c->ceil_alpha = (double)y / (half_height - offset);
+		if (data->floor_c->ceil_alpha > 1)
+			data->floor_c->ceil_alpha = 1;
+		if (data->floor_c->ceil_alpha < 0)
+			data->floor_c->ceil_alpha = 1;
+		data->floor_c->floor_alpha = 0;
+	}
+	else
+	{
+		data->floor_c->floor_alpha =
+			((double)y - half_height) / (half_height + (offset * 2));
+		if (data->floor_c->floor_alpha > 1)
+			data->floor_c->floor_alpha = 1;
+		data->floor_c->ceil_alpha = 0;
+	}
 }
 
 void	draw_floor_celling(t_data *data)
@@ -67,6 +95,7 @@ void	draw_floor_celling(t_data *data)
 	while (y < M_H)
 	{
 		init_struct_floor(data, y);
+		init_alpha(data, y);
 		x = 0;
 		while (x < M_W)
 		{

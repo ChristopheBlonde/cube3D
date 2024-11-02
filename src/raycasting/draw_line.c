@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/30 16:22:00 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/01 21:17:34 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ void	draw_line(t_data *data, int x)
 	}
 	else
 	{
-		init_line(data, 0, NULL);
+		init_line(data, data->ray->side - 1, NULL);
 		data->zdist[x] = data->line->perp_wall_dist;
-		pixel_line(data, x, 0, NULL);
+		pixel_line(data, x, data->ray->side - 1, NULL);
 	}
 //	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'Y')
 //	{
