@@ -6,13 +6,13 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 12:17:05 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/02 12:19:23 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
 
-static void	init_ray(t_data *data, int x)
+void	init_ray(t_data *data, int x)
 {
 	data->ray->camera_x = (2 * (x / (double)M_W)) - 1;
 	data->ray->ray_dir[0] = data->player.v_dir[0]
@@ -31,7 +31,7 @@ static void	init_ray(t_data *data, int x)
 		data->ray->delta_dist_y = fabs(1 / data->ray->ray_dir[1]);
 }
 
-static void	calculating_initial_side_dist(t_data *data)
+void	calculating_initial_side_dist(t_data *data)
 {
 	if (data->ray->ray_dir[0] < 0)
 	{
@@ -78,7 +78,7 @@ static t_dir	define_side(t_data *data)
 	return (NONE);
 }
 
-static void	calculating_ray_size(t_data *data, bool *door)
+void	calculating_ray_size(t_data *data, int x, bool door)
 {
 	while (1)
 	{
@@ -97,29 +97,28 @@ static void	calculating_ray_size(t_data *data, bool *door)
 		if (data->map.map[data->ray->map[1]][data->ray->map[0]] == '1')
 			break ;
 		if (checkdoor(data))
-			calculate_doors(data, door, true);
+		{
+			data->zdoordist[x] = calculate_perp_door_dist(data);
+			if (door)
+				break ;
+		}
 	}
 }
 
 int	raycasting(t_data *data)
 {
 	int		x;
-	bool	door;
 
 	x = 0;
-	door = false;
 	draw_floor_celling(data);
+	init_zdoordist(data);
 	while (x < M_W)
 	{
 		init_ray(data, x);
 		calculating_initial_side_dist(data);
-		if (!door)
-			calculating_ray_size(data, &door);
-		else
-			calculate_doors(data, &door, false);
+		calculating_ray_size(data, x, false);
 		draw_line(data, x);
-		if (!door)
-			x++;
+		x++;
 	}
 	return (0);
 }

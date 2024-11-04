@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/31 15:17:47 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/02 12:06:01 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ static int	functionTest(t_data *data) //TODO
 	update_doors_anim(data);
 	if (data->mnmap->minimap)
 		draw_mnmap(data);
+	if (data->map.sprite_nb != 0)
+		render_arr_sprites(data);
+	render_doors(data);
 	if (data->map.sprite_nb != 0)
 		render_arr_sprites(data);
 	if (data->player.player_s)

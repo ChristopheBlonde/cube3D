@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 12:17:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/02 12:32:50 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,23 @@ typedef struct s_ray
 	double	ray_dir[2];
 	double	camera_x;
 	int		map[2];
-	int		door[2];
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	side_dist_x;
-	double	door_dist_x;
 	double	side_dist_y;
-	double	door_dist_y;
 	int		step_x;
 	int		step_y;
-	t_dir	door_side;
+	double	dalpha;
 	t_dir	side;
 }	t_ray;
 
 int		raycasting(t_data *data);
 bool	checkdoor(t_data *data);
-void	calculate_doors(t_data *data, bool *door, bool save);
+void	init_zdoordist(t_data *data);
+void	render_doors(t_data *data);
+void	init_ray(t_data *data, int x);
+void	calculating_initial_side_dist(t_data *data);
+void	calculating_ray_size(t_data *data, int x, bool door);
+double	get_alpha(double dist);
 
 #endif

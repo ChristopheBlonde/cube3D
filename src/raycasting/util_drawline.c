@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:30:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 12:17:10 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/02 12:31:43 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,49 @@
 
 double	calculate_perp_wall_dist(t_data *data)
 {
-	t_door *door;
-
-	door = get_door(data, data->ray->map[0], data->ray->map[1]);
 	if (data->ray->side == EAST || data->ray->side == WEST)
-	{
-		if (door)
-			return (data->ray->side_dist_x - data->ray->delta_dist_x / 2);
-		else
 			return (data->ray->side_dist_x - data->ray->delta_dist_x);
-	}
 	else
-	{
-		if (door)
-			return (data->ray->side_dist_y - data->ray->delta_dist_y / 2);
-		else
 			return (data->ray->side_dist_y - data->ray->delta_dist_y);
+}
+
+double	get_alpha(double dist)
+{
+	double	dalpha;
+
+	dalpha = dist * 0.1;
+	if (dalpha > 1)
+		dalpha = 1;
+	return (dalpha);
+}
+
+void	init_zdoordist(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < M_W - 1)
+	{
+		data->zdoordist[i] = -1;
+		i++;
 	}
 }
 
-
-void	calculate_doors(t_data *data, bool *door, bool save)
+void	render_doors(t_data *data)
 {
-	if (save)
+	int	x;
+
+	x = 0;
+	while (x < M_W - 1)
 	{
-		*door = true;
-		data->ray->door_side = data->ray->side;
-		data->ray->door[0] = data->ray->map[0];
-		data->ray->door[1] = data->ray->map[1];
-		data->ray->door_dist_x = data->ray->side_dist_x;
-		data->ray->door_dist_y = data->ray->side_dist_y;
-	}
-	else
-	{
-		data->ray->side = data->ray->door_side;
-		data->ray->map[0] = data->ray->door[0];
-		data->ray->map[1] = data->ray->door[1];
-		data->ray->side_dist_x = data->ray->door_dist_x;
-		data->ray->side_dist_y = data->ray->door_dist_y;
-		*door = false;
+		if (data->zdoordist[x] > -1)
+		{
+			init_ray(data, x);
+			calculating_initial_side_dist(data);
+			calculating_ray_size(data, x, true);
+			draw_doors(data, x);	
+			data->zdist[x] = data->zdoordist[x];
+		}
+		x++;
 	}
 }
