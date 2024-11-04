@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:31:15 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/31 15:17:04 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/04 13:47:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int		handle_input(t_data *data);
 void	handle_action(t_data *data);
 bool	init_player_sprite(t_data *data);
 void	finish_move000(t_data *data);
+void	update_anim_player(void *ptr);
 
 #endif

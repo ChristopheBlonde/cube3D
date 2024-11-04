@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:40:28 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/25 16:03:00 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/04 11:18:10 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,12 @@ void	init_sprite(t_sprite *sprite, t_s_init *info)
 	sprite->render.v_div = info->y_div;
 	sprite->render.v_move = info->offset;
 	sprite->anim = NULL;
-	if (!info->animated)
-		sprite->animated = false;
-	else
+	sprite->animated = false;
+	sprite->type = SPRITE;
+	if (info->animated)
 	{
 		sprite->animated = true;
+		sprite->type = ANIMSPRITE;
 		ft_lstadd_back(&sprite->anim,
 			ft_lstnew(ft_slice_sprite(sprite, s,
 					info->nb_frame, info->delay)));
@@ -105,7 +106,7 @@ void	update_animation(void *ptr)
 
 	s = (t_sprite *)ptr;
 	l = (t_list *)s->anim;
-	if (!l)
+	if (!l || s->type != ANIMSPRITE)
 		return ;
 	a = (t_anim *)s->anim->content;
 	l = (t_list *)a->frames;

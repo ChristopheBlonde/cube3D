@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 09:38:55 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 11:12:50 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/04 12:11:31 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ static double	**sprites_dist(t_data *data)
 	i = -1;
 	pos_x = data->player.position[0];
 	pos_y = data->player.position[1];
-	arr = (double **)ft_calloc(data->map.sprite_nb + 1, sizeof(double *));
+	arr = (double **)ft_calloc(data->map.sprite_nb + 2, sizeof(double *));
 	if (!arr)
 		return (err_alloc());
-	while (++i < (int)data->map.sprite_nb)
+	while (++i < (int)data->map.sprite_nb + 1)
 	{
 		arr[i] = (double *)ft_calloc(1, sizeof(double));
 		if (!arr[i])
@@ -82,10 +82,10 @@ size_t	**sort_sprites(t_data *data)
 	int		i;
 
 	i = -1;
-	sprites = (size_t **)ft_calloc(data->map.sprite_nb + 1, sizeof(size_t *));
+	sprites = (size_t **)ft_calloc(data->map.sprite_nb + 2, sizeof(size_t *));
 	if (!sprites)
 		return (err_alloc());
-	while (++i < (int)data->map.sprite_nb)
+	while (++i < (int)data->map.sprite_nb + 1)
 	{
 		sprites[i] = (size_t *)ft_calloc(1, sizeof(size_t));
 		if (!sprites[i])

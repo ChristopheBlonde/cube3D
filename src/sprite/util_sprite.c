@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/25 12:16:26 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/04 16:53:30 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,18 @@ t_img	*get_current_img(t_sprite *sprite)
 	t_list	*lst_anim;
 	t_anim	*anim;
 	t_list	*frames;
+	int		i;
 
+	i = 0;
 	lst_anim = (t_list *)sprite->anim;
+	if (sprite->type == PLAYER)
+	{
+		while (i != sprite->lst_nb)
+		{
+			lst_anim = lst_anim->next;
+			i++;
+		}
+	}
 	anim = (t_anim *)lst_anim->content;
 	frames = (t_list *)anim->frames;
 	img = (t_img *)ft_lstget(frames, anim->current_frame_num)->content;

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/25 16:56:29 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/04 12:16:01 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	free_data(t_data *data)
 			free_textures(data);
 		free(data->line);
 	}
+	if (data->map.nb_doors > 0)
+		free_sprite(data->door_s);
 	if (data->win)
 	{
 		free_win(data->win);

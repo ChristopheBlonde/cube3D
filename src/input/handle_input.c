@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/31 10:51:07 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/04 16:55:29 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,27 @@ void	handle_movement_and_rotation(t_data *data)
 	if (keyboard[KEY_W])
 	{
 		move_player(&data->player, &data->map, KEY_W, 0.12);
-		update_animation(data->player.player_s);
+		data->player.player_s->lst_nb = 0;
+		update_anim_player(data->player.player_s);
 	}
 	if (keyboard[KEY_A])
+	{
 		move_player(&data->player, &data->map, KEY_A, 0.08);
+		data->player.player_s->lst_nb = 12;
+		update_anim_player(data->player.player_s);
+	}
 	if (keyboard[KEY_S])
+	{
 		move_player(&data->player, &data->map, KEY_S, 0.12);
+		data->player.player_s->lst_nb = 8;
+		update_anim_player(data->player.player_s);
+	}
 	if (keyboard[KEY_D])
+	{
 		move_player(&data->player, &data->map, KEY_D, 0.08);
+		data->player.player_s->lst_nb = 4;
+		update_anim_player(data->player.player_s);
+	}
 	if (keyboard[KEY_RIGHT])
 		rotate_player(&data->player, MOUSE_SPEED);
 	if (keyboard[KEY_LEFT])

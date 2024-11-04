@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 16:57:56 by cblonde           #+#    #+#              #
-#    Updated: 2024/11/02 10:41:09 by cblonde          ###   ########.fr        #
+#    Updated: 2024/11/04 08:59:08 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ $(DBUILD)%.o : %.c
 	$(CC) -Ofast -O3 $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(LIB) $(MLX) $(OBJ)
-	$(CC) -Ofast -O3 $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBMAC) -o $(NAME)
+	$(CC) -Ofast -O3 $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
 
 $(LIB) :
 	@make -C $(DLIB) --no-print-directory --silent

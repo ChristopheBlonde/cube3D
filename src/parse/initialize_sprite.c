@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:30:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/24 13:39:31 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/04 11:00:59 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ bool	init_arr_sprites(t_data *data)
 	if (data->map.sprite_nb == 0)
 		return (true);
 	data->arr_s = (t_sprite **)ft_calloc(data->map.sprite_nb
-			+ 1, sizeof(t_sprite *));
+			+ 2, sizeof(t_sprite *));
 	if (!data->arr_s)
 		return (err_sprite(3, NULL));
 	while (data->map.sprites[++i])

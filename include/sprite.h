@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/31 10:27:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/04 16:28:59 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@
 typedef struct s_img			t_img;
 typedef struct s_data			t_data;
 typedef struct s_init_sprite	t_s_init;
+
+typedef enum	e_sprite_type
+{
+	PLAYER,
+	SPRITE,
+	ANIMSPRITE,
+}	t_stype;
 
 typedef struct s_render
 {
@@ -79,6 +86,8 @@ typedef struct s_sprite
 	double	pos_y;
 	t_rend	render;
 	bool	animated;
+	t_stype	type;
+	int		lst_nb;
 }	t_sprite;
 
 t_sprite	*new_sprite(t_data *data, char *file);
