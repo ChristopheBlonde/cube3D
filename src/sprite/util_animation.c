@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:40:28 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/04 11:18:10 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/05 12:18:30 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,12 @@ void	update_animation(void *ptr)
 	s = (t_sprite *)ptr;
 	l = (t_list *)s->anim;
 	if (!l || s->type != ANIMSPRITE)
-		return ;
+	{
+		if (s->type == PLAYER)
+			update_anim_player(ptr);
+		else
+			return ;
+	}
 	a = (t_anim *)s->anim->content;
 	l = (t_list *)a->frames;
 	if (a->_tmp_delay++ == a->delay)

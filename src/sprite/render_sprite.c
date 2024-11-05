@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/02 19:44:24 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/05 10:04:45 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ void	render_arr_sprites(t_data *data)
 	sort_sprites(data);
 	while (data->arr_s[i])
 	{
+		if (data->arr_s[i]->type == PLAYER && data->player.active == false)
+		{
+			i++;
+			continue ;
+		}
 		render_sprite(data, data->arr_s[i]);
 		i++;
 	}

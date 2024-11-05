@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:31:15 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/04 13:47:02 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/05 09:41:41 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <X11/keysym.h>
 
 # define PI M_PI
-# define KEY_NB 10
+# define KEY_NB 11
 
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
@@ -46,6 +46,7 @@ typedef enum e_keyboard
 	KEY_UP_MAP,
 	KEY_DOWN_MAP,
 	KEY_F,
+	KEY_P,
 }	t_keyboard;
 
 typedef struct s_player
@@ -59,6 +60,7 @@ typedef struct s_player
 	int			keyboard[KEY_NB];
 	double		offset_y;
 	t_sprite	*player_s;
+	bool		active;
 }	t_player;
 
 t_dir	get_direction(char c);
@@ -68,7 +70,7 @@ void	rotate_player(t_player *p, double speed);
 int		handle_input(t_data *data);
 void	handle_action(t_data *data);
 bool	init_player_sprite(t_data *data);
-void	finish_move000(t_data *data);
+//void	finish_move000(t_data *data);
 void	update_anim_player(void *ptr);
 
 #endif

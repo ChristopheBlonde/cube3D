@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/04 16:58:39 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/05 09:35:17 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ static int	functionTest(t_data *data) //TODO
 	render_doors(data);
 	if (data->map.sprite_nb != 0)
 		render_arr_sprites(data);
-/*	if (data->player.player_s)
-	{
-		finish_move000(data);
-		render_sprite(data, data->player.player_s);
-	}*/
 	if (data->mnmap->minimap)
 		draw_mnmap(data);
 	mlx_put_image_to_window(data->win->mlx_ptr,

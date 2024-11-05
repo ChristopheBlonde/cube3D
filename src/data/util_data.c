@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/04 12:16:01 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/05 09:38:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	init_t_player(t_data *data)
 	data->player.v_dir[0] = cos(data->player.dir_angle);
 	data->player.v_dir[1] = sin(data->player.dir_angle);
 	data->player.offset_y = 0.0;
+	data->player.active = false;
 }
 
 int	init_data_allocations(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/23 17:17:44 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/05 12:09:05 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <X11/keysym.h>
 # include "data.h"
 # include "sprite.h"
+# include "input.h"
 
 # define M_W 1920
 # define M_H 1080

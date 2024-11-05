@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:58:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/31 10:41:03 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/05 12:07:58 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	handle_keyrelease(int keysym, t_data *data)
 {
+	handle_keyrelease_anim(keysym, data);
 	if (keysym == XK_w)
 		data->player.keyboard[KEY_W] = 0;
 	if (keysym == XK_a)
@@ -62,6 +63,8 @@ int	handle_keypress(int keysym, t_data *data)
 		data->player.keyboard[KEY_LEFT] = 1;
 	if (keysym == XK_f)
 		data->player.keyboard[KEY_F] = 1;
+	if (keysym == XK_p)
+		data->player.keyboard[KEY_P] = 1;
 	handle_key_map(keysym, data);
 	return (0);
 }
