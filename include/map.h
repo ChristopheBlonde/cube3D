@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 09:10:33 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 11:08:20 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include "libft.h"
 # include "player.h"
+
+# define M_W 1920
 
 typedef enum e_door_status
 {
@@ -42,6 +44,8 @@ typedef struct s_door
 	int			nb_frames;
 	int			delay;
 	int			_tmp_delay;
+	double		zdist[M_W];
+	double		curr_dist;
 }	t_door;
 
 typedef struct s_map

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:13:16 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/04 15:24:35 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:51:45 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static void	draw_pixel_floor_celling(t_data *data, int x, int y)
 		my_mlx_pixel_put(data->img, x, y,
 			alpha(data->floor_c->floor_alpha, (int)0xFF000000,
 				ft_get_pixel_img(data->line->texture[4],
-				tex_floor.x, tex_floor.y)));
+					tex_floor.x, tex_floor.y)));
 	else
 		my_mlx_pixel_put(data->img, x, y,
 			alpha(1 - data->floor_c->ceil_alpha, (int)0xFF000000,
 				ft_get_pixel_img(data->line->texture[5],
-				tex_floor.x, tex_floor.y)));
+					tex_floor.x, tex_floor.y)));
 }
 
 static void	init_alpha(t_data *data, int y)
@@ -76,8 +76,8 @@ static void	init_alpha(t_data *data, int y)
 	}
 	else
 	{
-		data->floor_c->floor_alpha =
-			((double)y - half_height) / (half_height + (offset * 2));
+		data->floor_c->floor_alpha
+			= ((double)y - half_height) / (half_height + (offset * 2));
 		if (data->floor_c->floor_alpha > 1)
 			data->floor_c->floor_alpha = 1;
 		data->floor_c->ceil_alpha = 0;

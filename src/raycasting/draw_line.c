@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/02 12:31:17 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:53:41 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ static void	draw_texture_color(t_data *data, int x, int i, t_img *image)
 		color = ft_get_pixel_img(texture, data->line->tex_x, tex_y);
 		if (image && color != (int)0xFF000000)
 			my_mlx_pixel_put(data->img, x, i,
-					alpha(data->ray->dalpha, color, (int)0xFF000000));
+				alpha(data->ray->dalpha, color, (int)0xFF000000));
 		if (!image)
 			my_mlx_pixel_put(data->img, x, i,
-					alpha(data->ray->dalpha, color, (int)0xFF000000));
+				alpha(data->ray->dalpha, color, (int)0xFF000000));
 		i++;
 	}
 }
@@ -107,25 +107,7 @@ static void	pixel_line(t_data *data, int x, int image, t_door *door)
 
 void	draw_line(t_data *data, int x)
 {
-//	t_door *door;
-
-//	door = get_door(data, data->ray->map[0], data->ray->map[1]);
-//	if (door)
-//	{
-//		init_line(data, 0, door);
-//		data->zdist[x] = data->line->perp_wall_dist;
-//		pixel_line(data, x, 0, door);
-//	}
-//	else
-//	{
-		init_line(data, data->ray->side - 1, NULL);
-		data->zdist[x] = data->line->perp_wall_dist;
-		pixel_line(data, x, data->ray->side - 1, NULL);
-//	}
-//	if (data->map.map[data->ray->map[1]][data->ray->map[0]] == 'Y')
-//	{
-//		data->line->texture[6] = *(get_current_img(data->door_s));
-//		init_line(data, 6, NULL);
-//		pixel_line(data, x, 6, NULL);
-//	}
+	init_line(data, data->ray->side - 1, NULL);
+	data->zdist[x] = data->line->perp_wall_dist;
+	pixel_line(data, x, data->ray->side - 1, NULL);
 }

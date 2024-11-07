@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/04 16:28:59 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:30:15 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ bool		init_door_sprite(t_data *data);
 t_img		*get_current_img(t_sprite *sprite);
 void		update_doors_anim(t_data *data);
 void		update_player_pos(t_data *data);
+void		sort_door(t_data *data);
 
 #endif

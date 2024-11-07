@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/05 10:04:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 15:25:13 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	select_img(t_sprite *sprite, t_img **img)
 	else
 		*img = get_current_img(sprite);
 }
-
 
 void	render_sprite(t_data *data, t_sprite *sprite)
 {

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/05 15:31:49 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 14:48:14 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ static t_dir	define_side(t_data *data)
 	return (NONE);
 }
 
-void	calculating_ray_size(t_data *data, int x, bool door)
+void	calculating_ray_size(t_data *data, int x,
+		bool doorloop, t_door *door[2])
 {
 	while (1)
 	{
@@ -98,8 +99,9 @@ void	calculating_ray_size(t_data *data, int x, bool door)
 			break ;
 		if (checkdoor(data))
 		{
-			data->zdoordist[x] = calculate_perp_door_dist(data);
-			if (door)
+			door[1] = get_door(data, data->ray->map[0], data->ray->map[1]);
+			door[1]->zdist[x] = calculate_perp_door_dist(data);
+			if (doorloop && door[0] == door[1])
 				break ;
 		}
 	}
@@ -108,15 +110,17 @@ void	calculating_ray_size(t_data *data, int x, bool door)
 int	raycasting(t_data *data)
 {
 	int		x;
+	t_door	*door[2];
 
 	x = 0;
+	door[0] = NULL;
+	door[1] = NULL;
 	draw_floor_celling(data);
-	init_zdoordist(data);
 	while (x < M_W)
 	{
 		init_ray(data, x);
 		calculating_initial_side_dist(data);
-		calculating_ray_size(data, x, false);
+		calculating_ray_size(data, x, false, door);
 		draw_line(data, x);
 		x++;
 	}

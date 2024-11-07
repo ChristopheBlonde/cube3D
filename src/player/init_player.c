@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 08:14:51 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/05 13:32:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:46:52 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	create_list_anim(t_data *data, t_sprite *sprite,
 		else
 			sprite_nb = 20;
 		ft_lstadd_back(&sprite->anim,
-				ft_lstnew(ft_slice_sprite(tmp_s, slice, sprite_nb, 1)));
+			ft_lstnew(ft_slice_sprite(tmp_s, slice, sprite_nb, 1)));
 		if (i != 0)
 			free_sprite(tmp_s);
 		i++;

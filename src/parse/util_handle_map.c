@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:19:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/29 09:31:01 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 09:45:17 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	is_valid_character(t_map *map, int pos[2], size_t *unknow)
 
 static void	init_door(t_map *map, t_door *door, int x, int y)
 {
+	int	i;
+
+	i = -1;
 	door->pos_x = x;
 	door->pos_y = y;
 	door->status = CLOSE;
@@ -45,6 +48,8 @@ static void	init_door(t_map *map, t_door *door, int x, int y)
 		door->dir = NS;
 	else
 		door->dir = NODIR;
+	while (++i < M_W)
+		door->zdist[i] = -1;
 }
 
 bool	init_doors(t_map *map)

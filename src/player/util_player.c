@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:45:04 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/05 13:22:58 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 14:33:31 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ t_dir	get_direction(char c)
 	return (NONE);
 }
 
-int	inside_a_wall(int x, int y, t_map *m)
+int	inside_a_wall(t_data *data, int x, int y, t_map *m)
 {
-	if (m->map[y][x] == '1')
+	t_door	*door;
+
+	door = get_door(data, x, y);
+	if (m->map[y][x] == '1' || (door && door->status != OPEN))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/02 10:03:44 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 10:41:59 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct s_data
 	t_ray			*ray;
 	t_line			*line;
 	double			zdist[M_W];
-	double			zdoordist[M_W];
 	t_sprite		**arr_s;
 	uint64_t		start_time;
 	uint64_t		last_update;

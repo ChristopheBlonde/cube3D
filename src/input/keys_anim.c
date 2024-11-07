@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 09:21:53 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/05 15:13:29 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/07 12:49:03 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	handle_keys_anim(t_data *data)
 	if (keyboard[KEY_W] && keyboard[KEY_A])
 		data->player.player_s->lst_nb = 30;
 	else if (keyboard[KEY_W] && keyboard[KEY_D])
-		data->player.player_s->lst_nb = 18;	
+		data->player.player_s->lst_nb = 18;
 	else if (keyboard[KEY_S] && keyboard[KEY_A])
-		data->player.player_s->lst_nb = 26;	
+		data->player.player_s->lst_nb = 26;
 	else if (keyboard[KEY_S] && keyboard[KEY_D])
-		data->player.player_s->lst_nb = 22;	
+		data->player.player_s->lst_nb = 22;
 	else if (keyboard[KEY_W])
 		data->player.player_s->lst_nb = 16;
 	else if (keyboard[KEY_A])
