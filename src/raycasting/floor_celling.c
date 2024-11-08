@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:13:16 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 12:51:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 14:28:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,13 @@ void	draw_floor_celling(t_data *data)
 	while (y < M_H)
 	{
 		init_struct_floor(data, y);
-		init_alpha(data, y);
+		if (data->fog)
+			init_alpha(data, y);
+		else
+		{
+			data->floor_c->floor_alpha = 1;
+			data->floor_c->ceil_alpha = 0;
+		}
 		x = 0;
 		while (x < M_W)
 		{

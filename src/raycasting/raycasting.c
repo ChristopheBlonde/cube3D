@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 14:48:14 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 14:17:12 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_ray(t_data *data, int x)
 {
+	data->ray->dalpha = 1;
 	data->ray->camera_x = (2 * (x / (double)M_W)) - 1;
 	data->ray->ray_dir[0] = data->player.v_dir[0]
 		+ (data->player.v_plane[0] * data->ray->camera_x);

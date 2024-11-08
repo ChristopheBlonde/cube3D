@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:45:04 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 14:33:31 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 16:07:55 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int	inside_a_wall(t_data *data, int x, int y, t_map *m)
 	t_door	*door;
 
 	door = get_door(data, x, y);
-	if (m->map[y][x] == '1' || (door && door->status != OPEN))
+	if (m->map[y][x] == '1'
+		|| (data->visible_door && door && door->dir != NODIR
+			&& door->status != OPEN))
 		return (1);
 	return (0);
 }

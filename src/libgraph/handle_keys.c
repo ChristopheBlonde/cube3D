@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:58:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 10:16:56 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 15:49:51 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,22 @@ static void	handle_key_map(int keysym, t_data *data)
 		data->player.keyboard[KEY_DOWN_MAP] = 1;
 }
 
+static void	key_press_bonus(int keysym, t_data *data)
+{
+	if (keysym == XK_f)
+		data->player.keyboard[KEY_F] = 1;
+	if (keysym == XK_p)
+		data->player.keyboard[KEY_P] = 1;
+	if (keysym == XK_o)
+		data->player.keyboard[KEY_MOUSE] = 1;
+	if (keysym == XK_i)
+		data->player.keyboard[KEY_FOG] = 1;
+	if (keysym == XK_u)
+		data->player.keyboard[KEY_DOOR] = 1;
+	if (keysym == XK_y)
+		data->player.keyboard[KEY_SPRITE] = 1;
+}
+
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
@@ -61,12 +77,7 @@ int	handle_keypress(int keysym, t_data *data)
 		data->player.keyboard[KEY_RIGHT] = 1;
 	if (keysym == XK_Left)
 		data->player.keyboard[KEY_LEFT] = 1;
-	if (keysym == XK_f)
-		data->player.keyboard[KEY_F] = 1;
-	if (keysym == XK_p)
-		data->player.keyboard[KEY_P] = 1;
-	if (keysym == XK_o)
-		data->player.keyboard[KEY_MOUSE] = 1;
+	key_press_bonus(keysym, data);
 	handle_key_map(keysym, data);
 	return (0);
 }

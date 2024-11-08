@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 12:52:55 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 16:57:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 static int	err_init_exit(t_data *data, size_t n)
 {
-	err_global();
 	if (n == 0)
+	{
+		err_global();
 		ft_putstr_fd(USAGE, 2);
+	}
 	if (n == 1)
+	{
+		ft_putstr_fd(RED, 2);
 		ft_putstr_fd(ERRINIT, 2);
+	}
 	ft_putstr_fd(RESET, 2);
 	if (n)
 		free_data(data);
@@ -34,7 +39,8 @@ static int	render_game(t_data *data)
 	update_doors_anim(data);
 	if (data->map.sprite_nb != 0)
 		render_arr_sprites(data);
-	render_doors(data);
+	if (data->visible_door)
+		render_doors(data);
 	if (data->map.sprite_nb != 0)
 		render_arr_sprites(data);
 	if (data->mnmap->minimap)

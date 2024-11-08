@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:05:21 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 12:53:41 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 14:29:50 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ static void	draw_texture_color(t_data *data, int x, int i, t_img *image)
 	int		color;
 	t_img	texture;
 
-	data->ray->dalpha = get_alpha(data->zdist[x]);
+	if (data->fog)
+		data->ray->dalpha = 1 - get_alpha(data->zdist[x]);
 	texture = *image;
 	step = 1.0 * texture.height / data->line->line_height;
 	tex_pos = (data->line->draw_start - data->player.offset_y - M_H / 2
@@ -79,10 +80,10 @@ static void	draw_texture_color(t_data *data, int x, int i, t_img *image)
 		color = ft_get_pixel_img(texture, data->line->tex_x, tex_y);
 		if (image && color != (int)0xFF000000)
 			my_mlx_pixel_put(data->img, x, i,
-				alpha(data->ray->dalpha, color, (int)0xFF000000));
+				alpha(data->ray->dalpha, (int)0xFF000000, color));
 		if (!image)
 			my_mlx_pixel_put(data->img, x, i,
-				alpha(data->ray->dalpha, color, (int)0xFF000000));
+				alpha(data->ray->dalpha, (int)0xFF000000, color));
 		i++;
 	}
 }

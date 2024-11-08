@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 12:20:02 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 15:14:51 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	handle_movement_and_rotation(t_data *data)
 		handle_player_visibility(data);
 	update_player_pos(data);
 	handle_keys_anim(data);
+	handle_keys_bonus(data);
 }
 
 void	check_y_axis(t_data *data, int y, int old_y)

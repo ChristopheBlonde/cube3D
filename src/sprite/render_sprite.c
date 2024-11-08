@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 10:19:32 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 15:50:58 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static void	draw_sprite(t_data *data, t_rend *render, t_img *img)
 				render->tex_y = ((d * img->height) / render->s_h)
 					/ 256;
 				put_pixel_win(data, x, y + data->player.offset_y,
-					ft_get_pixel_img(*img, render->tex_x, render->tex_y));
+					alpha(render->dalpha, (int)0xFF000000,
+						ft_get_pixel_img(*img, render->tex_x, render->tex_y)));
 			}
 		}
 	}
@@ -71,6 +72,13 @@ void	render_sprite(t_data *data, t_sprite *sprite)
 
 	select_img(sprite, &img);
 	render = sprite->render;
+	render.dalpha = 1;
+	if (data->fog && sprite->type != PLAYER)
+		render.dalpha
+			= 1 - get_alpha(sqrt((data->player.position[0] - sprite->pos_x)
+					* (data->player.position[0] - sprite->pos_x)
+					+ (data->player.position[1] - sprite->pos_y)
+					* (data->player.position[1] - sprite->pos_y)));
 	render.cam_x = sprite->pos_x - data->player.position[0];
 	render.cam_y = sprite->pos_y - data->player.position[1];
 	render.inv_det = 1.0 / (data->player.v_plane[0] * data->player.v_dir[1]
@@ -91,6 +99,8 @@ void	render_arr_sprites(t_data *data)
 	int	i;
 
 	i = 0;
+	if (!data->visible_sprite)
+		return ;
 	sort_sprites(data);
 	while (data->arr_s[i])
 	{

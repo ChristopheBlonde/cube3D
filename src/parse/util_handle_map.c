@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:19:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 09:45:17 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 16:05:10 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static void	init_door(t_map *map, t_door *door, int x, int y)
 	door->delay = 6;
 	door->_tmp_delay = 0;
 	if ((y > 0 && map->map[y - 1][x] == '1')
-		|| (y < (int)map->height - 1 && map->map[y + 1][x] == '1'))
+		&& (y < (int)map->height - 1 && map->map[y + 1][x] == '1'))
 		door->dir = EW;
 	else if ((x > 0 && map->map[y][x - 1] == '1')
-		|| (x < (int)map->width - 1 && map->map[y][x + 1] == '1'))
+		&& (x < (int)map->width - 1 && map->map[y][x + 1] == '1'))
 		door->dir = NS;
 	else
 		door->dir = NODIR;

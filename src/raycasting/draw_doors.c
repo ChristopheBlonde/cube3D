@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 09:58:00 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 12:54:39 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 15:28:26 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ static void	draw_texture_color(t_data *data, int x, int i, t_door *door)
 	int		color;
 	t_img	texture;
 
-	data->ray->dalpha = get_alpha(door->zdist[x]);
+	data->ray->dalpha = 1;
+	if (data->fog)
+		data->ray->dalpha = 1 - get_alpha(door->zdist[x]);
 	texture = *get_current_img(data->door_s);
 	step = 1.0 * texture.height / data->line->line_height;
 	tex_pos = (data->line->draw_start - data->player.offset_y - M_H / 2
@@ -78,7 +80,7 @@ static void	draw_texture_color(t_data *data, int x, int i, t_door *door)
 		color = ft_get_pixel_img(texture, data->line->tex_x, tex_y);
 		if (color != (int)0xFF000000)
 			my_mlx_pixel_put(data->img, x, i,
-				alpha(1 - data->ray->dalpha, (int)0xFF000000, color));
+				alpha(data->ray->dalpha, (int)0xFF000000, color));
 		i++;
 	}
 }

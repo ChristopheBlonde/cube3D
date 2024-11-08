@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 08:14:51 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 12:09:15 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 17:22:21 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ char	**walk_files_name(void)
 	fd = open("./assets/files/walk_orc.txt", 00);
 	if (fd < 0)
 	{
+		ft_putstr_fd(DYELLOW, 2);
 		perror("init files assets");
 		return (NULL);
 	}
 	tmp = ft_get_next_line(fd);
 	if (!tmp)
+	{
+		close(fd);
 		return (NULL);
+	}
 	tmp[ft_strlen(tmp) - 1] = '\0';
 	arr = ft_split(tmp, ' ');
 	free(tmp);
@@ -51,7 +55,7 @@ static void	init_player_img(t_sprite *sprite)
 	anim->current_frame_num = 0;
 }
 
-void	create_list_anim(t_data *data, t_sprite *sprite,
+static bool	create_list_anim(t_data *data, t_sprite *sprite,
 		t_sprite_slice slice, char **files)
 {
 	int			i;
@@ -66,6 +70,8 @@ void	create_list_anim(t_data *data, t_sprite *sprite,
 			tmp_s = sprite;
 		else
 			tmp_s = new_sprite(data, files[i]);
+		if (!tmp_s)
+			return (false);
 		if (i < 16)
 			sprite_nb = 16;
 		else
@@ -76,6 +82,7 @@ void	create_list_anim(t_data *data, t_sprite *sprite,
 			free_sprite(tmp_s);
 		i++;
 	}
+	return (true);
 }
 
 bool	init_player_sprite(t_data *data)
@@ -94,7 +101,14 @@ bool	init_player_sprite(t_data *data)
 	slice.y = 0;
 	slice.width = 320;
 	slice.height = 320;
-	create_list_anim(data, sprite, slice, files);
+	if (!create_list_anim(data, sprite, slice, files))
+	{
+		printf("err list in\n");
+		free_sprite(sprite);
+		free(sprite);
+		ft_free_array((void **)files);
+		return (false);
+	}
 	ft_free_array((void **)files);
 	init_player_img(sprite);
 	data->player.player_s = sprite;
