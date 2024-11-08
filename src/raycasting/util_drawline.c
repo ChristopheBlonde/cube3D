@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:30:26 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 15:58:00 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:24:59 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,6 @@ void	render_doors(t_data *data)
 		{
 			if (door[0]->zdist[x] > -1)
 				draw_all_doors(&rendered, data, door, x);
-		/*	{
-				rendered = true;
-				init_ray(data, x);
-				calculating_initial_side_dist(data);
-				calculating_ray_size(data, x, true, door);
-				draw_doors(data, x);
-				data->zdist[x] = door[0]->zdist[x];
-				door[0]->zdist[x] = -1;
-			}*/
 		}
 		if (rendered)
 		{

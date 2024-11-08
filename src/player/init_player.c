@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 08:14:51 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 12:46:52 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:09:15 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	**walk_files_name(void)
 		return (NULL);
 	tmp[ft_strlen(tmp) - 1] = '\0';
 	arr = ft_split(tmp, ' ');
+	free(tmp);
+	ft_get_next_line(-42);
 	close(fd);
 	return (arr);
 }

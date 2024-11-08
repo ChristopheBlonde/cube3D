@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/04 16:53:30 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:01:52 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	free_sprite(t_sprite *sprite)
 {
 	t_list	*frames;
 	t_anim	*anim;
+	t_list	*lst_anim;
 
 	if (!sprite)
 		return ;
@@ -59,9 +60,14 @@ void	free_sprite(t_sprite *sprite)
 	sprite->img = NULL;
 	if (sprite->anim)
 	{
-		anim = (t_anim *)(sprite->anim)->content;
-		frames = (t_list *)anim->frames;
-		ft_lstclear(&frames, free_img);
+		lst_anim = (t_list *)sprite->anim;
+		while (lst_anim)
+		{
+			anim = (t_anim *)(lst_anim)->content;
+			frames = (t_list *)anim->frames;
+			ft_lstclear(&frames, free_img);
+			lst_anim = lst_anim->next;
+		}
 		ft_lstclear(&sprite->anim, free);
 		sprite->anim = NULL;
 	}

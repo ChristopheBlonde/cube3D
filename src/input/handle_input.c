@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 10:15:33 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:20:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	handle_movement_and_rotation(t_data *data)
 	if (keyboard[KEY_RIGHT])
 		rotate_player(&data->player, MOUSE_SPEED * 10 * PI);
 	if (keyboard[KEY_LEFT])
-		rotate_player(&data->player, -MOUSE_SPEED * 10 *  PI);
+		rotate_player(&data->player, -MOUSE_SPEED * 10 * PI);
 	if (keyboard[KEY_F])
 		handle_action(data);
 	if (keyboard[KEY_P])
@@ -48,7 +48,6 @@ void	check_y_axis(t_data *data, int y, int old_y)
 		offset_y = -450;
 	data->player.offset_y = offset_y;
 }
-
 
 int	check_key_mouse(t_data *data)
 {
@@ -83,44 +82,17 @@ void	handle_mouse(t_data *data)
 
 	if (check_key_mouse(data))
 		return ;
-	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);	
+	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);
 	rotate_player(&data->player, MOUSE_SPEED * ((x - old_x)));
 	check_y_axis(data, y, old_y);
 	old_x = x;
 	old_y = y;
-	if (x <= 0.1 * M_W|| x >= 0.9 * M_W || y <= 0.1 * M_H || y >= 0.9 * M_H)
+	if (x <= 0.1 * M_W || x >= 0.9 * M_W || y <= 0.1 * M_H || y >= 0.9 * M_H)
 	{
 		mlx_mouse_move(data->win->mlx_ptr,
 			data->win->win_ptr, M_W * 0.5, M_H * 0.5);
-		old_x =  M_W * 0.5;
-		old_y =  M_H * 0.5;
-	}
-}
-
-void	handle_minimap_changed(t_data *data)
-{
-	int	*keyboard;
-
-	keyboard = data->player.keyboard;
-	if (keyboard[KEY_MAP])
-	{
-		if (data->mnmap->minimap)
-			data->mnmap->minimap = false;
-		else
-			data->mnmap->minimap = true;
-		keyboard[KEY_MAP] = 0;
-	}
-	if (keyboard[KEY_UP_MAP])
-	{
-		if (data->mnmap->minimap && data->mnmap->size < 22)
-			data->mnmap->size += 2;
-		keyboard[KEY_UP_MAP] = 0;
-	}
-	if (keyboard[KEY_DOWN_MAP])
-	{
-		if (data->mnmap->minimap && data->mnmap->size > 4)
-			data->mnmap->size -= 2;
-		keyboard[KEY_DOWN_MAP] = 0;
+		old_x = M_W * 0.5;
+		old_y = M_H * 0.5;
 	}
 }
 

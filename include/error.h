@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 11:50:08 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:42:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@
 # define ERRSPRITEPOS "Sprite info must contain 7 arguments or 9 for animated\n"
 # define ERRNSPOS "Number sprite declare does not match number position given\n"
 # define ERRSPOS "sprite position impossible\n"
+# define ERRINIT "Fail initialization\n"
+# define USAGE "Usage: ./cub3d [map file]\n"
 
 void	*err_alloc(void);
 size_t	err_arg(void);
@@ -61,5 +63,6 @@ size_t	err_map_invalid(size_t n);
 bool	err_attribute(size_t n);
 void	map_validated(size_t n);
 bool	err_sprite(size_t n, char *file);
+void	err_global(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 12:30:15 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:55:07 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_img			t_img;
 typedef struct s_data			t_data;
 typedef struct s_init_sprite	t_s_init;
 
-typedef enum	e_sprite_type
+typedef enum e_sprite_type
 {
 	PLAYER,
 	SPRITE,
