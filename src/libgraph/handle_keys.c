@@ -60,6 +60,8 @@ int	handle_keypress(int keysym, t_data *data)
 		data->player.keyboard[KEY_LEFT] = 1;
 	if (keysym == XK_o)
 		data->player.keyboard[KEY_MOUSE] = 1;
+	if (keysym == XK_c)
+		data->player.keyboard[KEY_FLOOR_C] = !data->player.keyboard[KEY_FLOOR_C];
 	handle_key_map(keysym, data);
 	return (0);
 }

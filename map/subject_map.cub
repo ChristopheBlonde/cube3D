@@ -1,6 +1,6 @@
-NO ./assets/textures/fractale.xpm 
-SO ./assets/textures/art_deco.xpm
-WE ./assets/textures/redbubble.xpm
+NO ./assets/textures/wall.xpm 
+SO ./assets/textures/wall.xpm
+WE ./assets/textures/wall.xpm
 EA ./assets/textures/shrek.xpm
      
 F 234, 234, 234

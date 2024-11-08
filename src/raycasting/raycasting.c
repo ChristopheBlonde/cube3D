@@ -115,7 +115,8 @@ int	raycasting(t_data *data)
 	int	x;
 
 	x = 0;
-	draw_floor_celling(data);
+	if (data->player.keyboard[KEY_FLOOR_C])
+		draw_floor_celling(data);
 	while (x < M_W)
 	{
 		init_ray(data, x);

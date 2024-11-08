@@ -89,12 +89,18 @@ static void	pixel_line(t_data *data, int x, int image)
 	int	i;
 
 	i = 0;
-	while (i < data->line->draw_start) //add mandatory part
+	while (!data->player.keyboard[KEY_FLOOR_C] && i < data->line->draw_start)
+	{
+		my_mlx_pixel_put(data->img, x, i, 0x00FFFFFF);
 		i++;
-	draw_texture_color(data, x, i, image);
+	}
+	draw_texture_color(data, x, data->line->draw_start, image);
 	i = data->line->draw_end;
-	while (i < M_H - 1)
+	while (!data->player.keyboard[KEY_FLOOR_C] && i < M_H - 1)
+	{
+		my_mlx_pixel_put(data->img, x, i, 0x00FFFFFF);
 		i++;
+	}
 }
 
 void	draw_line(t_data *data, int x)
