@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/05 09:38:02 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 10:12:05 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	init_dir_angle(t_data *data)
 static void	init_t_player(t_data *data)
 {
 	ft_bzero(&data->player.keyboard, KEY_NB * sizeof(int));
-	data->player.position[0] = data->map.player.position[0];
-	data->player.position[1] = data->map.player.position[1];
+	data->player.position[0] = data->map.player.position[0] + 0.5;
+	data->player.position[1] = data->map.player.position[1] + 0.5;
 	init_dir_angle(data);
 	data->player.v_dir[0] = cos(data->player.dir_angle);
 	data->player.v_dir[1] = sin(data->player.dir_angle);

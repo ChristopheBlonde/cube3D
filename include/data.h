@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 10:41:59 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/08 10:05:11 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <sys/time.h>
 # include <stdint.h>
 
-# define M_W 1920
+# define M_W 1920//800
 
 typedef struct s_minimap		t_minimap;
 typedef struct s_img			t_img;
@@ -49,6 +49,7 @@ typedef struct s_data
 	uint64_t		start_time;
 	uint64_t		last_update;
 	int				fps;
+	bool		mouse;
 	t_floor_celling	*floor_c;
 	t_sprite		*door_s;
 }	t_data;
