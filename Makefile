@@ -76,10 +76,10 @@ OBJ = $(addprefix $(DBUILD),$(SRC:%.c=%.o))
 
 $(DBUILD)%.o : %.c
 	@mkdir -p $(dir $@)
-	$(CC) -Ofast -O3 $(CFLAGS) $(INCLUDE) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(LIB) $(MLX) $(OBJ)
-	$(CC) -Ofast -O3 $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
 
 $(LIB) :
 	@make -C $(DLIB) --no-print-directory --silent
