@@ -6,7 +6,7 @@
 #    By: cblonde <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 16:57:56 by cblonde           #+#    #+#              #
-#    Updated: 2024/11/08 15:30:18 by cblonde          ###   ########.fr        #
+#    Updated: 2024/11/12 09:32:40 by cblonde          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,10 +79,10 @@ OBJ = $(addprefix $(DBUILD),$(SRC:%.c=%.o))
 
 $(DBUILD)%.o : %.c
 	@mkdir -p $(dir $@)
-	$(CC) -Ofast -O3 $(CFLAGS) $(INCLUDE) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) : $(LIB) $(MLX) $(OBJ)
-	$(CC) -Ofast -O3 $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARIES) -o $(NAME)
 
 $(LIB) :
 	@make -C $(DLIB) --no-print-directory --silent

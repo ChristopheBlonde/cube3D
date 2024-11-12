@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:45:04 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 16:07:55 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 09:40:17 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,12 @@ void	update_anim_player(void *ptr)
 		a->current_frame_num++;
 		a->current_frame_num %= ft_lstsize(l);
 	}
+}
+
+void	update_player_pos(t_data *data)
+{
+	data->player.player_s->pos_x
+		= data->player.position[0] + data->player.v_dir[0];
+	data->player.player_s->pos_y
+		= data->player.position[1] + data->player.v_dir[1];
 }

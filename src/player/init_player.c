@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 08:14:51 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 17:22:21 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 10:01:49 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static bool	create_list_anim(t_data *data, t_sprite *sprite,
 			tmp_s = sprite;
 		else
 			tmp_s = new_sprite(data, files[i]);
-		if (!tmp_s)
+		if (!tmp_s || !tmp_s->img || !tmp_s->img->img_ptr)
 			return (false);
 		if (i < 16)
 			sprite_nb = 16;
@@ -85,6 +85,15 @@ static bool	create_list_anim(t_data *data, t_sprite *sprite,
 	return (true);
 }
 
+static bool free_ini_player(t_sprite *sprite, char **files)
+{
+	if (sprite)
+		free_sprite(sprite);
+	if (files)
+		ft_free_array((void **)files);
+	return (false);
+}
+
 bool	init_player_sprite(t_data *data)
 {
 	t_sprite		*sprite;
@@ -96,31 +105,17 @@ bool	init_player_sprite(t_data *data)
 		return (false);
 	sprite = new_sprite(data, files[0]);
 	if (!sprite)
-		return (false);
+		return (free_ini_player(sprite, files));
 	slice.x = 0;
 	slice.y = 0;
 	slice.width = 320;
 	slice.height = 320;
 	if (!create_list_anim(data, sprite, slice, files))
-	{
-		printf("err list in\n");
-		free_sprite(sprite);
-		free(sprite);
-		ft_free_array((void **)files);
-		return (false);
-	}
+		return (free_ini_player(sprite, files));
 	ft_free_array((void **)files);
 	init_player_img(sprite);
 	data->player.player_s = sprite;
 	data->arr_s[data->map.sprite_nb] = sprite;
 	update_player_pos(data);
 	return (true);
-}
-
-void	update_player_pos(t_data *data)
-{
-	data->player.player_s->pos_x
-		= data->player.position[0] + data->player.v_dir[0];
-	data->player.player_s->pos_y
-		= data->player.position[1] + data->player.v_dir[1];
 }

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:09:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 12:01:52 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 09:53:56 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	free_sprite(t_sprite *sprite)
 		return ;
 	if (sprite->img && sprite->img->img_ptr)
 		free_img(sprite->img);
+	else if (sprite->img)
+		free(sprite->img);
 	sprite->img = NULL;
 	if (sprite->anim)
 	{
