@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:20:59 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 12:42:00 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 08:54:42 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define ERRSPOS "sprite position impossible\n"
 # define ERRINIT "Fail initialization\n"
 # define USAGE "Usage: ./cub3d [map file]\n"
+# define ERRARGSPRITE "Bad sprite argument\n"
 
 void	*err_alloc(void);
 size_t	err_arg(void);

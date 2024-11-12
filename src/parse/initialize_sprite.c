@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:30:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 16:46:15 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 08:56:02 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,15 @@ static bool	init_sprite_info(t_s_init *conf, char **pos)
 	conf->x_div = ft_atoi(pos[4]);
 	conf->y_div = ft_atoi(pos[5]);
 	conf->offset = ft_atoi(pos[6]);
+	if (!conf->w_frame || !conf->h_frame || !conf->x_div
+		|| !conf->y_div || !conf->offset)
+		return (err_attribute(7));
 	if (conf->animated)
 	{
 		conf->nb_frame = ft_atoi(pos[7]);
 		conf->delay = ft_atoi(pos[8]);
+		if (!conf->nb_frame || !conf->delay)
+			return (err_attribute(7));
 	}
 	return (true);
 }

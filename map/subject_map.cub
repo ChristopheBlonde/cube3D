@@ -7,10 +7,10 @@ F 234, 234, 234
 C 1, 1, 1
 
 SPN     6;
-SPR	./assets/centipede.xpm, 26.5 4.5 0 0 1 1 60, 26.5 1.5 0 0 1 1 60
-SPR	./assets/magic_circle.xpm, 25.3 6.5 0 0 1 1 60
-SPR	./assets/magic_circle2.xpm, 20.5 7.5 0 0 2 2 60
-SPR	./assets/white_crystal.xpm , 19.4 3.5 0 0 3 3 50
+SPR	./assets/centipede.xpm, 26.5 4.5 1 1 1 1 60, 26.5 1.5 1 1 1 1 60
+SPR	./assets/magic_circle.xpm, 25.3 6.5 1 1 1 1 60
+SPR	./assets/magic_circle2.xpm, 20.5 7.5 1 1 2 2 60
+SPR	./assets/white_crystal.xpm , 19.4 3.5 1 1 3 3 50
 SPA	./assets/fire_camp.xpm , 27.5 11.5 64 64 1 1 200 4 6
 
         1111111111111111111111111
