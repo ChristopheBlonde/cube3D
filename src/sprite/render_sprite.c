@@ -6,11 +6,16 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:52 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 15:50:58 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:56:56 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sprite.h"
+
+static void	find_render_size(t_data *data, t_rend *render)
+			__attribute__((always_inline));
+static void	draw_sprite(t_data *data, t_rend *render, t_img *img)
+			__attribute__((always_inline));
 
 static void	draw_sprite(t_data *data, t_rend *render, t_img *img)
 {

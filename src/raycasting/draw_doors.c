@@ -6,11 +6,17 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 09:58:00 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 15:28:26 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:48:17 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+void		init_tex_line_door(t_data *data) __attribute__((always_inline));
+static void	draw_texture_color(t_data *data, int x, int i, t_door *door)
+			__attribute__((always_inline));
+static void	init_door_line(t_data *data, int x, t_door *door)
+			__attribute__((always_inline));
 
 double	calculate_perp_door_dist(t_data *data)
 {

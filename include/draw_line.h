@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:46:25 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 10:44:48 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:35:06 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ typedef struct s_line
 	double	current_dist;
 }	t_line;
 
-void	draw_line(t_data *data, int x);
-double	calculate_perp_wall_dist(t_data *data);
-void	draw_floor_celling(t_data *data);
-t_door	*get_door(t_data *data, int x, int y);
-double	calculate_perp_door_dist(t_data *data);
-void	draw_doors(t_data *data, int x);
+void	draw_line(t_data *data, int x) __attribute__((always_inline));
+double	calculate_perp_wall_dist(t_data *data) __attribute__((always_inline));
+void	draw_floor_celling(t_data *data) __attribute__((always_inline));
+t_door	*get_door(t_data *data, int x, int y) __attribute__((always_inline));
+double	calculate_perp_door_dist(t_data *data) __attribute__((always_inline));
+void	draw_doors(t_data *data, int x) __attribute__((always_inline));
 
 #endif

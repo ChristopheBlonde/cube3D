@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 08:32:41 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/05 12:09:05 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 12:31:18 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "sprite.h"
 # include "input.h"
 
-# define M_W 1920//800
-# define M_H 1080//600
+# define M_W 800 /*1920*/
+# define M_H 600 /*1080*/
 # define M_NAME "cub3D"
 # define M_RED 84
 # define M_GREEN 122
@@ -53,16 +53,22 @@ typedef struct s_img
 
 t_win			*ft_initmlx(void);
 void			free_win(t_win *win);
-void			my_mlx_pixel_put(t_img *img, int x, int y, int color);
-int				get_color(double dist, int r, int g, int b);
+void			my_mlx_pixel_put(t_img *img, int x, int y, int color)
+				__attribute__((always_inline));
+int				get_color(double dist, int r, int g, int b)
+				__attribute__((always_inline));
 t_img			*new_img(t_win *win, int w, int h);
 void			free_img(void *ptr);
 void			draw_circle(t_img *img, t_point center, int r, int color);
 int				handle_keypress(int keysym, t_data *data);
-int				alpha(double opacity, int cback, int cfront);
-void			copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y);
-unsigned int	ft_get_pixel_img(t_img img, int x, int y);
-void			put_pixel_win(t_data *data, int x, int y, int color);
+int				alpha(double opacity, int cback, int cfront)
+				__attribute__((always_inline));
+void			copy_img_to_win(t_data *data, t_sprite *sprite, int x, int y)
+				__attribute__((always_inline));
+unsigned int	ft_get_pixel_img(t_img img, int x, int y)
+				__attribute__((always_inline));
+void			put_pixel_win(t_data *data, int x, int y, int color)
+				__attribute__((always_inline));
 int				handle_keyrelease(int keysym, t_data *data);
 
 #endif

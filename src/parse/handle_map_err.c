@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:05:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/28 12:17:34 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 12:28:04 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,32 +83,30 @@ static void	implement_arr_test(t_map *map, char **arr, size_t x, size_t y)
 	return ;
 }
 
-static bool	is_closed(t_map *map)
+static bool	is_closed(t_map *map, char ***w_arr)
 {
-	char	**w_arr;
 	int		i;
 	int		j;
 
 	i = -1;
-	w_arr = duplicate_array(map);
-	if (!w_arr)
+	*w_arr = duplicate_array(map);
+	if (!(*w_arr))
 		return (false);
-	implement_arr_test(map, w_arr,
+	implement_arr_test(map, *w_arr,
 		(int)map->player.position[0], (int)map->player.position[1]);
 	while (++i < (int)map->height)
 	{
 		j = -1;
 		while (++j < (int)map->width)
 		{
-			if ((i == 0 && w_arr[i][j] == '2')
-					|| (i == (int)map->height - 1 && w_arr[i][j] == '2'))
+			if ((i == 0 && (*w_arr)[i][j] == '2')
+					|| (i == (int)map->height - 1 && (*w_arr)[i][j] == '2'))
 				return (false);
-			if ((j == 0 && w_arr[i][j] == '2')
-						|| (j == (int)map->width - 1 && w_arr[i][j] == '2'))
+			if ((j == 0 && (*w_arr)[i][j] == '2')
+						|| (j == (int)map->width - 1 && (*w_arr)[i][j] == '2'))
 				return (false);
 		}
 	}
-	ft_free_array((void **)w_arr);
 	return (true);
 }
 
@@ -116,6 +114,7 @@ bool	handle_map_err(t_map *map)
 {
 	size_t	player;
 	size_t	unknow;
+	char	**arr;
 
 	player = 0;
 	unknow = 0;
@@ -126,8 +125,12 @@ bool	handle_map_err(t_map *map)
 		return (err_map_invalid(2));
 	if (!missing_att(map))
 		return (false);
-	if (!is_closed(map))
+	if (!is_closed(map, &arr))
+	{
+		ft_free_array((void **)arr);
 		return (err_map_invalid(1));
+	}
+	ft_free_array((void **)arr);
 	map->map[(int)map->player.position[1]][(int)map->player.position[0]] = '0';
 	if (map->nb_doors)
 		if (!init_doors(map))

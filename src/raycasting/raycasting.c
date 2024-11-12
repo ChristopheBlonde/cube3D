@@ -6,13 +6,12 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 11:21:32 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:29:25 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
 
-void	init_ray(t_data *data, int x) __attribute__((always_inline));
 void	init_ray(t_data *data, int x)
 {
 	data->ray->dalpha = 1;
@@ -33,7 +32,6 @@ void	init_ray(t_data *data, int x)
 		data->ray->delta_dist_y = fabs(1 / data->ray->ray_dir[1]);
 }
 
-void	calculating_initial_side_dist(t_data *data) __attribute__((always_inline));
 void	calculating_initial_side_dist(t_data *data)
 {
 	if (data->ray->ray_dir[0] < 0)
@@ -81,8 +79,6 @@ static t_dir	define_side(t_data *data)
 	return (NONE);
 }
 
-void	calculating_ray_size(t_data *data, int x,
-		bool doorloop, t_door *door[2]) __attribute__((always_inline));
 void	calculating_ray_size(t_data *data, int x,
 		bool doorloop, t_door *door[2])
 {

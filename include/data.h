@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 10:16:35 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 12:30:45 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <sys/time.h>
 # include <stdint.h>
 
-# define M_W 1920//800
+# define M_W 800 /*1920*/
 
 typedef struct s_minimap		t_minimap;
 typedef struct s_img			t_img;

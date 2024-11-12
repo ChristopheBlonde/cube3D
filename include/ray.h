@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:43:12 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 12:54:28 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:59:59 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ int		raycasting(t_data *data);
 bool	checkdoor(t_data *data);
 void	init_zdoordist(t_data *data);
 void	render_doors(t_data *data);
-void	init_ray(t_data *data, int x);
-void	calculating_initial_side_dist(t_data *data);
+void	init_ray(t_data *data, int x) __attribute__((always_inline));
+void	calculating_initial_side_dist(t_data *data)
+		__attribute__((always_inline));
 void	calculating_ray_size(t_data *data, int x,
-			bool doorloop, t_door *door[2]);
-double	get_alpha(double dist);
+			bool doorloop, t_door *door[2]) __attribute__((always_inline));
+double	get_alpha(double dist) __attribute__((always_inline));
 
 #endif
