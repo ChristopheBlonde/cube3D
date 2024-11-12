@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:52:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 11:29:25 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 12:42:15 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ static t_dir	define_side(t_data *data)
 	if (data->ray->side_dist_x < data->ray->side_dist_y)
 	{
 		if (data->ray->ray_dir[0] < 0)
-			return (WEST);
-		else
 			return (EAST);
+		else
+			return (WEST);
 	}
 	else
 	{
 		if (data->ray->ray_dir[1] < 0)
-			return (NORTH);
-		else
 			return (SOUTH);
+		else
+			return (NORTH);
 	}
 	return (NONE);
 }
