@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 08:14:51 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 10:01:49 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:01:08 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static bool	create_list_anim(t_data *data, t_sprite *sprite,
 	return (true);
 }
 
-static bool free_ini_player(t_sprite *sprite, char **files)
+static bool	free_ini_player(t_sprite *sprite, char **files)
 {
 	if (sprite)
 		free_sprite(sprite);

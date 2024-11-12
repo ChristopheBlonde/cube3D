@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 15:43:43 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 10:16:35 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_data
 	bool			fog;
 	bool			visible_door;
 	bool			visible_sprite;
+	bool			tex_floor_c;
 	t_floor_celling	*floor_c;
 	t_sprite		*door_s;
 }	t_data;

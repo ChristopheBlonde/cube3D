@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:13:16 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 14:28:00 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 10:59:59 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ static void	init_struct_floor(t_data *data, int y)
 		+ data->floor_c->row_dist * data->floor_c->ray_dir_y0;
 }
 
+static void	draw_pixel_mandatory(t_data *data, int x, int y)
+{
+	if (data->floor_c->is_floor)
+		my_mlx_pixel_put(data->img, x, y,
+			alpha(data->floor_c->floor_alpha, (int)0xFF000000,
+				get_color(1, data->map.floor[0], data->map.floor[1],
+					data->map.floor[2])));
+	else
+		my_mlx_pixel_put(data->img, x, y,
+			alpha(1 - data->floor_c->ceil_alpha, (int)0xFF000000,
+				get_color(1, data->map.ceiling[0], data->map.ceiling[1],
+					data->map.ceiling[2])));
+}
+
 static void	draw_pixel_floor_celling(t_data *data, int x, int y)
 {
 	t_point	tex_floor;
@@ -46,16 +60,21 @@ static void	draw_pixel_floor_celling(t_data *data, int x, int y)
 		& (data->line->texture[5 - data->floor_c->is_floor].height - 1);
 	data->floor_c->floor_x += data->floor_c->floor_step_x;
 	data->floor_c->floor_y += data->floor_c->floor_step_y;
-	if (data->floor_c->is_floor)
-		my_mlx_pixel_put(data->img, x, y,
-			alpha(data->floor_c->floor_alpha, (int)0xFF000000,
-				ft_get_pixel_img(data->line->texture[4],
-					tex_floor.x, tex_floor.y)));
+	if (data->tex_floor_c)
+	{
+		if (data->floor_c->is_floor)
+			my_mlx_pixel_put(data->img, x, y,
+				alpha(data->floor_c->floor_alpha, (int)0xFF000000,
+					ft_get_pixel_img(data->line->texture[4],
+						tex_floor.x, tex_floor.y)));
+		else
+			my_mlx_pixel_put(data->img, x, y,
+				alpha(1 - data->floor_c->ceil_alpha, (int)0xFF000000,
+					ft_get_pixel_img(data->line->texture[5],
+						tex_floor.x, tex_floor.y)));
+	}
 	else
-		my_mlx_pixel_put(data->img, x, y,
-			alpha(1 - data->floor_c->ceil_alpha, (int)0xFF000000,
-				ft_get_pixel_img(data->line->texture[5],
-					tex_floor.x, tex_floor.y)));
+		draw_pixel_mandatory(data, x, y);
 }
 
 static void	init_alpha(t_data *data, int y)

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:58:34 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 15:49:51 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/12 10:19:28 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	key_press_bonus(int keysym, t_data *data)
 		data->player.keyboard[KEY_DOOR] = 1;
 	if (keysym == XK_y)
 		data->player.keyboard[KEY_SPRITE] = 1;
+	if (keysym == XK_t)
+		data->player.keyboard[KEY_FLOOR_C] = 1;
 }
 
 int	handle_keypress(int keysym, t_data *data)
