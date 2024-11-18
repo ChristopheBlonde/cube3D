@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:48 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 15:14:51 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/18 10:21:47 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ void	handle_movement_and_rotation(t_data *data)
 	if (keyboard[KEY_D])
 		move_player(data, KEY_D, 0.08);
 	if (keyboard[KEY_RIGHT])
-		rotate_player(&data->player, MOUSE_SPEED * 10 * PI);
+		rotate_player(data, MOUSE_SPEED * 10 * PI);
 	if (keyboard[KEY_LEFT])
-		rotate_player(&data->player, -MOUSE_SPEED * 10 * PI);
+		rotate_player(data, -MOUSE_SPEED * 10 * PI);
 	if (keyboard[KEY_F])
 		handle_action(data);
 	if (keyboard[KEY_P])
 		handle_player_visibility(data);
-	update_player_pos(data);
 	handle_keys_anim(data);
 	handle_keys_bonus(data);
 }
@@ -84,7 +83,7 @@ void	handle_mouse(t_data *data)
 	if (check_key_mouse(data))
 		return ;
 	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);
-	rotate_player(&data->player, MOUSE_SPEED * ((x - old_x)));
+	rotate_player(data, MOUSE_SPEED * ((x - old_x)));
 	check_y_axis(data, y, old_y);
 	old_x = x;
 	old_y = y;

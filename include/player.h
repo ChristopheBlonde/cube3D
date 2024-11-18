@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:31:15 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 10:21:38 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/18 09:10:18 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_player
 t_dir	get_direction(char c);
 int		inside_a_wall(t_data *data, int x, int y, t_map *m);
 void	move_player(t_data *data, int keysym, double speed);
-void	rotate_player(t_player *p, double speed);
+void	rotate_player(t_data *data, double speed);
 int		handle_input(t_data *data);
 void	handle_action(t_data *data);
 bool	init_player_sprite(t_data *data);

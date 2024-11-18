@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:47:45 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 14:40:35 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/18 13:23:13 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ void	move_player(t_data *data, int keysym, double speed)
 		move_player_right(data, speed);
 	if (keysym == KEY_A)
 		move_player_left(data, speed);
+	update_player_pos(data);
 }

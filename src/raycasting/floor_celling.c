@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:13:16 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 10:59:59 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/18 13:08:46 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ static void	init_alpha(t_data *data, int y)
 		data->floor_c->floor_alpha
 			= ((double)y - half_height) / (half_height + (offset * 2));
 		if (data->floor_c->floor_alpha > 1)
+			data->floor_c->floor_alpha = 1;
+		if (data->floor_c->floor_alpha < 0)
 			data->floor_c->floor_alpha = 1;
 		data->floor_c->ceil_alpha = 0;
 	}

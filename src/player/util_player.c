@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:45:04 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 09:40:17 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/18 13:28:11 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,13 @@ void	update_anim_player(void *ptr)
 
 void	update_player_pos(t_data *data)
 {
+	double	x_dist;
+	double	y_dist;
+
+	x_dist = data->player.v_dir[0] * 1.3;
+	y_dist = data->player.v_dir[1] * 1.3;
 	data->player.player_s->pos_x
-		= data->player.position[0] + data->player.v_dir[0];
+		= data->player.position[0] + x_dist;
 	data->player.player_s->pos_y
-		= data->player.position[1] + data->player.v_dir[1];
+		= data->player.position[1] + y_dist;
 }
