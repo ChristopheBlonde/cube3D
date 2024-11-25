@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:45:04 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/22 16:39:32 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/25 10:18:53 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,23 @@ t_dir	get_direction(char c)
 	return (NONE);
 }
 
-int	inside_a_wall(t_data *data, int x, int y, t_map *m)
+int	inside_a_wall(t_data *data, double x, double y, t_map *m)
 {
 	t_door	*door;
 
 	door = get_door(data, x, y);
 	if (door)
 	{
-		printf("direction: %s\n", door->dir == NS ? "NS" : door->dir == EW ? "EW" : "NODIR");
 		if (door->dir != NODIR && door->status != OPEN)
 		{
-			printf("pos y:%d player:%f v_dir:%f\n", y, data->player.player_s->pos_y, data->player.v_dir[1]);
-			if (door->dir == NS && data->player.player_s->pos_y > y + 0.6
-					&& data->player.player_s->pos_y < y + 0.4)
+			if (door->dir == NS && (y > (int)y + 0.6 || y < (int)y + 0.4))
 				return (0);
-				//printf("v_dir x:%f y:%f\n", data->player.v_dir[0], data->player.v_dir[1]);
+			if (door->dir == EW && (x > (int)x + 0.6 || x < (int)x + 0.4))
+				return (0);
 			return (1);
 		}
 	}
-	if (m->map[y][x] == '1'/*
-		|| (data->visible_door && door && door->dir != NODIR
-			&& door->status != OPEN)*/)
+	if (m->map[(int)y][(int)x] == '1')
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:20:03 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/08 16:57:02 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/25 11:34:39 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static int	render_game(t_data *data)
 
 static void	mlx_run_loop(t_data *data)
 {
-	mlx_mouse_hide(data->win->mlx_ptr, data->win->win_ptr);
 	mlx_loop_hook(data->win->mlx_ptr, &render_game, data);
+	mlx_hook(data->win->win_ptr, 17, 1L << 0, exit_game, data);
 	mlx_hook(data->win->win_ptr,
 		KeyPress, KeyPressMask, &handle_keypress, data);
 	mlx_hook(data->win->win_ptr,

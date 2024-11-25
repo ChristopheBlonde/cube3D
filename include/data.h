@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:28:17 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 12:30:45 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/25 11:31:41 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ bool		update(t_data *data);
 bool		init_textures(t_data *data);
 void		free_textures(t_data *data);
 void		init_data_var(t_data *data);
+int			exit_game(t_data *data);
 
 #endif
