@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 08:14:51 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 11:01:08 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/21 17:06:35 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	init_player_img(t_sprite *sprite)
 	sprite->animated = true;
 	sprite->render.u_div = 1;
 	sprite->render.v_div = 1;
-	sprite->render.v_move = 340;
+	sprite->render.v_move = 230;
 	sprite->type = PLAYER;
 	sprite->lst_nb = 0;
 	lst_anim = sprite->anim;
