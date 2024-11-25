@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:45:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/10 16:05:09 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:00:14 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static bool	add_sprite(t_map *map, char *str)
 		str--;
 		*str = 'A';
 	}
+	if (map->curr_sprite >= map->sprite_nb)
+		return (err_sprite(4, NULL));
 	map->sprites[map->curr_sprite] = ft_strdup(str);
 	if (!map->sprites[map->curr_sprite])
 		return (err_sprite(3, NULL));
