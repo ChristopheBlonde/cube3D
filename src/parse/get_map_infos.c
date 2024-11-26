@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 08:46:22 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 13:20:46 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 11:44:35 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ bool	get_infos(t_map *map, char **arr, size_t i)
 
 	error = 0;
 	ft_strstrim(arr[i]);
+	if (!error && arr[i][0] != '\0' && !is_valid_arg(arr[i]))
+		error = 1;
 	if (!error && !get_no(map, arr[i]))
 		error = 1;
 	if (!error && !get_so(map, arr[i]))

@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:51:50 by cblonde           #+#    #+#             */
-/*   Updated: 2024/10/09 13:41:21 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 11:06:14 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	get_floor_color(t_map *map, char *str, int i)
 	}
 	while (++i < 3)
 	{
-		if (ft_atoi(arr[i]) >= 0 && ft_atoi(arr[i]) <= 255)
+		if (is_num(arr[i]) && ft_atoi(arr[i]) >= 0 && ft_atoi(arr[i]) <= 255)
 			map->floor[i] = ft_atoi(arr[i]);
 		else
 		{
@@ -58,7 +58,7 @@ static bool	get_ceiling_color(t_map *map, char *str, int i)
 	}
 	while (++i < 3)
 	{
-		if (ft_atoi(arr[i]) >= 0 && ft_atoi(arr[i]) <= 255)
+		if (is_num(arr[i]) && ft_atoi(arr[i]) >= 0 && ft_atoi(arr[i]) <= 255)
 			map->ceiling[i] = ft_atoi(arr[i]);
 		else
 		{

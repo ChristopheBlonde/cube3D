@@ -5,8 +5,8 @@ WE ./assets/textures/wall.xpm
 NO ./assets/textures/wood.xpm 
 F 255, 85, 0
 C 56, 100, 0
+SPN     6
 
-SPN     7
 SPR	./assets/centipede.xpm, 26.5 4.5 1 1 1 1 60, 26.5 1.5 1 1 1 1 60
 SPR	./assets/magic_circle.xpm, 25.3 6.5 1 1 1 1 60
 SPR	./assets/magic_circle2.xpm, 20.5 7.5 1 1 2 2 60
