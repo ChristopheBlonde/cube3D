@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:13 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/25 11:29:54 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 09:55:53 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	init_data_allocations(t_data *data)
 		return (0);
 	if (!init_arr_sprites(data))
 		return (0);
+	if (ft_arrlen((void **)data->arr_s) != data->map.sprite_nb)
+		return (err_sprite(4, NULL));
 	if (!init_textures(data))
 		return (0);
 	if (!init_door_sprite(data))
