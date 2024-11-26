@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 09:21:53 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/07 12:49:03 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 12:23:53 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	handle_player_visibility(t_data *data)
 	if (data->player.active)
 		data->player.active = false;
 	else
-		data->player.active = true;
+	{
+		if (data->visible_sprite)
+			data->player.active = true;
+	}
 	data->player.keyboard[KEY_P] = 0;
 }
 

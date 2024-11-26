@@ -6,7 +6,7 @@
 /*   By: cblonde <cblonde@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:30:10 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/26 09:55:15 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 12:15:40 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ static bool	is_valid_arr(char **arr)
 
 static bool	init_sprite_info(t_s_init *conf, char **pos)
 {
+	int	i;
+
+	i = -1;
+	while (pos[++i])
+		if (!is_num(pos[i]))
+			return (err_attribute(8));
 	if (conf->animated && ft_arrlen((void **)pos) != 9)
 		return (err_sprite(6, NULL));
 	conf->w_frame = ft_atoi(pos[2]);

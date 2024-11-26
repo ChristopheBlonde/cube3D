@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:58:16 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/26 12:10:04 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 12:17:37 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	is_num(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ' ')
+		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '.')
 			return (false);
 		i++;
 	}

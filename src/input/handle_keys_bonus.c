@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:15:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/12 10:17:04 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 12:22:00 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ static void	handle_key_sprite(t_data *data)
 	if (keyboard[KEY_SPRITE])
 	{
 		if (data->visible_sprite)
+		{
 			data->visible_sprite = false;
+			if (data->player.active)
+				data->player.active = false;
+		}
 		else
 			data->visible_sprite = true;
 		keyboard[KEY_SPRITE] = 0;
