@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 13:45:36 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/25 13:00:14 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 12:44:28 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ bool	get_sprite(t_map *map, char *str)
 	if (!ft_strncmp(str, "SPN", 3))
 	{
 		str += 3;
-		if (!ft_isspace(*str))
-			return (err_arg());
+		if (!valid_spn(map, str))
+			return (0);
 		map->sprite_nb = ft_atoi(str);
 		if (map->sprite_nb != 0)
 		{

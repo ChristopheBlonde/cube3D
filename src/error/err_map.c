@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 09:19:47 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/26 11:38:47 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 12:42:55 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ bool	err_attribute(size_t n)
 		ft_putstr_fd(ERRARGSPRITE, 2);
 	if (n == 8)
 		ft_putstr_fd(ERRARG, 2);
+	if (n == 9)
+		ft_putstr_fd(ERRDARGS, 2);
 	ft_putstr_fd(RESET, 2);
 	return (false);
 }

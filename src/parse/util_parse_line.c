@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:58:16 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/26 12:17:37 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 13:52:35 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,28 @@
 bool	is_num(char *str)
 {
 	size_t	i;
+	bool	point;
+	bool	sign;
 
-	i = 0;
-	while (str[i])
+	i = -1;
+	sign = false;
+	point = false;
+	while (str[++i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '.')
+		if (!point && str[i] == '.')
+			point = true;
+		else if (str[i] == '.')
 			return (false);
-		i++;
+		if (!sign && str[i] == '-')
+			sign = true;
+		else if (str[i] == '-')
+			return (false);
 	}
+	i = -1;
+	while (str[++i])
+		if (!ft_isdigit(str[i]) && str[i] != ' '
+			&& str[i] != '.' && str[i] != '-')
+			return (false);
 	return (true);
 }
 
@@ -44,4 +58,13 @@ bool	is_valid_arg(char *str)
 	if (!result)
 		err_attribute(8);
 	return (result);
+}
+
+bool	valid_spn(t_map *map, char *str)
+{
+	if (!ft_isspace(*str) || !is_num(str))
+		return (err_arg());
+	if (map->sprites)
+		return (err_attribute(9));
+	return (1);
 }

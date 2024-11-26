@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:45:31 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/25 12:55:12 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 13:46:50 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	init_map(t_map *map)
 	map->curr_sprite = 0;
 	while (++i < 3)
 	{
-		map->floor[i] = 0;
-		map->ceiling[i] = 0;
+		map->floor[i] = -1;
+		map->ceiling[i] = -1;
 	}
 	map->player.pos.x = 0;
 	map->player.pos.y = 0;

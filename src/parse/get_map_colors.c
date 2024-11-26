@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 12:51:50 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/26 11:06:14 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 13:50:27 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ static bool	duplicated_color(t_map *map, size_t n)
 {
 	if (n == 0)
 	{
-		if (map->floor[0] == 0
-			&& map->floor[1] == 0
-			&& map->floor[2] == 0)
+		if (map->floor[0] == -1
+			&& map->floor[1] == -1
+			&& map->floor[2] == -1)
 			return (true);
 	}
 	if (n == 1)
 	{
-		if (map->ceiling[0] == 0
-			&& map->ceiling[1] == 0
-			&& map->ceiling[2] == 0)
+		if (map->ceiling[0] == -1
+			&& map->ceiling[1] == -1
+			&& map->ceiling[2] == -1)
 			return (true);
 	}
 	return (false);

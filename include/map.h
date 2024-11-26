@@ -6,7 +6,7 @@
 /*   By: cblonde <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:40:37 by cblonde           #+#    #+#             */
-/*   Updated: 2024/11/25 12:55:00 by cblonde          ###   ########.fr       */
+/*   Updated: 2024/11/26 13:47:24 by cblonde          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_map
 	char		**map;
 	size_t		height;
 	size_t		width;
-	size_t		floor[3];
-	size_t		ceiling[3];
+	int			floor[3];
+	int			ceiling[3];
 	char		*no;
 	char		*so;
 	char		*we;
